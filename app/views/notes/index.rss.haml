@@ -8,7 +8,7 @@
     - with_last_modified_page(@notes).each do |note, page|
       %item
         - if page && page.name == "FrontPage" && page.updated_at == page.created_at
-          %title&= "[NEW]" + note.display_name
+          %title&= note.display_name
         - elsif page
           %title&= [page.display_name,note.display_name].join(" -- ")
         - else

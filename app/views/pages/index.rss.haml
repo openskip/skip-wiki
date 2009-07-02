@@ -7,7 +7,7 @@
     %dc:creator&= current_user.name
     - @pages.each do |page|
       %item
-        %title&== [NEW] #{page.display_name} on #{page.note.display_name}
+        %title&== #{page.display_name} on #{page.note.display_name}
         %link&= note_page_url(page.note, page)
         %dc:creator&= page.name
         %pubDate&= page.updated_at.rfc822
