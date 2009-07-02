@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   skip_before_filter :authenticate, :only => %w[index]
   before_filter :authenticate_with_api_or_login_required, :only => %w[index]
   before_filter :is_wiki_initialized?, :except => %w[create]
-  before_filter :explicit_user_required, :except => %w[index show]
+  before_filter :explicit_user_required, :except => %w[index show root]
 
   def index
     @pages = accessible_pages(true).fulltext(params[:keyword]).
@@ -114,6 +114,12 @@ class PagesController < ApplicationController
       flash[:notice] = _("Page was recovered successfully")
       redirect_to(note_pages_path(current_note))
     end
+  end
+
+  def root
+    @note = Note.wikipedia
+    @page = @note.pages.find_by_name(Page::FRONTPAGE_NAME)
+    @page ? render(:action => :show) : render_not_found
   end
 
   private
