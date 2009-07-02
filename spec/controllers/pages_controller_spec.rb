@@ -136,7 +136,7 @@ describe PagesController do
     end
     it "作成されるページのは公開に設定されていること" do
       get :new
-      assigns(:page).should be_published
+      assigns(:page).should_not be_published
     end
   end
 end
