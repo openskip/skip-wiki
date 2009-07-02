@@ -30,6 +30,7 @@ ActionController::Routing::Routes.draw do |map|
     note.resources :label_indices
     note.resources :pages, :member => {:recovery => :post}, :new => {:preview => :post} do |page|
       page.resources :histories, :collection=>{:diff=>:get}
+      page.resources :attachments
     end
     note.resources :attachments
   end

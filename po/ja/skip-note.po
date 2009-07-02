@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: skip-note 0.1.0\n"
-"POT-Creation-Date: 2009-06-04 12:17+0900\n"
+"POT-Creation-Date: 2009-07-02 20:02+0900\n"
 "PO-Revision-Date: 2008-11-04 16:29+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,44 +16,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-msgid "Attachment|Index"
-msgstr "ファイル"
+msgid "The page %{page} is successfully created"
+msgstr "「%{page}」を作成しました。"
 
-msgid "Attachment was deleted successfully"
-msgstr "添付ファイルが正常に削除されました。"
+msgid "The page %{page} is successfully updated"
+msgstr "「%{page}」を更新しました。"
 
-msgid "note"
-msgstr "ノート"
+msgid "Page was deleted successfully"
+msgstr "ページを削除しました。"
 
-msgid "group users"
-msgstr "ユーザ"
+msgid "Failed to delete page."
+msgstr "ページ削除に失敗しました"
 
-msgid "note pages"
-msgstr "ページ一覧"
-
-msgid "Edit"
-msgstr "編集"
-
-msgid "label index"
-msgstr "ラベル"
-
-msgid "Memberships was successfully updated"
-msgstr "ログインしました。"
-
-msgid "Search Note"
-msgstr "ノートを検索"
-
-msgid "Note was successfully updated."
-msgstr "ノート「%{note}」を作成しました。"
-
-msgid "validation error"
-msgstr "バリデーションエラーが発生しました。"
-
-msgid "Note was deleted successfully"
-msgstr "ノート「%{note}」を作成しました。"
-
-msgid "Note can't deleted."
-msgstr "添付ファイルの作成に失敗しました。"
+msgid "Page was recovered successfully"
+msgstr "ページを復旧しました。"
 
 msgid "page"
 msgstr "ページ"
@@ -67,8 +43,8 @@ msgstr "プロパティを編集"
 msgid "Page was successfully updated."
 msgstr "ノート「%{note}」を作成しました。"
 
-msgid "Page was deleted successfully"
-msgstr "ページを削除しました。"
+msgid "validation error"
+msgstr "バリデーションエラーが発生しました。"
 
 msgid "Failed to delete a page"
 msgstr "ページ削除に失敗しました"
@@ -82,29 +58,35 @@ msgstr "ユーザ検索"
 msgid "User was successfully updated."
 msgstr "ログインしました。"
 
-msgid "Login required."
-msgstr ""
+msgid "note"
+msgstr "ノート"
 
-msgid "Deleted %{name}"
-msgstr "「%{name}」を削除しました"
+msgid "Search Note"
+msgstr "ノートを検索"
 
-msgid "Successfully update membership."
-msgstr "グループメンバーを追加しました。"
-
-msgid "Note `%{note}' was successfully created."
+msgid "Note was successfully updated."
 msgstr "ノート「%{note}」を作成しました。"
 
-msgid "The page %{page} is successfully created"
-msgstr "「%{page}」を作成しました。"
+msgid "Note was deleted successfully"
+msgstr "ノート「%{note}」を作成しました。"
 
-msgid "The page %{page} is successfully updated"
-msgstr "「%{page}」を更新しました。"
+msgid "Note can't deleted."
+msgstr "添付ファイルの作成に失敗しました。"
 
-msgid "Failed to delete page."
-msgstr "ページ削除に失敗しました"
+msgid "Attachment|Index"
+msgstr "ファイル"
 
-msgid "Page was recovered successfully"
-msgstr "ページを復旧しました。"
+msgid "Attachment was deleted successfully"
+msgstr "添付ファイルが正常に削除されました。"
+
+msgid "label index"
+msgstr "ラベル"
+
+msgid "note pages"
+msgstr "ページ一覧"
+
+msgid "Edit"
+msgstr "編集"
 
 msgid "You have been logged out."
 msgstr "ログアウトしました。"
@@ -127,38 +109,17 @@ msgstr ""
 "ユーザ情報は再ログインすると、自動的に更新されます。手動での更新はできませ"
 "ん。"
 
-msgid "attachment"
-msgstr "ファイル"
+msgid "Note `%{note}' was successfully created."
+msgstr "ノート「%{note}」を作成しました。"
 
-msgid "Delete"
-msgstr "削除"
+msgid "Deleted %{name}"
+msgstr "「%{name}」を削除しました"
 
-msgid "menu"
-msgstr "メニュー"
+msgid "Successfully update membership."
+msgstr "グループメンバーを追加しました。"
 
-msgid "manage users"
-msgstr "ユーザ管理"
-
-msgid "Account|Index"
-msgstr "アカウント一覧"
-
-msgid "Jump to Note"
-msgstr "ノートに移動"
-
-msgid "Hour"
-msgstr "時"
-
-msgid "Min"
-msgstr "分"
-
-msgid "Back to %{page}"
-msgstr "%{page}に戻る"
-
-msgid "manage notes"
-msgstr "ノート管理"
-
-msgid "manage common files"
-msgstr "共通ファイル管理"
+msgid "Login required."
+msgstr ""
 
 msgid "NEXT"
 msgstr "次"
@@ -234,11 +195,41 @@ msgstr "表示を切り替え可能にする"
 msgid "Display always"
 msgstr "常に表示する"
 
+msgid "menu"
+msgstr "メニュー"
+
 msgid "new page"
 msgstr "ページを追加"
 
 msgid "show note"
 msgstr "ノート情報"
+
+msgid "Delete"
+msgstr "削除"
+
+msgid "manage users"
+msgstr "ユーザ管理"
+
+msgid "Account|Index"
+msgstr "アカウント一覧"
+
+msgid "Jump to Note"
+msgstr "ノートに移動"
+
+msgid "Hour"
+msgstr "時"
+
+msgid "Min"
+msgstr "分"
+
+msgid "Back to %{page}"
+msgstr "%{page}に戻る"
+
+msgid "manage notes"
+msgstr "ノート管理"
+
+msgid "manage common files"
+msgstr "共通ファイル管理"
 
 msgid "Sending..."
 msgstr "送信中..."
@@ -273,108 +264,6 @@ msgstr "%{entity}を削除"
 msgid "label change"
 msgstr "ラベルを変更"
 
-msgid "Attachment|Attachable"
-msgstr ""
-
-msgid "Attachment|Attachable type"
-msgstr ""
-
-msgid "Attachment|Content type"
-msgstr ""
-
-msgid "Attachment|Filename"
-msgstr ""
-
-msgid "Attachment|Display name"
-msgstr "ファイルの説明"
-
-msgid "Attachment|Size"
-msgstr "ファイルサイズ"
-
-msgid "Attachment|Created at"
-msgstr "ファイル作成日"
-
-msgid "Attachment|Updated at"
-msgstr "ファイル更新日"
-
-msgid "builtin group"
-msgstr "グループ"
-
-msgid "BuiltinGroup|Owner"
-msgstr "グループ作成者"
-
-msgid "BuiltinGroup|Created at"
-msgstr "グループ作成日時"
-
-msgid "BuiltinGroup|Updated at"
-msgstr "グループ更新日時"
-
-msgid "category"
-msgstr "カテゴリー"
-
-msgid "Category|Name"
-msgstr "カテゴリー識別子"
-
-msgid "Category|Display name"
-msgstr "カテゴリー名"
-
-msgid "Category|Description"
-msgstr "カテゴリー説明文"
-
-msgid "Category|Lang"
-msgstr ""
-
-msgid "Category|Created at"
-msgstr "カテゴリー作成日"
-
-msgid "Category|Updated at"
-msgstr "カテゴリー更新日"
-
-msgid "client application"
-msgstr "連携アプリ(OAuthコンシューマ)"
-
-msgid "ClientApplication|Name"
-msgstr "識別子"
-
-msgid "ClientApplication|Url"
-msgstr "メインURL"
-
-msgid "ClientApplication|Support url"
-msgstr "サポートURL"
-
-msgid "ClientApplication|Callback url"
-msgstr "コールバックURL"
-
-msgid "ClientApplication|Key"
-msgstr "トークン"
-
-msgid "ClientApplication|Secret"
-msgstr "シークレット"
-
-msgid "ClientApplication|User"
-msgstr ""
-
-msgid "ClientApplication|Created at"
-msgstr "作成日"
-
-msgid "ClientApplication|Updated at"
-msgstr "更新日"
-
-msgid "ClientApplication|Family"
-msgstr ""
-
-msgid "content"
-msgstr "内容"
-
-msgid "Content|Data"
-msgstr ""
-
-msgid "Content|Created at"
-msgstr ""
-
-msgid "Content|Updated at"
-msgstr ""
-
 msgid "history"
 msgstr "履歴"
 
@@ -399,126 +288,23 @@ msgstr "更新日時"
 msgid "History|Description"
 msgstr "編集コメント"
 
-msgid "label indexing"
-msgstr ""
-
-msgid "LabelIndexing|Label index"
-msgstr ""
-
-msgid "LabelIndexing|Page"
-msgstr ""
-
-msgid "LabelIndexing|Created at"
-msgstr ""
-
-msgid "LabelIndexing|Updated at"
-msgstr ""
-
-msgid "LabelIndexing|Page order"
-msgstr "ラベル識別子"
-
-#, fuzzy
-msgid "LabelIndex|Display name"
-msgstr "ページ名"
-
-#, fuzzy
-msgid "LabelIndex|Color"
-msgstr "ラベル識別子"
-
-#, fuzzy
-msgid "LabelIndex|Note"
-msgstr "ラベル識別子"
-
-#, fuzzy
-msgid "LabelIndex|Default label"
-msgstr "標準のラベルは削除できません"
-
-msgid "No Labels"
-msgstr "ラベルなし"
-
-msgid "Can not delete default label"
-msgstr "標準のラベルは削除できません"
-
-msgid "Move or delete related pages before delete the label"
-msgstr ""
-"関連付けられたページがあります。関連付いているページを別ラベルに移してから削"
-"除してください。"
-
-msgid "Select group"
-msgstr "グループを選択"
-
-msgid "Select category"
-msgstr "カテゴリーを選択"
-
-msgid "Select publicity"
-msgstr "公開範囲を選択"
-
-msgid "Select label navigation style"
-msgstr "ラベルバーの表示方法を選択"
-
-msgid "Input name"
-msgstr "名前を入力"
-
-msgid "Input description"
-msgstr "ノートの説明を入力"
-
-msgid "Select list attachments"
-msgstr "添付ファイル一覧へのアクセス"
-
-msgid "Confirm"
-msgstr "確認"
-
 msgid "%{name} group"
 msgstr "%{name}グループ"
 
-msgid "oauth nonce"
+msgid "skip account"
 msgstr ""
 
-msgid "OauthNonce|Nonce"
+msgid "SkipAccount|Skip uid"
 msgstr ""
 
-msgid "OauthNonce|Timestamp"
+msgid "SkipAccount|User"
 msgstr ""
 
-#, fuzzy
-msgid "OauthNonce|Created at"
-msgstr "カテゴリー作成日"
-
-#, fuzzy
-msgid "OauthNonce|Updated at"
-msgstr "更新日時"
-
-msgid "oauth token"
+msgid "SkipAccount|Created at"
 msgstr ""
 
-msgid "OauthToken|User"
+msgid "SkipAccount|Updated at"
 msgstr ""
-
-msgid "OauthToken|Type"
-msgstr ""
-
-msgid "OauthToken|Client application"
-msgstr ""
-
-msgid "OauthToken|Token"
-msgstr ""
-
-msgid "OauthToken|Secret"
-msgstr ""
-
-msgid "OauthToken|Authorized at"
-msgstr ""
-
-msgid "OauthToken|Invalidated at"
-msgstr ""
-
-#, fuzzy
-msgid "OauthToken|Created at"
-msgstr "ファイル作成日"
-
-#, fuzzy
-msgid "OauthToken|Updated at"
-msgstr "更新日時"
 
 msgid "Page|Note"
 msgstr ""
@@ -559,19 +345,144 @@ msgstr "表紙"
 msgid "can't be change, create new one."
 msgstr ""
 
-msgid "skip account"
+#, fuzzy
+msgid "LabelIndex|Display name"
+msgstr "ページ名"
+
+#, fuzzy
+msgid "LabelIndex|Color"
+msgstr "ラベル識別子"
+
+#, fuzzy
+msgid "LabelIndex|Note"
+msgstr "ラベル識別子"
+
+#, fuzzy
+msgid "LabelIndex|Default label"
+msgstr "標準のラベルは削除できません"
+
+msgid "label indexing"
 msgstr ""
 
-msgid "SkipAccount|Skip uid"
+msgid "LabelIndexing|Label index"
 msgstr ""
 
-msgid "SkipAccount|User"
+msgid "LabelIndexing|Page"
 msgstr ""
 
-msgid "SkipAccount|Created at"
+msgid "LabelIndexing|Created at"
 msgstr ""
 
-msgid "SkipAccount|Updated at"
+msgid "LabelIndexing|Updated at"
+msgstr ""
+
+msgid "LabelIndexing|Page order"
+msgstr "ラベル識別子"
+
+msgid "No Labels"
+msgstr "ラベルなし"
+
+msgid "Can not delete default label"
+msgstr "標準のラベルは削除できません"
+
+msgid "Move or delete related pages before delete the label"
+msgstr ""
+"関連付けられたページがあります。関連付いているページを別ラベルに移してから削"
+"除してください。"
+
+msgid "oauth token"
+msgstr ""
+
+msgid "OauthToken|User"
+msgstr ""
+
+msgid "OauthToken|Type"
+msgstr ""
+
+msgid "OauthToken|Client application"
+msgstr ""
+
+msgid "OauthToken|Token"
+msgstr ""
+
+msgid "OauthToken|Secret"
+msgstr ""
+
+msgid "OauthToken|Authorized at"
+msgstr ""
+
+msgid "OauthToken|Invalidated at"
+msgstr ""
+
+#, fuzzy
+msgid "OauthToken|Created at"
+msgstr "ファイル作成日"
+
+#, fuzzy
+msgid "OauthToken|Updated at"
+msgstr "更新日時"
+
+msgid "client application"
+msgstr "連携アプリ(OAuthコンシューマ)"
+
+msgid "ClientApplication|Name"
+msgstr "識別子"
+
+msgid "ClientApplication|Url"
+msgstr "メインURL"
+
+msgid "ClientApplication|Support url"
+msgstr "サポートURL"
+
+msgid "ClientApplication|Callback url"
+msgstr "コールバックURL"
+
+msgid "ClientApplication|Key"
+msgstr "トークン"
+
+msgid "ClientApplication|Secret"
+msgstr "シークレット"
+
+msgid "ClientApplication|User"
+msgstr ""
+
+msgid "ClientApplication|Created at"
+msgstr "作成日"
+
+msgid "ClientApplication|Updated at"
+msgstr "更新日"
+
+msgid "ClientApplication|Family"
+msgstr ""
+
+msgid "Select group"
+msgstr "グループを選択"
+
+msgid "Select category"
+msgstr "カテゴリーを選択"
+
+msgid "Select publicity"
+msgstr "公開範囲を選択"
+
+msgid "Select label navigation style"
+msgstr "ラベルバーの表示方法を選択"
+
+msgid "Input name"
+msgstr "名前を入力"
+
+msgid "Input description"
+msgstr "ノートの説明を入力"
+
+msgid "Select list attachments"
+msgstr "添付ファイル一覧へのアクセス"
+
+msgid "Confirm"
+msgstr "確認"
+
+msgid "%sのwiki"
+msgstr ""
+
+msgid "%sのwikiです。"
 msgstr ""
 
 msgid "skip group"
@@ -592,11 +503,125 @@ msgstr ""
 msgid "SkipGroup|Updated at"
 msgstr ""
 
+msgid "oauth nonce"
+msgstr ""
+
+msgid "OauthNonce|Nonce"
+msgstr ""
+
+msgid "OauthNonce|Timestamp"
+msgstr ""
+
+#, fuzzy
+msgid "OauthNonce|Created at"
+msgstr "カテゴリー作成日"
+
+#, fuzzy
+msgid "OauthNonce|Updated at"
+msgstr "更新日時"
+
+msgid "category"
+msgstr "カテゴリー"
+
+msgid "Category|Name"
+msgstr "カテゴリー識別子"
+
+msgid "Category|Display name"
+msgstr "カテゴリー名"
+
+msgid "Category|Description"
+msgstr "カテゴリー説明文"
+
+msgid "Category|Lang"
+msgstr ""
+
+msgid "Category|Created at"
+msgstr "カテゴリー作成日"
+
+msgid "Category|Updated at"
+msgstr "カテゴリー更新日"
+
+msgid "content"
+msgstr "内容"
+
+msgid "Content|Data"
+msgstr ""
+
+msgid "Content|Created at"
+msgstr ""
+
+msgid "Content|Updated at"
+msgstr ""
+
+msgid "builtin group"
+msgstr "グループ"
+
+msgid "BuiltinGroup|Owner"
+msgstr "グループ作成者"
+
+msgid "BuiltinGroup|Created at"
+msgstr "グループ作成日時"
+
+msgid "BuiltinGroup|Updated at"
+msgstr "グループ更新日時"
+
+msgid "attachment"
+msgstr "ファイル"
+
+msgid "Attachment|Attachable"
+msgstr ""
+
+msgid "Attachment|Attachable type"
+msgstr ""
+
+msgid "Attachment|Content type"
+msgstr ""
+
+msgid "Attachment|Filename"
+msgstr ""
+
+msgid "Attachment|Display name"
+msgstr "ファイルの説明"
+
+msgid "Attachment|Size"
+msgstr "ファイルサイズ"
+
+msgid "Attachment|Created at"
+msgstr "ファイル作成日"
+
+msgid "Attachment|Updated at"
+msgstr "ファイル更新日"
+
+#, fuzzy
+msgid "Attachment|User"
+msgstr "ファイルサイズ"
+
 msgid "[Click to hide]"
 msgstr "[クリックして消去]"
 
 msgid "Search"
 msgstr "検索"
+
+msgid "Attachment|Upload Data"
+msgstr "ファイルを添付"
+
+msgid "Upload"
+msgstr "アップロード"
+
+msgid "Attach file(s)"
+msgstr "ファイルを添付"
+
+msgid "note attachments"
+msgstr "添付ファイル一覧"
+
+msgid "Attached files"
+msgstr "添付ファイル一覧"
+
+msgid "Download"
+msgstr "ダウンロード"
+
+msgid "Upload failed. Please inquire admin."
+msgstr ""
 
 #, fuzzy
 msgid "There is no attachments."
@@ -605,74 +630,11 @@ msgstr "添付ファイル一覧へのアクセス"
 msgid "Note|Display name"
 msgstr "ノート名"
 
-msgid "Download"
-msgstr "ダウンロード"
-
 msgid "Are you sure?"
 msgstr "削除してもよろしいですか？"
 
-msgid "Users who belongs to this note."
-msgstr "このグループのユーザ一覧です。"
-
 msgid "Update"
 msgstr "更新"
-
-msgid "Show link palette"
-msgstr ""
-
-msgid "Page|Content"
-msgstr "内容"
-
-msgid "Preview"
-msgstr "プレビュー"
-
-msgid "Hide"
-msgstr "プレビューを隠す"
-
-msgid "Modified, need to save."
-msgstr "未保存の編集があります。更新ボタンをおして保存してください。"
-
-msgid "Click to edit"
-msgstr "[クリックして編集]"
-
-msgid "Cancel"
-msgstr "取消"
-
-msgid "add labels"
-msgstr "ラベルを追加"
-
-msgid "Create"
-msgstr "作成"
-
-msgid "Note|GroupBackendType"
-msgstr "管理対象の種別"
-
-msgid "BuiltinGroup note"
-msgstr "ふつうのノート"
-
-msgid "SkipGroup note"
-msgstr "SKIPグループ"
-
-msgid "Note|Description"
-msgstr "ノートの説明"
-
-msgid "Note|Discription"
-msgstr "ノートの説明"
-
-msgid "Note Properties"
-msgstr "ノートのプロパティ"
-
-msgid "edit note properties"
-msgstr "ノートのプロパティを編集"
-
-msgid "Users and Groups"
-msgstr "ユーザとグループ"
-
-msgid "edit users permission"
-msgstr "ユーザの権限変更"
-
-msgid "add groups"
-msgstr "グループを追加"
 
 msgid "Page|Auther"
 msgstr "編集者"
@@ -680,14 +642,14 @@ msgstr "編集者"
 msgid "Publication"
 msgstr "公開状況"
 
-msgid "Copy URL"
-msgstr "URLをコピー"
-
 msgid "Page|Edit"
 msgstr "編集"
 
 msgid "Page|Delete"
 msgstr "削除"
+
+msgid "Copy URL"
+msgstr "URLをコピー"
 
 msgid "Published"
 msgstr "公開中"
@@ -697,6 +659,42 @@ msgstr "未公開"
 
 msgid "The query find no pages."
 msgstr "検索条件にヒットするページがありません。"
+
+msgid "Show label|Description"
+msgstr "ラベルツールバーを表示する"
+
+msgid "Page Name|Edit"
+msgstr "[編集]"
+
+msgid "Update %{entity}"
+msgstr "%{entity}を更新"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Page|Content"
+msgstr "内容"
+
+msgid "Link Palette"
+msgstr "画像やリンクを挿入"
+
+msgid "Hide preview"
+msgstr "プレビューを隠す"
+
+msgid "Show preview"
+msgstr "プレビューを表示"
+
+msgid "Modified, need to save."
+msgstr "未保存の編集があります。更新ボタンをおして保存してください。"
+
+msgid "Click to edit"
+msgstr "[クリックして編集]"
+
+msgid "add labels"
+msgstr "ラベルを追加"
+
+msgid "Create"
+msgstr "作成"
 
 msgid "User|Name"
 msgstr "ユーザ識別子"
@@ -710,26 +708,174 @@ msgstr "管理者"
 msgid "This user set admin"
 msgstr "このユーザを管理者に設定します"
 
-msgid "User|Edit"
-msgstr "編集"
+#, fuzzy
+msgid "User|Deleted"
+msgstr "削除"
 
-msgid "Attachment|Upload Data"
-msgstr "ファイルを添付"
+msgid "OpenID URL"
+msgstr "OpenID URL"
 
-msgid "Upload"
-msgstr "アップロード"
+msgid "Deleted"
+msgstr "削除済み"
 
-msgid "note attachments"
-msgstr "添付ファイル一覧"
+msgid "Note|Description"
+msgstr "ノートの説明"
 
-msgid "Attached files"
-msgstr "添付ファイル一覧"
+msgid "Note|Discription"
+msgstr "ノートの説明"
 
-msgid "Upload failed. Please inquire admin."
+#, fuzzy
+msgid "Register a new %{entity}"
+msgstr "%{entity}を復旧する"
+
+msgid "Issued client applications."
 msgstr ""
 
-msgid "Attach file(s)"
-msgstr "ファイルを添付"
+msgid "AccessToken|Family"
+msgstr ""
+
+msgid "AccessToken|Authorized at"
+msgstr ""
+
+msgid "Revoke"
+msgstr ""
+
+msgid "User added client app"
+msgstr ""
+
+msgid "Granted by service contract"
+msgstr ""
+
+msgid "Applications you registerd"
+msgstr ""
+
+msgid "for Application Developers"
+msgstr ""
+
+msgid "show credentials"
+msgstr ""
+
+#, fuzzy
+msgid "Show"
+msgstr "すべて表示"
+
+msgid "Back"
+msgstr ""
+
+msgid "Registered"
+msgstr ""
+
+msgid "Service explanation"
+msgstr ""
+
+msgid "Request Token URL"
+msgstr ""
+
+msgid "Access Token URL"
+msgstr ""
+
+#, fuzzy
+msgid "Authorize URL"
+msgstr "最終更新者"
+
+msgid " We support hmac-sha1 (recommended) as well as plain text in ssl mode."
+msgstr ""
+
+msgid "pages index"
+msgstr "ページ一覧"
+
+msgid "Apply filter.."
+msgstr "ページ一覧を絞り込み..."
+
+msgid "LabelIndices"
+msgstr "ラベル識別子"
+
+msgid "close"
+msgstr "閉じる"
+
+msgid "New Page"
+msgstr "新しいページを作る"
+
+msgid "Rich text"
+msgstr "リッチテキスト"
+
+msgid "Wiki text"
+msgstr "Wikiテキスト"
+
+msgid "Create %{entity}"
+msgstr "%{entity}を作成"
+
+msgid "Page|Label indices"
+msgstr "ラベル識別子"
+
+msgid "edit labels"
+msgstr "ラベル名を編集"
+
+msgid "Recover %{entity}"
+msgstr "%{entity}を復旧する"
+
+msgid "Really recover?"
+msgstr "本当に復旧させますか?"
+
+msgid "Really delete?"
+msgstr "本当に削除しますか?"
+
+msgid "%{name}'s accessible pages."
+msgstr "%{name}さんがアクセスできるページの一覧です"
+
+msgid "Previous"
+msgstr "戻る"
+
+msgid "Next"
+msgstr "進む"
+
+msgid "Keyword in a page"
+msgstr "ページ内のキーワード"
+
+msgid "Authors"
+msgstr "最終更新者"
+
+msgid "Input author names ,separete by comma."
+msgstr "最終更新したユーザの名前(英数字)をカンマ区切りで入力してください。"
+
+msgid "Order"
+msgstr "並び順"
+
+msgid "Newly updated"
+msgstr "更新日時が新しい順"
+
+msgid "Oldly updated"
+msgstr "更新日時が古い順"
+
+msgid "View"
+msgstr "表示"
+
+msgid "History"
+msgstr "履歴"
+
+msgid "Page|Unpublished"
+msgstr "未公開にする"
+
+msgid "Last updated at %{time}"
+msgstr "最終更新日時：%{time}"
+
+msgid "Attachment|Delete"
+msgstr "[削除]"
+
+msgid "Admin menu"
+msgstr "管理者メニュー"
+
+msgid "Search from Note"
+msgstr "ノートから検索"
+
+msgid "404 Not Found"
+msgstr ""
+
+msgid "Login"
+msgstr "ログイン"
+
+msgid "Property"
+msgstr "プロパティ"
 
 msgid "Group|Users"
 msgstr "グループのユーザ一覧"
@@ -737,11 +883,27 @@ msgstr "グループのユーザ一覧"
 msgid "Users who can access to this note."
 msgstr "このノートのにアクセスできるユーザです。"
 
-msgid "Link Palette"
-msgstr "画像やリンクを挿入"
+msgid "Users who belongs to this note."
+msgstr "このグループのユーザ一覧です。"
 
-msgid "close"
-msgstr "閉じる"
+msgid "Note Properties"
+msgstr "ノートのプロパティ"
+
+msgid "Welcome"
+msgstr "ようこそ"
+
+msgid "Enter Your Open ID URL"
+msgstr "OpenIDでログインできます"
+
+msgid "Input your OpenID URL."
+msgstr "Open ID URLを入力してください"
+
+msgid ""
+"Even if you not have an account on SKIP Wiki, enter OpenID URL and you'll "
+"show signup form."
+msgstr ""
+"初めて利用する場合もあなたのOpenID URLを入力してください。そのままユーザ登録"
+"ができます。"
 
 msgid "diff from rev.%{from} to rev.%{to}."
 msgstr "rev.%{from}からrev.%{to}への変更点"
@@ -779,15 +941,6 @@ msgstr "から"
 msgid "Show diff"
 msgstr "変更を表示"
 
-msgid "Hide preview"
-msgstr "プレビューを隠す"
-
-msgid "Show preview"
-msgstr "プレビューを表示"
-
-msgid "Update %{entity}"
-msgstr "%{entity}を更新"
-
 msgid "Back to Hisotries"
 msgstr "履歴一覧に戻る"
 
@@ -797,80 +950,41 @@ msgstr "「%{note}」のラベル一覧"
 msgid "Pages related to %{label}"
 msgstr "%{label}のついたページ一覧"
 
+msgid "Sign up as a new user"
+msgstr "ユーザ登録をしてください"
+
+msgid "Sign up"
+msgstr "登録する"
+
+msgid "Edit user information"
+msgstr "ユーザ情報を修正"
+
+msgid "User|Informations"
+msgstr "プロフィール"
+
+msgid "User|Skip Account"
+msgstr "SKIP連携"
+
+msgid "User|Memberships"
+msgstr "所属グループ"
+
+msgid "User|Notes"
+msgstr "ノート一覧"
+
 msgid "Dashboard"
 msgstr "マイページ"
 
 msgid "new note"
 msgstr "ノートを作る"
 
-msgid "View"
-msgstr "表示"
-
-msgid "History"
-msgstr "履歴"
-
-msgid "Really delete?"
-msgstr "本当に削除しますか?"
-
-msgid "Page|Unpublished"
-msgstr "未公開にする"
-
-msgid "Last updated at %{time}"
-msgstr "最終更新日時：%{time}"
-
-msgid "Show label|Description"
-msgstr "ラベルツールバーを表示する"
-
-msgid "Page Name|Edit"
-msgstr "[編集]"
-
-msgid "Updated"
-msgstr "更新されたページ"
-
-msgid "Previous"
-msgstr "戻る"
-
-msgid "Next"
-msgstr "進む"
-
-msgid "Accessible Note"
+msgid "Menu|Editable Notes"
 msgstr "編集可能なノート"
 
-msgid "User|Notes"
-msgstr "ノート一覧"
-
-msgid "Accessible"
-msgstr "グループメンバー"
-
-msgid "Public writable"
-msgstr "ゲスト書き込み"
-
-msgid "Public readable"
-msgstr "閲覧のみ"
-
-msgid "Updated pages"
-msgstr "更新されたページ"
+msgid "Menu|Recent Pages"
+msgstr "新着ページ"
 
 msgid "more..."
 msgstr "もっと見る..."
-
-msgid "Note|LabelNavigationStyle"
-msgstr "ラベルバー表示"
-
-msgid "Updated notes"
-msgstr "更新されたノート"
-
-msgid "The query find no notes."
-msgstr "検索条件にヒットするページがありません。"
-
-msgid "Updated page"
-msgstr "更新されたページ"
-
-msgid "Note|Updated at"
-msgstr "更新日時"
-
-msgid "No page exists"
-msgstr "ページが存在しません"
 
 msgid "個人用ノート"
 msgstr ""
@@ -929,207 +1043,110 @@ msgid ""
 "Wikipediaのようにみんなでコンテンツを作っていくノートにしたい場合に選びます。"
 msgstr ""
 
-msgid "Issued client applications."
-msgstr ""
+msgid "Note|GroupBackendType"
+msgstr "管理対象の種別"
 
-msgid "AccessToken|Family"
-msgstr ""
+msgid "Note|LabelNavigationStyle"
+msgstr "ラベルバー表示"
 
-msgid "AccessToken|Authorized at"
-msgstr ""
+msgid "edit note properties"
+msgstr "ノートのプロパティを編集"
 
-msgid "Revoke"
-msgstr ""
+msgid "BuiltinGroup note"
+msgstr "ふつうのノート"
 
-msgid "User added client app"
-msgstr ""
+msgid "SkipGroup note"
+msgstr "SKIPグループ"
 
-msgid "Granted by service contract"
-msgstr ""
+msgid "Updated"
+msgstr "更新されたページ"
 
-msgid "Applications you registerd"
-msgstr ""
+msgid "Updated notes"
+msgstr "更新されたノート"
 
-msgid "for Application Developers"
-msgstr ""
+msgid "The query find no notes."
+msgstr "検索条件にヒットするページがありません。"
 
-msgid "show credentials"
-msgstr ""
+msgid "Updated page"
+msgstr "更新されたページ"
 
-#, fuzzy
-msgid "Show"
-msgstr "すべて表示"
+msgid "Note|Updated at"
+msgstr "更新日時"
 
-#, fuzzy
-msgid "Register a new %{entity}"
-msgstr "%{entity}を復旧する"
+msgid "No page exists"
+msgstr "ページが存在しません"
 
-msgid "Back"
-msgstr ""
+msgid "Users and Groups"
+msgstr "ユーザとグループ"
 
-msgid "Registered"
-msgstr ""
+msgid "edit users permission"
+msgstr "ユーザの権限変更"
 
-msgid "Service explanation"
-msgstr ""
+msgid "add groups"
+msgstr "グループを追加"
 
-msgid "Request Token URL"
-msgstr ""
+msgid "Accessible Note"
+msgstr "編集可能なノート"
 
-msgid "Access Token URL"
-msgstr ""
+msgid "Accessible"
+msgstr "グループメンバー"
 
-#, fuzzy
-msgid "Authorize URL"
-msgstr "最終更新者"
+msgid "Public writable"
+msgstr "ゲスト書き込み"
 
-msgid " We support hmac-sha1 (recommended) as well as plain text in ssl mode."
-msgstr ""
+msgid "Public readable"
+msgstr "閲覧のみ"
 
-msgid "Keyword in a page"
-msgstr "ページ内のキーワード"
+msgid "Updated pages"
+msgstr "更新されたページ"
 
-msgid "Authors"
-msgstr "最終更新者"
+#~ msgid "group users"
+#~ msgstr "ユーザ"
 
-msgid "Input author names ,separete by comma."
-msgstr "最終更新したユーザの名前(英数字)をカンマ区切りで入力してください。"
+#~ msgid "Memberships was successfully updated"
+#~ msgstr "ログインしました。"
 
-msgid "Order"
-msgstr "並び順"
+#~ msgid "Preview"
+#~ msgstr "プレビュー"
 
-msgid "Newly updated"
-msgstr "更新日時が新しい順"
+#~ msgid "Hide"
+#~ msgstr "プレビューを隠す"
 
-msgid "Oldly updated"
-msgstr "更新日時が古い順"
+#~ msgid "User|Edit"
+#~ msgstr "編集"
 
-msgid "LabelIndices"
-msgstr "ラベル識別子"
+#~ msgid "About this site"
+#~ msgstr "このサイトについて"
 
-msgid "Page|Label indices"
-msgstr "ラベル識別子"
+#~ msgid "Rule to use"
+#~ msgstr "利用規約"
 
-msgid "edit labels"
-msgstr "ラベル名を編集"
+#~ msgid "Login ID: %{name}"
+#~ msgstr "ログインID: %{name}"
 
-msgid "Deleted"
-msgstr "削除済み"
+#~ msgid "SKIP Official Site"
+#~ msgstr "ホーム"
 
-msgid "Recover %{entity}"
-msgstr "%{entity}を復旧する"
+#~ msgid "Demo"
+#~ msgstr "デモ"
 
-msgid "Really recover?"
-msgstr "本当に復旧させますか?"
+#~ msgid "License"
+#~ msgstr "ライセンス"
 
-msgid "%{name}'s accessible pages."
-msgstr "%{name}さんがアクセスできるページの一覧です"
+#~ msgid "Community"
+#~ msgstr "コミュニティ"
 
-msgid "Apply filter.."
-msgstr "ページ一覧を絞り込み..."
+#~ msgid "Developer"
+#~ msgstr "デベロッパ"
 
-msgid "New Page"
-msgstr "新しいページを作る"
+#~ msgid "Manual"
+#~ msgstr "マニュアル"
 
-msgid "Rich text"
-msgstr "リッチテキスト"
+#~ msgid "News"
+#~ msgstr "ニュース"
 
-msgid "Wiki text"
-msgstr "Wikiテキスト"
-
-msgid "Create %{entity}"
-msgstr "%{entity}を作成"
-
-msgid "pages index"
-msgstr "ページ一覧"
-
-msgid "Welcome"
-msgstr "ようこそ"
-
-msgid "Enter Your Open ID URL"
-msgstr "OpenIDでログインできます"
-
-msgid "Input your OpenID URL."
-msgstr "Open ID URLを入力してください"
-
-msgid ""
-"Even if you not have an account on SKIP Wiki, enter OpenID URL and you'll "
-"show signup form."
-msgstr ""
-"初めて利用する場合もあなたのOpenID URLを入力してください。そのままユーザ登録"
-"ができます。"
-
-msgid "Login"
-msgstr "ログイン"
-
-msgid "About this site"
-msgstr "このサイトについて"
-
-msgid "Rule to use"
-msgstr "利用規約"
-
-msgid "FIXME"
-msgstr ""
-
-msgid "Login ID: %{name}"
-msgstr "ログインID: %{name}"
-
-msgid "SKIP Official Site"
-msgstr "ホーム"
-
-msgid "Demo"
-msgstr "デモ"
-
-msgid "License"
-msgstr "ライセンス"
-
-msgid "Community"
-msgstr "コミュニティ"
-
-msgid "Developer"
-msgstr "デベロッパ"
-
-msgid "Manual"
-msgstr "マニュアル"
-
-msgid "News"
-msgstr "ニュース"
-
-msgid "Support"
-msgstr "サポート"
-
-msgid "Property"
-msgstr "プロパティ"
-
-msgid "Admin menu"
-msgstr "管理者メニュー"
-
-msgid "Search from Note"
-msgstr "ノートから検索"
-
-msgid "404 Not Found"
-msgstr ""
-
-msgid "User|Informations"
-msgstr "プロフィール"
-
-msgid "User|Skip Account"
-msgstr "SKIP連携"
-
-msgid "User|Memberships"
-msgstr "所属グループ"
-
-msgid "Edit user information"
-msgstr "ユーザ情報を修正"
-
-msgid "OpenID URL"
-msgstr "OpenID URL"
-
-msgid "Sign up as a new user"
-msgstr "ユーザ登録をしてください"
-
-msgid "Sign up"
-msgstr "登録する"
+#~ msgid "Support"
+#~ msgstr "サポート"
 
 #~ msgid "the name `%{n}' is reserved"
 #~ msgstr "ページ識別子は「%{n}」意外にしてください。"
@@ -1146,14 +1163,14 @@ msgstr "登録する"
 #~ msgid "Account|Edit"
 #~ msgstr "編集"
 
-msgid "Set up"
-msgstr "システムの設定"
+#~ msgid "Set up"
+#~ msgstr "システムの設定"
 
-msgid "Edit profile"
-msgstr "自分の管理"
+#~ msgid "Edit profile"
+#~ msgstr "自分の管理"
 
-msgid "Logout"
-msgstr "ログアウト"
+#~ msgid "Logout"
+#~ msgstr "ログアウト"
 
 #~ msgid "Edit page name|Description"
 #~ msgstr "ページ名の編集は、この上にあるページ名をクリックしてください"
@@ -1163,10 +1180,6 @@ msgstr "ログアウト"
 
 #~ msgid ">"
 #~ msgstr ">"
-
-#, fuzzy
-#~ msgid "Attachment|Date"
-#~ msgstr "ファイルサイズ"
 
 #~ msgid "Note|Index"
 #~ msgstr "ノート一覧"

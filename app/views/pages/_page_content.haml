@@ -30,9 +30,7 @@
       %span.operation.show-label-navi= icon_tag('bullet_go')
       :javascript
         $("div.page-header span.operation.show-label-navi").hide().click(function(){
-          $("#content div.label-navigation").show()
-          .siblings(".page-header").addClass("two_pain").end()
-          .siblings(".page-content").addClass("two_pain");
+          $("#content div.label-navigation").show().addTwoPain();
           $(this).hide();
         });
 
@@ -60,10 +58,19 @@
             callback:application.callbacks.pageDisplaynameEditor
           }, #{page_display_name_ipe_option.to_json}))
         });
+.page-content= yield
+
+- if @page.attachments.size > 0
+  .page-attachments
+    - @page.attachments.each do |at|
+      %span.attachment
+        = link_to("#{icon_tag('disk')}#{at.display_name}", note_page_attachment_path(current_note, @page, at))
+        = link_to(_("Attachment|Delete"), note_page_attachment_path(current_note, @page, at), :method => :delete)
+
+.clear
+
 - unless fullscreen_action?
   :javascript
-    jQuery("#content div.label-navigation").show().siblings(".page-header").addClass("two_pain");
-  .page-content.two_pain= yield
-- else
-  .page-content= yield
-  .clear
+    $(document).ready(function(){
+      $("#content div.label-navigation").show().addTwoPain();
+    });

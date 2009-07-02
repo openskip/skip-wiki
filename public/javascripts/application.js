@@ -2,6 +2,17 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 (function() {
+  jQuery.fn.addTwoPain = function() {
+    this.siblings(".page-header").addClass("two_pain").end().
+    siblings(".page-content").addClass("two_pain").end().
+    siblings(".page-attachments").addClass("two_pain");
+  }
+  jQuery.fn.removeTwoPain = function() {
+    this.siblings(".page-header").removeClass("two_pain").end().
+    siblings(".page-content").removeClass("two_pain").end().
+    siblings(".page-attachments").removeClass("two_pain");
+  }
+
   jQuery.fn.preview = function(config){
     var root = this;
     var textarea = (config["texrtarea"]) ? jQuery(config["textarea"]) : root.siblings("textarea");

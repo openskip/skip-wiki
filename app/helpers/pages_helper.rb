@@ -131,4 +131,5 @@ module PagesHelper
       ps.empty? ? r : r << [label, ps]
     end
   end
+
 end
