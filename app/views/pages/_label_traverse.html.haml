@@ -23,7 +23,7 @@
     $("div.label-navigation").accordion(#{acordion_opt.to_json});
 
     jQuery("div.label-navigation span.operation").click(function(){
-      jQuery("div.label-navigation").hide().removeTwoPain();
+      jQuery("div.label-navigation").hide().toggleTwoPain();
       jQuery(".page-header span.operation.show-label-navi").show();
     });
   })

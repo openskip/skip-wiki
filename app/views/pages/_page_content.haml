@@ -30,7 +30,7 @@
       %span.operation.show-label-navi= icon_tag('bullet_go')
       :javascript
         $("div.page-header span.operation.show-label-navi").hide().click(function(){
-          $("#content div.label-navigation").show().addTwoPain();
+          $("#content div.label-navigation").show().toggleTwoPain();
           $(this).hide();
         });
 
@@ -72,5 +72,5 @@
 - unless fullscreen_action?
   :javascript
     $(document).ready(function(){
-      $("#content div.label-navigation").show().addTwoPain();
+      $("#content div.label-navigation").show().toggleTwoPain();
     });
