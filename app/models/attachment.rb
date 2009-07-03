@@ -15,12 +15,12 @@ class Attachment < ActiveRecord::Base
   validates_quota_of :size, :system, :message =>
     "のシステム全体における保存領域の利用容量が最大値を越えてしまうためアップロードできません。"
   validates_quota_of :size, :per_note, :scope => :attachable_id, :message =>
-     "の保存領域の利用容量が最大値を越えてしまうためアップロードできません。"
+    "の保存領域の利用容量が最大値を越えてしまうためアップロードできません。"
 
   belongs_to :attachable, :polymorphic => true
   belongs_to :user
 
-  attr_accessible :display_name, :uploaded_data, :user_id
+  attr_accessible :display_name, :uploaded_data, :user_id, :attachable_id, :attachable_type
 
   validates_presence_of :display_name
   validates_as_attachment
@@ -39,7 +39,7 @@ class Attachment < ActiveRecord::Base
   private
   def validate_on_create
     adapter = ValidationsFileAdapter.new(self)
-    
+
     valid_extension_of_file(adapter)
     valid_content_type_of_file(adapter)
   end

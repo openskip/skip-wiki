@@ -46,6 +46,20 @@ describe AttachmentsController do
     end
   end
 
+  describe "GET /new" do
+    it 'page_idがparamsにない場合' do
+      get :new
+      assigns(:attachment).attachable_type.should == Note.to_s
+    end
+    it 'page_idがparamsにある場合' do
+      page_id = 10
+      get :new, :page_id => page_id
+      assigns(:attachment).attachable_id.should == page_id
+      assigns(:attachment).attachable_type.should == Page.to_s
+    end
+
+  end
+
   describe "DELETE /destroy" do
     before do
       @attachment = @note.attachments.create!(:uploaded_data => fixture_file_upload("data/at_small.png", "image/png", true),

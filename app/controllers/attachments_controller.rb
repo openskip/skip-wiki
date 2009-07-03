@@ -20,6 +20,7 @@ class AttachmentsController < ApplicationController
   end
 
   def show
+    # FIXME ユーザがアクセスできるページ一覧から探して、権限チェックする
     @attachment = current_note.attachments.find(params[:id])
     opts = {:filename => @attachment.display_name, :type => @attachment.content_type }
     opts[:filename] = URI.encode(@attachment.display_name) if msie?
@@ -29,11 +30,16 @@ class AttachmentsController < ApplicationController
   end
 
   def new
-    @attachment = current_note.attachments.build
+    @attachment = if params[:page_id]
+                    Page.new.attachments.build(:attachable_id => params[:page_id])
+                  else
+                    current_note.attachments.build
+                  end
   end
 
   def create
-    @attachment = current_note.attachments.build(params[:attachment].slice(:uploaded_data))
+    params[:attachment].merge!(:user_id => current_user.id)
+    @attachment = Attachment.new(params[:attachment])
     if @attachment.save
       opt = ajax_upload? ? IframeUploader.index_opt : {}
       redirect_to note_attachments_url(current_note, opt)
@@ -85,4 +91,5 @@ class AttachmentsController < ApplicationController
       head(:forbidden)
     end
   end
+
 end
