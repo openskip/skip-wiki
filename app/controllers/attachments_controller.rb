@@ -20,13 +20,18 @@ class AttachmentsController < ApplicationController
   end
 
   def show
-    # FIXME ユーザがアクセスできるページ一覧から探して、権限チェックする
-    @attachment = current_note.attachments.find(params[:id])
-    opts = {:filename => @attachment.display_name, :type => @attachment.content_type }
-    opts[:filename] = URI.encode(@attachment.display_name) if msie?
-    opts[:disposition] = "inline" if params[:position] == "inline"
+    page = current_user.accessible_pages.find_by_name(params[:page_id])
+    if page
+      @attachment = page.attachments.find_by_id(params[:id])
+      return render_not_found unless @attachment
+      opts = {:filename => @attachment.display_name, :type => @attachment.content_type }
+      opts[:filename] = URI.encode(@attachment.display_name) if msie?
+      opts[:disposition] = "inline" if params[:position] == "inline"
 
-    send_file(@attachment.full_filename, opts)
+      send_file(@attachment.full_filename, opts)
+    else
+      render_not_found
+    end
   end
 
   def new

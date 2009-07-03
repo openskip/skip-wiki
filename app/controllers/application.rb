@@ -52,11 +52,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def render_not_found(e = nil)
-    e.backtrace.each{|m| logger.debug m } if e
-    render :template => "shared/not_found", :status => :not_found, :layout => false
-  end
-
   def current_note=(note)
     @__current_note = note
   end
@@ -95,6 +90,11 @@ class ApplicationController < ActionController::Base
       :order => "#{target.quoted_table_name}.updated_at DESC",
       :per_page => params[:per_page] || 10,
     }
+  end
+
+  def render_not_found(e = nil)
+    e.backtrace.each{|m| logger.debug m } if e
+    render :template => "shared/not_found", :status => :not_found, :layout => false
   end
 
   # Override Repim's to translate message and specify signup layout.
