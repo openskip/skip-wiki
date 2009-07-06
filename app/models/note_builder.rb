@@ -67,9 +67,8 @@ class NoteBuilder
                :backend=>@user.builtin_groups.build }
       Group.new(attrs){|g| g.memberships = [Membership.new(:group => g, :user=>@user)] }
     when "SkipGroup"
-      @group_backend.users.include?(@user) ? @group_backend :
-        @user.groups.find(:first, :conditions=> {:backend_type => @attrs[:group_backend_type],
-                                                 :backend_id   => @attrs[:group_backend_id] })
+      @group_backend || @user.groups.find(:first, :conditions=> {:backend_type => @attrs[:group_backend_type],
+                                                                 :backend_id   => @attrs[:group_backend_id] })
     end
   end
 

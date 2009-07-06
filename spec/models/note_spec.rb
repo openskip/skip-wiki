@@ -227,86 +227,55 @@ describe Note do
     end
   end
 
-  describe ".create_for_owner" do
-    fixtures :users, :categories
+  describe ".create_or_update_wikipedia" do
+    before(:all) do
+      Note.class_eval{ cattr_writer :wikipedia }
+    end
     before do
-      @user = users(:quentin)
-      LabelIndex.create!(:display_name => "label1", :color => "#ffffcc")
+      Note.destroy_all
+      User.all.each do |u|
+        u.admin = false
+        u.save!
+      end
+      Note.wikipedia = nil
     end
-    describe "対応するノートが存在しない" do
-      describe "オーナーがグループで存在する場合" do
-        before do
-          sg = SkipGroup.create!(:name => "ruby", :display_name => "Rubyグループ", :gid => "ruby")
-          g = Group.create!(:backend => sg, :name => sg.name, :display_name => sg.display_name)
-          g.users << @user
-        end
-        it "Noteが作成されること" do
-          lambda do
-            Note.create_for_owner "group_ruby", @user
-          end.should change(Note, :count).by(1)
-        end
-        it "Labelが作成されること" do
-          note = Note.create_for_owner "user_quentin", @user
-          note.label_indices.size.should > 0
-        end
-        it "引数のユーザが作成したノートにアクセスできること" do
-          note = Note.create_for_owner "group_ruby", @user
-          @user.accessible?(note).should be_true
-        end
-      end
-      describe "オーナーがユーザの場合" do
-        it "Noteが作成されること" do
-          lambda do
-            Note.create_for_owner "user_quentin", @user
-          end.should change(Note, :count).by(1)
-        end
-        it "Labelが作成されること" do
-          note = Note.create_for_owner "user_quentin", @user
-          note.label_indices.size.should > 0
-        end
-        it "引数のユーザが作成したノートにアクセスできること" do
-          note = Note.create_for_owner "user_quentin", @user
-          @user.accessible?(note).should be_true
-        end
-      end
-      describe "オーナーが存在するが、ユーザに権限がない場合(ユーザ)" do
-        it "Noteが作成されないこと" do
-          lambda do
-            Note.create_for_owner "user_ruby", @user
-          end.should_not change(Note, :count)
-        end
-        it "nilが返ること" do
-          Note.create_for_owner("user_ruby", @user).should be_nil
-        end
-      end
-      describe "オーナーが存在するが、ユーザに権限がない場合(グループ)" do
-        before do
-          sg = SkipGroup.create!(:name => "ruby", :display_name => "Rubyグループ", :gid => "ruby")
-          g = Group.create!(:backend => sg, :name => sg.name, :display_name => sg.display_name)
-        end
-        it "Noteが作成されないこと" do
-          lambda do
-            Note.create_for_owner "group_ruby", @user
-          end.should_not change(Note, :count)
-        end
-        it "nilが返ること" do
-          Note.create_for_owner("group_ruby", @user).should be_nil
-        end
-      end
-      describe "オーナーが存在しない場合" do
-        it "Noteが作成されないこと" do
-          lambda do
-            Note.create_for_owner "hoge", @user
-          end.should_not change(Note, :count)
-        end
-        it "nilが返ること" do
-          Note.create_for_owner("hoge", @user).should be_nil
-        end
+    describe "管理者がいない場合" do
+      it "nilが返ること" do
+        Note.create_or_update_wikipedia.should be_nil
       end
     end
-    describe "対応するノートが存在する" do
-      it "Noteが作成されないこと"
-      it "nilを返すこと"
+    describe "管理者が存在する場合" do
+      before do
+        @users = (1..4).map{|i|create_user( :name => "user#{i}" )}
+        @admin_users = @users[0..2].map{ |u| u.admin = true; u.save ;u }
+      end
+      describe "wikipediaが存在しないとき" do
+        it "新規に作成されること" do
+          lambda do
+            Note.create_or_update_wikipedia
+          end.should change(Note, :count).by(1)
+        end
+        it "wikipediaが作成されること" do
+          Note.wikipedia.should_not be_is_a(Note)
+          wikipedia = Note.create_or_update_wikipedia
+          Note.wikipedia.should == wikipedia
+        end
+        it "管理者ユーザがグループに入っていること" do
+          Note.create_or_update_wikipedia
+          (Note.wikipedia.owner_group.users - @admin_users).should == []
+        end
+      end
+      describe "wikipediaが存在するとき" do
+        before do
+          wikipedia = Note.create_or_update_wikipedia
+        end
+        it "管理者が更新されること" do
+          lambda do
+            u = create_user(:name => "new_user", :admin => true)
+            Note.create_or_update_wikipedia
+          end.should change(Note.wikipedia.owner_group.users, :count).by(1)
+        end
+      end
     end
   end
 

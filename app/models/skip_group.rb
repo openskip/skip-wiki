@@ -46,9 +46,24 @@ class SkipGroup < ActiveRecord::Base
     created = indexed_data.map do |gid, group|
       returning create!(group.except(:members, :delete?)) do |skip_group|
         skip_group.grant( data[:members].map{|k| user_cache[k] } )
+        skip_group.create_note!
       end
     end
     [created, keeps, removes]
+  end
+
+  def create_note!
+    attr = {
+      :name => "group_#{name}",
+      :display_name => _("%s's wiki") % display_name,
+      :description => _("%s's wiki") % display_name,
+      :publicity => Note::PUBLICITY_READABLE,
+      :category_id => "1",
+      :group_backend_type => "SkipGroup",
+      :group_backend => self.group
+    }
+    builder = NoteBuilder.new(self, attr)
+    builder.note.save!
   end
 end
 

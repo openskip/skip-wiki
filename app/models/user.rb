@@ -74,7 +74,21 @@ class User < ActiveRecord::Base
       skip.publish_access_token(k) unless k.access_token_for(skip)
     end
     created = id2var.map{|_id_,var| create_with_token!(skip, var.except(:delete?)){|u|u.batch_mode=true}.first }
+    Note.create_or_update_wikipedia
     [created, keeps, removes]
+  end
+
+  def create_note!
+    attr = {
+      :name => "user_#{name}",
+      :display_name => _("%s's wiki") % display_name,
+      :description => _("%s's wiki") % display_name,
+      :publicity => Note::PUBLICITY_READABLE,
+      :category_id => "1",
+      :group_backend_type => "BuiltinGroup"
+    }
+    builder = NoteBuilder.new(self, attr)
+    builder.note.save!
   end
 
   def self.create_with_token!(skip, user_param)
@@ -82,6 +96,7 @@ class User < ActiveRecord::Base
       yield u if block_given?
       u.identity_url = user_param[:identity_url]
     end
+    u.create_note!
     return [u, skip.publish_access_token(u)]
   end
 

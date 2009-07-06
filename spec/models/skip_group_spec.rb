@@ -78,6 +78,9 @@ describe SkipGroup do
     describe "created SkipGroup" do
       subject{ SkipGroup.first }
       it{ subject.group.should have(3).users }
+      it "新規のノートが作成されていること" do
+        Note.find_by_name("group_#{subject.name}").should_not be_nil
+      end
     end
 
     describe "洗いがえをした場合" do
@@ -148,7 +151,7 @@ describe SkipGroup do
         lambda{ SkipGroup.sync!(data) }
       end
 
-      it{ should be_completed_within(5.second) }
+      it{ should be_completed_within(10.second) }
     end
   end
 end

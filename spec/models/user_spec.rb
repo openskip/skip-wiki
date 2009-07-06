@@ -176,28 +176,38 @@ describe User do
     end
 
     describe ".create_with_token!" do
-      before do
-        @user, @token = User.create_with_token!(@client, {:name => "alice",
-                                                          :display_name => "アリス",
-                                                          :identity_url => "http://op.example.com/user/alice"})
-        @user.reload; @token.reload
+      describe "値の確認" do
+        before do
+          @user, @token = User.create_with_token!(@client, {:name => "alice",
+                                                            :display_name => "アリス",
+                                                            :identity_url => "http://op.example.com/user/alice"})
+          @user.reload; @token.reload
+        end
+
+        describe "で作られたユーザ" do
+          subject{ @user }
+          it{ should_not be_new_record }
+        end
+
+        describe "で作られたアクセストークン" do
+          subject{ @user.access_token_for(@client) }
+
+          it{ should_not be_blank }
+          it{ should == @token }
+        end
       end
-
-      describe "で作られたユーザ" do
-        subject{ @user }
-        it{ should_not be_new_record }
-      end
-
-      describe "で作られたアクセストークン" do
-        subject{ @user.access_token_for(@client) }
-
-        it{ should_not be_blank }
-        it{ should == @token }
+      it "Noteが作成されていること" do
+        lambda do
+          @user, @token = User.create_with_token!(@client, {:name => "alice",
+                                                            :display_name => "アリス",
+                                                            :identity_url => "http://op.example.com/user/alice"})
+        end.should change(Note, :count).by(1)
       end
     end
 
     describe ".sync!" do
       before do
+        Note.stub!(:create_or_update_wikipedia)
         @unsyncs = User.find(:all) # fixture users
         data = (1..5).map do |x|
           {:name => "user-#{x}", :display_name => "User.#{x}", :identity_url => "http://op.example.com/user/#{x}", :delete? => false}
@@ -331,7 +341,7 @@ describe User do
       end
 
       it do
-        lambda{ User.transaction{ User.sync!(@client, @data) } }.should be_completed_within(3.second)
+        lambda{ User.transaction{ User.sync!(@client, @data) } }.should be_completed_within(10.second)
       end
     end
   end

@@ -103,10 +103,31 @@ class Note < ActiveRecord::Base
     @@wikipedia ||= find_by_publicity(Note::PUBLICITY_WRITABLE)
   end
 
-  def self.create_for_owner note_id, current_user
-    if builder = NoteBuilder.new_with_owner(current_user, note_id)
+  def self.create_or_update_wikipedia
+    admin_users = User.scoped(:conditions => { :admin => true }).all
+    if admin_users.empty?
+      ::Rails.logger.info "[INFO] No admin user, wikipedia is not created or updated."
+      return nil
+    end
+    unless wikipedia
+      attr = {
+        :name => "wikipedia",
+        :display_name => "wikipedia",
+        :description => "wikipedia",
+        :publicity => Note::PUBLICITY_WRITABLE,
+        :group_backend_type => "BuiltinGroup",
+        # TODO カテゴリどうするのか検討
+        :category_id => "1"
+      }
+      builder = NoteBuilder.new(admin_users.shift, attr)
+      builder.note.owner_group.users << admin_users
       builder.note.save!
       builder.note
+    else
+      # 全部削除してアップデートする
+      wikipedia.owner_group.users = admin_users
+      wikipedia.owner_group.save!
+      wikipedia
     end
   end
 end
