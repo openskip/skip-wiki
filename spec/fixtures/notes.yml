@@ -5,7 +5,6 @@ our_note:
   name: our_note
   display_name: OurString
   publicity: 0
-  deleted_on: 2008-10-20 11:04:57
   category_id: 1
   description: "description for our_note"
 
@@ -14,6 +13,5 @@ my_note:
   name: my_note
   display_name: MyString
   publicity: 2
-  deleted_on: 2008-10-20 11:04:57
   category_id: 1
   description: "description for my_note"

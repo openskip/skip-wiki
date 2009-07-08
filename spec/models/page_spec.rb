@@ -219,7 +219,7 @@ describe Page do
     it ".options.should == {:conditions => ['pages.id IN (?)', @history.page_id]}" do
       Page.admin_fulltext("keyword").proxy_options.should ==
         {:conditions => ["#{Page.quoted_table_name}.id IN (?) OR #{Page.quoted_table_name}.display_name LIKE ?", [@history.page_id], '%keyword%']}
-    end  
+    end
   end
 
   describe "fulltext()で実際に検索する場合" do
@@ -388,7 +388,6 @@ describe Page do
         :display_name => "value for display_name",
         :description => "value for description.",
         :publicity => Note::PUBLICITY_MEMBER_ONLY,
-        :deleted_on => Time.now,
         :category_id => "1",
         :owner_group => group,
         :group_backend_type => "BuiltinGroup",

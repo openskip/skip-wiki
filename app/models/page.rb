@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
   extend NamedIdValidation
-  include LogicalDestroyable
+  include SkipEmbedded::LogicalDestroyable
 
   CRLF = /\r?\n/
   FRONTPAGE_NAME = "FrontPage"
@@ -23,7 +23,6 @@ class Page < ActiveRecord::Base
 
   validates_inclusion_of :format_type, :in => %w[hiki html]
 
-  named_scope :active, {:conditions => {:deleted => false}}
   validate_on_update :cant_rename
   before_destroy :frontpage_cant_destroy
 
@@ -54,14 +53,14 @@ class Page < ActiveRecord::Base
 
   # TODO 採用が決まったら回帰テスト書く
   named_scope :last_modified_per_notes, proc{|note_ids|
-    {:conditions => [<<-SQL, false, note_ids] }
+    {:conditions => [<<-SQL, note_ids] }
     #{quoted_table_name}.id IN (
       SELECT p0.id
       FROM   #{quoted_table_name} AS p0
       INNER JOIN (
         SELECT p2.note_id AS note_id, MAX(p2.updated_at) AS updated_at
         FROM #{quoted_table_name} AS p2
-        WHERE p2.deleted = ? AND p2.note_id IN (?)
+        WHERE p2.deleted_at IS NULL AND p2.note_id IN (?)
         GROUP BY p2.note_id
       ) AS p1 USING (note_id, updated_at)
     )
@@ -92,7 +91,7 @@ SQL
   scope_do :chained_scope
   chainable_scope :labeled, :authored, :fulltext
 
-  attr_protected :note_id, :deleted
+  attr_protected :note_id
 
   def after_save
     reset_history_caches

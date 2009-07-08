@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  include LogicalDestroyable
+  include SkipEmbedded::LogicalDestroyable
   extend NamedIdValidation
   attr_accessor :batch_mode
   attr_protected :identity_url, :batch_mode
