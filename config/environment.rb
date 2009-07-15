@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.1.2' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -27,7 +27,9 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'json'
-  config.gem 'gettext',  :lib => 'gettext/rails', :version => '1.93.0'
+  config.gem 'locale_rails'
+  config.gem 'gettext_activerecord'
+  config.gem 'gettext_rails'
   config.gem 'diff-lcs', :lib => 'diff/lcs'
   config.gem 'oauth'
   config.gem 'haml'

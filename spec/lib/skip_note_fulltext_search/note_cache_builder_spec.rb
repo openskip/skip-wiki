@@ -3,15 +3,15 @@ require 'nokogiri'
 
 describe SkipNoteFulltextSearch::NoteCacheBuilder, :type => :model do
   before :all do
-    ActionController::UrlWriter.default_url_options = {
+    SkipNoteFulltextSearch::NoteCacheBuilder.default_url_options = {
       :host => "example.com",
       :protocol => "http"
     }
-    @orig = ActionController::AbstractRequest.relative_url_root
-    ActionController::AbstractRequest.relative_url_root = "/skip-knowledge"
+    @orig = ActionController::Base.relative_url_root
+    ActionController::Base.relative_url_root = "/skip-knowledge"
   end
   after(:all) do
-    ActionController::AbstractRequest.relative_url_root = @orig
+    ActionController::Base.relative_url_root = @orig
   end
 
   fixtures :notes
