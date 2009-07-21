@@ -2,6 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 require 'nokogiri'
 
 describe SkipNoteFulltextSearch::AttachmentCacheBuilder, :type => :model do
+  include ActionController::TestProcess
   before :all do
     SkipNoteFulltextSearch::AttachmentCacheBuilder.default_url_options = {
       :host => "example.com",

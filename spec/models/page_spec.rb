@@ -353,6 +353,7 @@ describe Page do
   end
 
   describe '#attach' do
+    include ActionController::TestProcess
     fixtures :users
     before do
       user = users(:quentin)
