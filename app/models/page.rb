@@ -12,8 +12,8 @@ class Page < ActiveRecord::Base
 
   belongs_to :note
   has_many :histories, :order => "histories.revision DESC"
-  has_many :label_indexings
-  has_one  :label_index, :through => :label_indexings
+  has_one  :label_indexing
+  has_one  :label_index, :through => :label_indexing
   has_many :attachments, :as => :attachable
 
   validates_named_id_of  :name
