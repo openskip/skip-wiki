@@ -114,7 +114,7 @@ SQL
   end
 
   def order_in_label
-    (idx = self.label_indexings.first) && idx.page_order
+    (idx = self.label_indexing) && idx.page_order
   end
 
   def name_editable?
