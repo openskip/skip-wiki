@@ -48,6 +48,7 @@ class PagesController < ApplicationController
     begin
       ActiveRecord::Base.transaction do
         @page = @note.pages.add(params[:page], current_user)
+        @page.file_attach_user = current_user
         if params[:label]
           label = LabelIndex.create(params[:label].merge!({:default_label => false}))
           @note.label_indices << label

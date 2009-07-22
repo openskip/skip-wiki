@@ -47,8 +47,6 @@ describe PagesController do
       before do
         controller.should_receive(:explicit_user_required).and_return true
 
-        page_param = {:name => "page_1", :display_name => "page_1", :format_type => "html", :content => "<p>foobar</p>"}.with_indifferent_access
-
         @current_note.pages.should_receive(:add).
           with(page_param, @user).and_return(page = mock_model(Page, page_param))
         page.should_receive(:save!).and_return(true)
@@ -81,20 +79,29 @@ describe PagesController do
         post :create, :note_id => @current_note.name, :page => page_param, :label => label_param
       end
 
-      def page_param
-        {:name => "page_1", :display_name => "page_1", :format_type => "html", :content => "<p>foobar</p>"}.with_indifferent_access
-      end
       def label_param
         {'display_name' => "hoge", 'color' => "#FFFFFF", 'default_label' => false }
       end
     end
-  end
+
+    describe "ノートに紐づくアップロード中のファイルがあった場合" do
+      it "file_attach_user=にloginしているユーザが設定されること" do
+        controller.should_receive(:explicit_user_required).and_return true
+
+        page = mock_model(Page, page_param)
+        page.should_receive(:file_attach_user=).with(@user)
+        @current_note.pages.should_receive(:add).
+          with(page_param, @user).and_return(page)
+        page.should_receive(:save!).and_return(true)
+
+        post :create, :note_id => @current_note.name, :page => page_param
+      end
+    end
+   end
 
   describe "POST /notes/hoge/pages [FAILED]" do
     before do
       controller.should_receive(:explicit_user_required).and_return true
-
-      page_param = {:name => "page_1", :display_name => "page_1", :format_type => "html", :content => "<p>foobar</p>"}.with_indifferent_access
 
       @current_note.pages.should_receive(:add).
         with(page_param, @user).and_return(page = mock_model(Page, page_param))
@@ -170,4 +177,9 @@ describe PagesController do
       assigns(:page).should_not be_published
     end
   end
+
+  def page_param
+    {:name => "page_1", :display_name => "page_1", :format_type => "html", :content => "<p>foobar</p>", :file_attach_user= => nil}.with_indifferent_access
+  end
+
 end

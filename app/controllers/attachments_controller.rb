@@ -11,7 +11,7 @@ class AttachmentsController < ApplicationController
       @attachments = page.attachments.
         find(:all, :order =>"#{Attachment.quoted_table_name}.updated_at DESC")
     else
-      @attachments = current_note.attachments.uploading(current_user)
+      @attachments = Attachment.uploading(current_note, current_user)
     end
 
     respond_to do |format|
@@ -78,7 +78,9 @@ class AttachmentsController < ApplicationController
     returning(atmt.attributes.slice("content_type", "filename", "display_name")) do |json|
       json[:path] = note_attachment_path(current_note, atmt)
       json[:inline] = note_attachment_path(current_note, atmt, :position=>"inline") if atmt.image?
-      json[:size] = number_to_human_size(atmt.size)
+      # TODO I18n::MissingTranslationData (translation missing: ja, number, human, storage_units, format):
+#      json[:size] = number_to_human_size(atmt.size)
+      json[:size] = atmt.size
 
       json[:updated_at] = atmt.updated_at.strftime("%Y/%m/%d %H:%M")
       json[:created_at] = atmt.created_at.strftime("%Y/%m/%d %H:%M")

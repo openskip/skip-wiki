@@ -77,7 +77,7 @@ module PagesHelper
   def palette_opt(page)
     form_src_query = IframeUploader.palette_opt
     form_src_query.merge!(:page_id => page.id) if page.id
-    attachments_url = page.id ? note_page_attachments_url(current_note, page) : note_attachments_url(current_note)
+    attachments_url = page.new_record? ? note_attachments_url(current_note) : note_page_attachments_url(current_note, page)
     {
       :editor => "history_content",
       :url => {:attachments => attachments_url,

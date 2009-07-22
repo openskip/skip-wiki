@@ -136,7 +136,6 @@
 
     function loadAttachments(palette){
       loadItems(palette, config["url"]["attachments"]);
-      console.log(config["url"]["attachments"]);
     }
 
     function loadPages(palette){

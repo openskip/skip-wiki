@@ -79,5 +79,5 @@ describe Attachment do
 
     it{ should have(1).errors_on(:size) }
   end
-end
 
+end

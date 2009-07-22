@@ -8,6 +8,7 @@ class Page < ActiveRecord::Base
   attr_reader :new_history
   attr_writer :label_index_id
   attr_writer :order_in_label
+  attr_writer :file_attach_user
 
   belongs_to :note
   has_many :histories, :order => "histories.revision DESC"
@@ -95,7 +96,10 @@ SQL
   def after_save
     reset_history_caches
     update_label_index
-    attach
+  end
+
+  def after_create
+    Attachment.attach(self, @file_attach_user) if @file_attach_user
   end
 
   def self.front_page(attrs = {})
@@ -203,11 +207,4 @@ SQL
     !(front_page?)
   end
 
-  def attach
-    attachments.uploading(head.user_id).each do |attachment|
-      attachment.attachable_id = self.id
-      attachment.attachable_type = self.class.to_s
-      attachment.save!
-    end
-  end
 end
