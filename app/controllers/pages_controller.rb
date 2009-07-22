@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   hide_action :render_hiki
   skip_before_filter :authenticate, :only => %w[index]
   before_filter :authenticate_with_api_or_login_required, :only => %w[index]
+  before_filter :setup_current_note_as_wikipedia, :only => %w[root]
   before_filter :is_wiki_initialized?, :except => %w[create]
   before_filter :explicit_user_required, :except => %w[index show root]
 
@@ -124,7 +125,7 @@ class PagesController < ApplicationController
   end
 
   def root
-    @note = Note.wikipedia
+    @note = current_note
     @page = @note.pages.find_by_name(Page::FRONTPAGE_NAME)
     @page ? render(:action => :show) : render_not_found
   end
@@ -165,4 +166,11 @@ class PagesController < ApplicationController
     end
   end
 
+  def setup_current_note_as_wikipedia
+    if note = Note.wikipedia
+      self.current_note = note
+    else
+      raise ActiveRecord::RecordNotFound
+    end
+  end
 end

@@ -183,3 +183,67 @@ describe PagesController do
   end
 
 end
+
+describe PagesController, 'GET /' do
+  before do
+    controller.stub!(:authenticate).and_return(true)
+
+    @user = mock_model(User)
+    controller.stub!(:current_user).and_return(@user)
+
+    @pages = mock('pages')
+    @pages.stub(:build)
+  end
+  describe '誰でも読み書きできるノートがある場合' do
+    before do
+      @wikipedia = stub_model(Note)
+      @wikipedia.stub_chain(:label_indices, :first).and_return(stub_model(LabelIndex, :id => 99))
+      Note.should_receive(:wikipedia).and_return(@wikipedia)
+    end
+    describe 'ページがある場合' do
+      before do
+        @pages.stub(:size).and_return(1)
+        @pages.stub(:find_by_name).and_return(stub_model(Page))
+        @wikipedia.stub(:pages).and_return(@pages)
+      end
+      it 'FrontPageへ遷移すること' do
+        get :root
+        response.should render_template('show')
+      end
+    end
+    describe 'ページがない場合' do
+      before do
+        @pages.stub(:size).and_return(0)
+        @pages.stub(:find_by_name).and_return(nil)
+        @wikipedia.stub(:pages).and_return(@pages)
+      end
+      describe '管理者の場合' do
+        before do
+          @user.stub(:note_editable?).and_return(true)
+        end
+        it 'FrontPage作成画面へ遷移すること' do
+          get :root
+          response.should render_template('pages/init')
+        end
+      end
+      describe '一般ユーザの場合' do
+        before do
+          @user.stub(:note_editable?).and_return(false)
+        end
+        it '404になること' do
+          get :root
+          response.code.should == '404'
+        end
+      end
+    end
+  end
+  describe '誰でも読み書きできるノートがない場合' do
+    before do
+      Note.should_receive(:wikipedia).and_return(nil)
+    end
+    it '404になること' do
+      get :root
+      response.code.should == '404'
+    end
+  end
+end
