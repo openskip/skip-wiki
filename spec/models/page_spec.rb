@@ -75,7 +75,7 @@ describe Page do
       end
 
       it "#label_indexings.firstのpage_orderは1であること" do
-        l, = Page.find(@page).label_indexings
+        l = Page.find(@page).label_indexing
         l.page_order.should == 1
       end
 
@@ -104,7 +104,7 @@ describe Page do
         end
 
         it "#label_indexings.firstのpage_orderは2であること" do
-          l, = Page.find(@another).label_indexings
+          l = Page.find(@another).label_indexing
           l.page_order.should == 2
         end
       end
@@ -353,6 +353,7 @@ describe Page do
   end
 
   describe '#attach' do
+    include ActionController::TestProcess
     fixtures :users
     before do
       user = users(:quentin)

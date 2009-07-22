@@ -68,7 +68,7 @@ module PagesHelper
 
   def editor_opt(page)
     {
-      :basePath => controller.request.relative_url_root + "/javascripts/fckeditor/",
+      :basePath => ActionController::Base.relative_url_root + "/javascripts/fckeditor/",
       :height => 450,
       :initialState => page.format_type
     }

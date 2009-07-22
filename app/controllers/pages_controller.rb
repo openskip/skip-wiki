@@ -38,7 +38,8 @@ class PagesController < ApplicationController
   end
 
   def new
-    @page = current_note.pages.build
+    format_type = cookies[:editor_mode] == 'hiki' ? 'hiki' : 'html'
+    @page = current_note.pages.build(:format_type => format_type)
     respond_to(:html)
   end
 

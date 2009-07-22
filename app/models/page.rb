@@ -11,8 +11,8 @@ class Page < ActiveRecord::Base
 
   belongs_to :note
   has_many :histories, :order => "histories.revision DESC"
-  has_many :label_indexings
-  has_one  :label_index, :through => :label_indexings
+  has_one  :label_indexing
+  has_one  :label_index, :through => :label_indexing
   has_many :attachments, :as => :attachable
 
   validates_named_id_of  :name
@@ -113,7 +113,7 @@ SQL
   end
 
   def order_in_label
-    (idx = self.label_indexings.first) && idx.page_order
+    (idx = self.label_indexing) && idx.page_order
   end
 
   def name_editable?

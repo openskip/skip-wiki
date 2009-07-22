@@ -2,21 +2,22 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 require 'nokogiri'
 
 describe SkipNoteFulltextSearch::AttachmentCacheBuilder, :type => :model do
+  include ActionController::TestProcess
   before :all do
-    ActionController::UrlWriter.default_url_options = {
+    SkipNoteFulltextSearch::AttachmentCacheBuilder.default_url_options = {
       :host => "example.com",
       :protocol => "http"
     }
-    @orig = ActionController::AbstractRequest.relative_url_root
-    ActionController::AbstractRequest.relative_url_root = "/skip-knowledge"
+    @orig = ActionController::Base.relative_url_root
+    ActionController::Base.relative_url_root = "/skip-knowledge"
   end
   after(:all) do
-    ActionController::AbstractRequest.relative_url_root = @orig
+    ActionController::Base.relative_url_root = @orig
   end
 
   fixtures :notes
   before :all do
-    Test::Unit::TestCase.fixture_path = "spec/fixtures/"
+    ActiveSupport::TestCase.fixture_path = "spec/fixtures/"
   end
   after :all do
     FileUtils.rm_rf File.expand_path("assets/uploaded_data/test", Rails.root)

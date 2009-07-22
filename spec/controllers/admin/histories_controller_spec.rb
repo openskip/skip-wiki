@@ -24,10 +24,6 @@ describe Admin::HistoriesController do
     @mock_history ||= mock_model(History, default_attribute.merge!(stubs))
   end
 
-  def mock_error(stubs={})
-    @mock_error ||= mock_model(Exception, stubs)
-  end
-
   describe "GET 'new'" do
     before do
       controller.stub!(:requested_note).and_return(mock_note)
@@ -48,49 +44,38 @@ describe Admin::HistoriesController do
 
   describe "POST 'create'" do
     before do
-      Page.should_receive(:find_by_name).with("our_page").and_return(mock_page)
-      mock_page.should_receive(:edit).and_return(mock_history({:content=>'fuga'}))
-      controller.should_receive(:current_user).and_return(mock_user)
+      Page.stub(:find_by_name).with("page_id").and_return(mock_page)
+      controller.stub(:current_user).and_return(mock_user)
     end
-
     describe "Historyの編集が成功する場合" do
       before do
-        mock_history.should_receive(:save).and_return(true)
-        controller.should_receive(:requested_note).and_return(mock_note)
+        controller.stub(:requested_note).and_return(mock_note)
+        mock_page.stub(:edit).with("update params", mock_user).and_return(mock_history)
+        mock_history.stub(:save).and_return(true)
       end
-
-      it "管理者のレビュー画面にリダイレクトされること" do
-        post :create, :note_id => 'our_note', :page_id => 'our_page', :history => {:content => "fuga"}
+      it "リダイレクトされること" do
+        post :create, :note_id => 'note_id', :page_id => 'page_id', :history => {:content => "update params"}
         response.should redirect_to(admin_note_page_url(mock_note, mock_page))
       end
-
-      it "jsならLocationにパスが設定されること" do
-        post :create, :note_id => 'our_note', :page_id => 'our_page', :history => {:content => "fuga"}, :format => "js"
-        response.headers['Location'].should == admin_note_page_history_path(mock_note, mock_page, mock_history)
-      end
-
-      it "ページコンテンツが変更されていること" do
-        post :create, :note_id => 'our_note', :page_id => 'our_page', :history => {:content => "fuga"}
-        assigns[:history].content.should == "fuga"
+      describe "jsでアクセスした場合" do
+        it "ヘッダーが返ること" do
+          post :create, :note_id => 'note_id', :page_id => 'page_id', :history => {:content => "update params"}, :format => 'js'
+          response.header["Location"].should == admin_note_page_history_path(mock_note, mock_page, mock_history)
+        end
       end
     end
 
     describe "Historyの編集が失敗する場合" do
       before do
-        mock_history.should_receive(:save).and_return(false)
-        mock_history.should_receive(:errors).and_return(mock_error)
-        mock_error.should_receive(:full_messages).and_return("error")
+        errors = mock('errors', :full_messages => "validation error")
+        mock_page.stub(:edit).and_return(mock_history(:save => false,
+                                                      :errors => errors,
+                                                      :content => mock('content',
+                                                                       :errors => errors)))
       end
-
-      it "レンダリングされること" do
-        post :create, :note_id => 'our_note', :page_id => 'our_page', :history => {:content => "fuga"}, :format => 'js'
-
-      end
-
-      it "should json is set to errors for @history" do
-      end
-
-      it "should status is set to unprocessable_entity" do
+      it "エラーが含まれるjsが返ること" do
+        post :create, :note_id => 'note_id', :page_id => 'page_id', :history => {:content => "update params"}, :format => 'js'
+        response.body.should == "[\"validation error\",\"validation error\"]"
       end
     end
   end

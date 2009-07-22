@@ -10,6 +10,6 @@
 <%- content_for :javascript_initializer do %>
   jQuery("#flash_message").flashMessage(
     <%= [:error, :warn, :notice].inject({}){|r, k| r.update(k => flash[k]) }.reject{|k,v|v.nil?}.to_json %>,
-    "<%= request.relative_url_root %>"
+    "<%= ActionController::Base.relative_url_root %>"
   );
 <% end %>
