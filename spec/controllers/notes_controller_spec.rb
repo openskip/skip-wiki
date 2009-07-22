@@ -241,6 +241,7 @@ describe NotesController, "初期作成されていないNoteへのアクセス�
       pages = mock("pages", :build => (@page=mock_model(Page)), :size => 0)
       mock_note.stub(:pages).and_return(pages)
       mock_note.stub_chain(:label_indices, :first, :id).and_return(1)
+      mock_note.stub(:build_front_page).and_return(@page)
       controller.stub(:current_note).and_return(mock_note)
     end
     it "pages/initを描画すること" do

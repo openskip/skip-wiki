@@ -130,4 +130,8 @@ class Note < ActiveRecord::Base
       wikipedia
     end
   end
+
+  def build_front_page
+    pages.build(:name => Page::FRONTPAGE_NAME, :label_index_id => label_indices.first.id)
+  end
 end

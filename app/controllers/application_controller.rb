@@ -41,7 +41,8 @@ class ApplicationController < ActionController::Base
 
   def is_wiki_initialized?
     if @note = current_note and @note.pages.size == 0 and current_user.note_editable?(@note)
-      @page = @note.pages.build(:name => Page::FRONTPAGE_NAME, :label_index_id => @note.label_indices.first.id)
+      @note = current_note
+      @page = @note.build_front_page
       flash[:notice] = "最初にトップページを作成しましょう"
       render :template => "pages/init", :layout => "notes"
     end
