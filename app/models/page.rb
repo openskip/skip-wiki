@@ -8,7 +8,6 @@ class Page < ActiveRecord::Base
   attr_reader :new_history
   attr_writer :label_index_id
   attr_writer :order_in_label
-  attr_accessor :attachment_ids
 
   belongs_to :note
   has_many :histories, :order => "histories.revision DESC"
@@ -205,12 +204,10 @@ SQL
   end
 
   def attach
-    returning attachments = Attachment.scoped(:conditions => ['id IN (?)', attachment_ids]).all do
-      attachments.each do |attachment|
-        attachment.attachable_id = self.id
-        attachment.attachable_type = self.class.to_s
-        attachment.save!
-      end
+    attachments.uploading(head.user_id).each do |attachment|
+      attachment.attachable_id = self.id
+      attachment.attachable_type = self.class.to_s
+      attachment.save!
     end
   end
 end

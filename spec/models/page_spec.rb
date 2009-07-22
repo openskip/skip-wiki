@@ -366,12 +366,12 @@ describe Page do
         :deleted_at => Time.now,
         :lock_version => "1"
       }
+      # TODO historiesの作成
       @page = @note.pages.add(valid_attributes, user)
       @attachment = @note.attachments.create!(:content_type => 'content_type', :filename => 'filename', :display_name => 'display_name', :size => 1, :user_id => user.id, :uploaded_data => fixture_file_upload("data/at_small.png", "image/png", true))
     end
     describe '対象の添付ファイルが存在する場合' do
       before do
-        @page.attachment_ids = [@attachment.id]
         @page.save_without_validation!
         @attachment.reload
       end

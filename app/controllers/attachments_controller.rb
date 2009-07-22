@@ -6,8 +6,13 @@ class AttachmentsController < ApplicationController
   before_filter :only_if_list_attachments_or_group_member, :only => %w[index]
 
   def index
-    @attachments = current_note.attachments.
-      find(:all, :order =>"#{Attachment.quoted_table_name}.updated_at DESC")
+    if params[:page_id]
+      page = current_user.accessible_pages.find_by_name(params[:page_id])
+      @attachments = page.attachments.
+        find(:all, :order =>"#{Attachment.quoted_table_name}.updated_at DESC")
+    else
+      @attachments = current_note.attachments.uploading(current_user)
+    end
 
     respond_to do |format|
       format.html do

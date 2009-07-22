@@ -25,6 +25,12 @@ class Attachment < ActiveRecord::Base
   validates_presence_of :display_name
   validates_as_attachment
 
+  named_scope :uploading, proc{|user|
+    { :order => "#{Attachment.quoted_table_name}.updated_at DESC",
+      :conditions => {"user_id" => user.id}
+    }
+  }
+
   def filename=(new_name)
     super
     self.display_name = new_name
