@@ -50,7 +50,8 @@ class PagesController < ApplicationController
       ActiveRecord::Base.transaction do
         @page = @note.pages.add(params[:page], current_user)
         @page.file_attach_user = current_user
-        if params[:label]
+        # TODO nested_attributeを使ってもっとスマートにできるのではないか
+        if params[:label] && !params[:label]['display_name'].blank?
           label = LabelIndex.create(params[:label].merge!({:default_label => false}))
           @note.label_indices << label
           @page.label_index_id = label.id

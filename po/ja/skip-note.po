@@ -1246,14 +1246,14 @@ msgstr "登録する"
 #~ msgid "Account|Edit"
 #~ msgstr "編集"
 
-#~ msgid "Set up"
-#~ msgstr "システムの設定"
+msgid "Set up"
+msgstr "システムの設定"
 
-#~ msgid "Edit profile"
-#~ msgstr "自分の管理"
+msgid "Edit profile"
+msgstr "自分の管理"
 
-#~ msgid "Logout"
-#~ msgstr "ログアウト"
+msgid "Logout"
+msgstr "ログアウト"
 
 #~ msgid "Edit page name|Description"
 #~ msgstr "ページ名の編集は、この上にあるページ名をクリックしてください"

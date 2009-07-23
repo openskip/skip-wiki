@@ -93,8 +93,10 @@ Given( /^ノート"(.*)"の情報を表示している$/) do |note|
   visit note_path(note)
 end
 
-Given( /^ノート"(.*)"のページ"(.*)"を表示している$/) do |note, page|
-  visit note_page_path(note, page)
+Given( /^ノート"(.*)"のページ"(.*)"を表示している$/) do |note_name, page_name|
+  note = Note.find_by_name(note_name)
+  page = note.pages.find_by_name(page_name)
+  visit note_page_path(note_name, page.id)
 end
 
 Given( /^ノート"(.*)"のページ"(.*)"を表示すると"(.*)"エラーが発生すること$/) do |note, page, e|
