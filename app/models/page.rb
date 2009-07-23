@@ -106,16 +106,7 @@ SQL
     end
   end
 
-  def self.front_page(attrs = {})
-    attrs = {
-      :name => FRONTPAGE_NAME,
-      :display_name => _("FrontPage"),
-      :format_type => "html",
-      :published => true,
-    }.merge(attrs)
-    new(attrs)
-  end
-
+  # FIXME 使っている所を探してなくす
   def self.front_page_content
     File.read(File.expand_path("assets/front_page.html.erb", ::Rails.root))
   end
@@ -167,7 +158,7 @@ SQL
   end
 
   def front_page?
-    (name_was == FRONTPAGE_NAME || name == FRONTPAGE_NAME)
+    note && note.front_page_id == self.id
   end
 
   def last_editor

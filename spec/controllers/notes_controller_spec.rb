@@ -112,7 +112,6 @@ describe NotesController do
   end
 
   describe "responding to POST create" do
-
     describe "with valid params" do
       before do
         builder = mock("builder")
@@ -129,7 +128,7 @@ describe NotesController do
 
       it "should redirect to the created note" do
         post :create, :note => {:these => 'params'}
-        response.should redirect_to(note_page_url(mock_note, "FrontPage"))
+        response.should redirect_to(note_url(mock_note))
       end
 
     end

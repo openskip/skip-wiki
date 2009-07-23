@@ -234,23 +234,16 @@ describe Page do
     end
   end
 
-  describe ".front_page" do
+  describe '#front_cant_destory' do
     fixtures :notes
     before do
-      @page = Page.front_page
+      @front_page = Page.new(@valid_attributes)
+      @front_page.edit("content", mock_model(User))
+      @note = notes(:our_note)
+      @note.front_page = @front_page
     end
-    it { @page.should be_new_record }
-    it { @page.format_type.should == "html" }
-
-    describe "の更新/削除" do
-      before do
-        @page.edit("content", mock_model(User))
-        @page.note = notes(:our_note)
-        @page.save!
-      end
-      it "FrontPageは削除できないこと" do
-        lambda{ @page.destroy }.should_not change(Page, :count)
-      end
+    it "FrontPageは削除できないこと" do
+      lambda{ @front_page.destroy }.should_not change(Page, :count)
     end
   end
 

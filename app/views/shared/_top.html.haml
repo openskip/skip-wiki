@@ -1,5 +1,5 @@
 #current-note
-  %div.note_title= link_to(current_note.display_name, note_page_path(current_note, "FrontPage"), :title => "FrontPage")
+  %div.note_title= link_to(current_note.display_name, note_path(current_note), :title => h(current_note.display_name))
   %div&= current_note.description
 
 #note-menu

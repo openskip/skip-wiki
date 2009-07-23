@@ -8,7 +8,7 @@ module ApplicationHelper
     out = content_tag("option", _("Jump to Note"), :value=>"")
 
     notes.each do |note|
-      out << content_tag("option", h(note.display_name), :value=>note_page_url(note, "FrontPage"))
+      out << content_tag("option", h(note.display_name), :value => note_path(note))
     end
     out
   end
