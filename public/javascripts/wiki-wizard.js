@@ -38,9 +38,6 @@
       return validatesSelection("group_backend_type", "管理対象");
     };
 
-    root.selectCategoryToNext = function(wizard){
-      return validatesSelection("category_id", "カテゴリ");
-    };
     root.selectPublicityToNext = function(wizard){
       return validatesSelection("publicity", "公開範囲");
     };

@@ -624,23 +624,6 @@ table.search_cond_box th {
   border-top: 1px solid silver;
   border-bottom: 1px solid silver;
 }
-div.search_cond_space table.cateogry {
-  border-collapse: separate;
-}
-div.search_cond_space table.category th {
-  background-color: #f0f0ff;
-  padding: 0px 5px;
-  border-top: 1px solid silver;
-  border-bottom: 1px solid silver;
-  width: 120px;
-}
-div.search_cond_space table.category td {
-  font-size: 10px;
-  width: 105px;
-}
-div.search_cond_space table.cateogry {
-  border-collapse: separate;
-}
 div.search_cond_space table.sort th {
   background-color: #f0f0ff;
   padding: 0px 5px;

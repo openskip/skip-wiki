@@ -9,11 +9,9 @@ module NotesHelper
       :name_val => content_tag("span", note.name , :class=>"val"),
       :publicity_key => content_tag("span", _("Note|Publicity") , :class=>"key"),
       :publicity_val => content_tag("span", publicity_label(note.publicity) , :class=>"val"),
-      :category_key => content_tag("span", _("Note|Category") , :class=>"key"),
-      :category_val => content_tag("span", note.category.display_name , :class=>"val"),
     }
 
-    _("This note's %{name_key} is `%{name_val}', %{publicity_key} is `%{publicity_val}', and %{category_key} is `%{category_val}'.") % opts
+    _("This note's %{name_key} is '%{name_val}' and %{publicity_key} is '%{publicity_val}'.") % opts
   end
 
   def explain_note_ext(note = current_note)

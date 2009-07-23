@@ -31,45 +31,7 @@
             %td
               =f.select :group_backend_id, current_user.memberships.select{|m| m.group.backend_type == "SkipGroup" }.map{|m| [m.group.display_name, m.group.backend_id] }
 
-    -render_wizard(1, :select_category) do
-      .wizard_content
-        .topic
-          続いてノートのカテゴリを選択してください。<br/>
-
-        %table.skipwiki
-          - Category.lang("ja").each do |c|
-            %tr
-              %td
-                =f.radio_button :category_id, c.id
-                =f.label h("category_id_#{c.id}"), h(c.display_name)
-              %td&= c.description
-
-        .example
-          %ul
-            %li
-              =h _"Office"
-              %ul.sub
-                %li&= _"SWAT...TCが展開するシステム開発ツールとノウハウに関するノートです"
-                %li&= _"QMS...生産技術部が展開するQMSに関する資料公開用のノートです"
-
-            %li
-              =h _"Business"
-              %ul.sub
-                %li&= _"SONICチーム情報共有ノート...プロジェクトチーム内の情報共有用ノートです"
-
-            %li
-              =h _"Life"
-              %ul.sub
-                %li&= _"ファシリテーションWG...社内の有志で運営している勉強会グループです"
-                %li&= _"TC部門内運営ルール...休暇申請など、部門内のルールをまとめたノートです"
-
-            %li
-              =h _"Off"
-              %ul.sub
-                %li&= _"ハムスターの飼育方法...その名の通り、ハムスターを元気に育てるためのノウハウ集です"
-                %li&= _"FFIX...ゲームに関する情報をまとめたノートです"
-
-    -render_wizard(2, :select_publicity) do
+    -render_wizard(1, :select_publicity) do
       .wizard_content
         .topic
           次のステップではノートの公開範囲を設定します。<br/>
@@ -104,7 +66,7 @@
                   が編集できるノートになります。
                 %li&= _"Wikipediaのようにみんなでコンテンツを作っていくノートにしたい場合に選びます。"
 
-    -render_wizard(3, :select_label_navigation_style) do
+    -render_wizard(2, :select_label_navigation_style) do
       .wizard_content
         .topic
           次のステップではページ表示時のラベルナビゲーションの表示方方を設定します。<br/>
@@ -137,7 +99,7 @@
                 %li&= "ラベルツールバーを常に表示します。"
                 %li&= "グループ内のノートなど、ナビゲーションが簡単に出きるようにしたい場合に選びます"
 
-    -render_wizard(4, :select_input_name) do
+    -render_wizard(3, :select_input_name) do
       .wizard_content
         .topic
           次のステップでは
@@ -168,7 +130,7 @@
           %div{:style=>"margin:5px 0 0 10px;color:green"}
             = note_url("sonic_note")
 
-    -render_wizard(5, :input_description) do
+    -render_wizard(4, :input_description) do
       .wizard_content
         .topic
           次のステップでは
@@ -187,7 +149,7 @@
             - current_user.free_or_accessible_notes.recent.each do |note|
               %li= note.description
 
-    -render_wizard(6, :select_list_attachments) do
+    -render_wizard(5, :select_list_attachments) do
       .wizard_content
         .topic
           次のステップでは
@@ -216,7 +178,7 @@
                 %li&= "そのノートの編集権限のないユーザも、添付ファイルの一覧にアクセスできます。"
                 %li&= "情報共有用のノートなど、全員で添付ファイルを共有する場合に選びます。"
 
-    - render_wizard(7, :confirm) do
+    - render_wizard(6, :confirm) do
       .wizard_content
         .topic
           この内容でよろしいですか?

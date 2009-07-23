@@ -44,14 +44,6 @@
                 =f.label "publicity_#{Note::PUBLICITY_WRITABLE}", h(publicity_label(Note::PUBLICITY_WRITABLE))
 
         %tr
-          %th&= _("Note|Category")
-          %td
-            %ul.radios
-              - Category.lang("ja").each do |c|
-                %li
-                  =f.radio_button :category_id, c.id
-                  =f.label h("category_id_#{c.id}"), h(c.display_name)
-        %tr
           %th&= _("Note|LabelNavigationStyle")
           %td
             %ul.radios
