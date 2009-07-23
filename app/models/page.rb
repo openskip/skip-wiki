@@ -106,11 +106,6 @@ SQL
     end
   end
 
-  # FIXME 使っている所を探してなくす
-  def self.front_page_content
-    File.read(File.expand_path("assets/front_page.html.erb", ::Rails.root))
-  end
-
   def order_in_label
     (idx = self.label_indexing) && idx.page_order
   end

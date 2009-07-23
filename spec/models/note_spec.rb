@@ -161,48 +161,6 @@ describe Note do
     end
   end
 
-  describe "build_front_page" do
-    before(:each) do
-      Page.should_receive(:front_page_content).and_return("---FrontPage---")
-      builder = NoteBuilder.new(@user, @valid_attributes)
-      @note = builder.note
-      @page = builder.front_page
-
-      @note.save!
-      @page.save!
-    end
-
-    it "create new page" do
-      @note.reload.should have(1).pages
-    end
-
-    it "添付ファイル一覧表示の設定になっていること" do
-      @note.should be_list_attachment
-    end
-
-    it "添付ファイル一覧表示の設定になっていること" do
-      @note.label_navigation_style.should == LabelIndex::NAVIGATION_STYLE_ALWAYS
-    end
-
-    it "ページのnameはFrontPageであること" do
-      page = @note.reload.pages.first
-      page.name.should == "FrontPage"
-    end
-
-    it "ページのcontentsは指定したものであること" do
-      page = @note.reload.pages.first
-      page.content.should == "---FrontPage---"
-    end
-
-    describe "#destroy" do
-      before do
-        @note.destroy
-      end
-
-      it{ Page.find_all_by_note_id(@note).should be_empty }
-    end
-  end
-
   describe "accessible?" do
     before(:each) do
       @note = @user.build_note(

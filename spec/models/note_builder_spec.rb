@@ -36,21 +36,6 @@ describe NoteBuilder do
     @note.should have(1).label_indices
   end
 
-
-  describe "保存前のfront_page" do
-    it "はnew_recordであること" do
-      @builder.front_page.should be_new_record
-    end
-
-    it "のnoteは@noteであること" do
-      @builder.front_page.note.should == @note
-    end
-
-    it "のラベルnoteは@noteのデフォルトラベルであること" do
-      @builder.front_page.label_index_id.should == @note.default_label.id
-    end
-  end
-
   describe "validation failed" do
     before do
       @note.name = ""
@@ -87,29 +72,6 @@ describe NoteBuilder do
 
     it "should have(10) label_indices" do
       @note.should have(1).label_indices
-    end
-
-    it "front_pageはまだnew_recordであること" do
-      @builder.front_page.should be_new_record
-    end
-
-    describe "保存後のfront_page" do
-      before do
-        @builder.front_page.save!
-        @builder.front_page.reload
-      end
-
-      it "noteとの関連も保存されること" do
-        @builder.front_page.note.should == @note
-      end
-
-      it "デフォルトラベルに紐づいていること" do
-        @builder.front_page.label_index.should == @note.default_label
-      end
-
-      it "公開済みであること" do
-        @builder.front_page.should be_published
-      end
     end
   end
 end

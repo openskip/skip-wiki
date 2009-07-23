@@ -63,7 +63,6 @@ end
 Given(/^ノート"(.*)"が作成済みである/) do |note_name|
   builder = NoteBuilder.new(@user, valid_attributes[:note].merge(name_options(note_name)))
   builder.note.save!
-  builder.front_page.save!
   @note = builder.note
 end
 

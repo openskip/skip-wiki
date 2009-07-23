@@ -19,16 +19,6 @@ class NoteBuilder
             end
   end
 
-  def front_page
-    return @page if @page
-    @page = returning(Page.front_page) do |page|
-              page.edit(Page.front_page_content, @user)
-              page.note = note
-              page.published = true
-              page.label_index_id = note.default_label.id
-            end
-  end
-
   def self.new_with_owner(user, note_owner_str)
     type, name  = note_owner_str.split("_",2)
 
