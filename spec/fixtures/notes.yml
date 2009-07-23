@@ -6,6 +6,7 @@ our_note:
   display_name: OurString
   publicity: 0
   category_id: 1
+  owner_group: group_1
   description: "description for our_note"
 
 my_note:
@@ -14,6 +15,7 @@ my_note:
   display_name: MyString
   publicity: 2
   category_id: 1
+  owner_group: group_1
   description: "description for my_note"
 
 public_writable:
@@ -22,5 +24,6 @@ public_writable:
   display_name: MyString
   publicity: 1
   category_id: 1
+  owner_group: group_1
   description: "description for my_note"
 

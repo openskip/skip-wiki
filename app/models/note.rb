@@ -35,6 +35,8 @@ class Note < ActiveRecord::Base
 
   has_many :attachments, :as => :attachable
 
+  belongs_to :front_page, :class_name => "Page"
+
   named_scope :free, {:conditions => PUBLIC_CONDITION}
 
   named_scope :writable_or_accessible, proc{|user|

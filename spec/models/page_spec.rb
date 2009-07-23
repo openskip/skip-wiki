@@ -43,7 +43,7 @@ describe Page do
 
   describe "#label_index_id = an_label.id" do
     before do
-      @note = mock_model(Note)
+      @note = mock_model(Note, :pages => [mock_model(Page), mock_model(Page)])
       @page = Page.new(@valid_attributes.merge(:note=>@note))
       @label = LabelIndex.create(:note=>@note, :display_name=>"foobar")
 
@@ -349,6 +349,26 @@ describe Page do
 
     it "note_id=1に関連するページが取得できること" do
       Page.admin(1).should == [@page]
+    end
+  end
+
+  describe '#after_create' do
+    fixtures :notes, :groups
+    describe '所属するノートの最初のページの場合' do
+      before do
+        @note = notes(:our_note)
+        @note.pages.clear
+        @front_page = Page.new(@valid_attributes)
+        @front_page.edit('content', mock_model(User))
+      end
+      it '所属するノートのfront_pageが設定されること' do
+        lambda do
+          @note.pages << @front_page
+          @note.reload
+        end.should change(@note, :front_page).from(nil).to(@front_page)
+      end
+    end
+    describe '所属するノートの最初のページ以外の場合' do
     end
   end
 

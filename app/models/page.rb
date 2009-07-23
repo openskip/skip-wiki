@@ -100,6 +100,10 @@ SQL
 
   def after_create
     Attachment.attach(self, @file_attach_user) if @file_attach_user
+    if note && note.pages.size == 1
+      note.front_page = self
+      note.save!
+    end
   end
 
   def self.front_page(attrs = {})
