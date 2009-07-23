@@ -1,24 +1,61 @@
-%h2
-  = @note.display_name
-  を始めましょう！
-.init_note
+- content_for(:header) do
+  =javascript_include_tag("fckeditor/fckeditor.js")
+  =javascript_include_tag("linkPalette")
+
+- content_for :floating do
+  .labels-form
+    = render :partial => 'label_indices/new'
+    %span.operation&= _("close")
+
+- div_for(@page, :class => "page-content") do
+  #linkPalette{:style=>"display:none"}= render :partial => 'histories/link_palette'
+  %h1= _('%sを始めましょう！') % @note.display_name
   = error_messages_for :page
 
-  - form_for([@note,@page]) do |f|
+  - form_for(:page, :url=>note_pages_path(current_note)) do |f|
     = f.hidden_field :name
-    = f.hidden_field :label_index_id
-    .title_desc
-      %p
-        = @note.display_name
-        のトップページのタイトルを決めましょう。
-      = f.text_field(:display_name)
+    = f.label(:display_name, _('%sのトップページのタイトルを決めましょう。') % @note.display_name)
+    = f.text_field(:display_name)
+    %h2
+      %label{:for=>"page_content_html"}= _('トップページの本文を記述して下さい。')
+      %span.operation.trigger= _("Link Palette")
+    %div.content
+      = f.radio_button(:format_type, "html")
+      %label{:for => "page_format_type_html"}&= _("Rich text")
+      = f.radio_button(:format_type, "hiki")
+      %label{:for => "page_format_type_hiki"}&= _("Wiki text")
 
-      %div.content
-        %p トップページの本文を記述して下さい。
-        = f.radio_button(:format_type, "hiki")
-        %label{:for => "page_format_type_hiki"}&= _("Wiki text")
+      #hiki_content
+        .preview
+          %ul.float
+            %li.hide= link_to(_("Hide preview"), '#', :class => "operation")
+            %li.show= link_to(_("Show preview"), '#', :class => "operation")
+          .clear
+          .rendered.rich_style
+        = f.text_area(:content, :name => "page[content_hiki]", :id=>"page_content_hiki", :size=>"80x20")
+      #html_content
+        = f.text_area(:content, :name => "page[content_html]", :id=>"page_content_html", :size=>"80x70")
 
-        #hiki_content
-          = f.text_area(:content, :name => "page[content_hiki]", :id=>"page_content_hiki", :size=>"80x20")
+    .submit
+      = submit_tag _("Create %{entity}") % {:entity => _("page")}
 
-    = submit_tag _("Create %{entity}") % {:entity => _("page")}
+:javascript
+  $(document).ready(function(){
+    jQuery("div.content").skipEditor({
+      "submit_to_save": true,
+      "currentFormatType" : function(){ return jQuery("input:checked[type=radio][name='page[format_type]']").val(); },
+      "richEditor": {"name": "page_content_html", "basePath": "#{ActionController::Base.relative_url_root}/javascripts/fckeditor/", "height":350},
+      "hikiEditor": {"selector" : "#page_content_hiki", "preview":{"selector":"div.preview", "url": "#{preview_new_note_page_path(current_note)}"} },
+      "linkPalette" : #{palette_opt(@page).to_json}
+    });
+    jQuery("input[type=radio][name='page[format_type]']").toggleEditor("#html_content", "#hiki_content", {"label":"h2 > label"});
+
+    var label_form = $("div.labels-form");
+    label_form.manageLabel();
+    $("table.input th .operation").click(function(){ label_form.show() });
+    $("div.labels-form > span.operation").click(function(){
+      label_form.hide();
+      $("ul.label-indices").reloadLabelRadios(#{{:url=>note_label_indices_path(current_note)}.to_json});
+    });
+  });
+
