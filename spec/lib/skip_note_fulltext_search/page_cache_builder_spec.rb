@@ -34,8 +34,8 @@ describe SkipNoteFulltextSearch::PageCacheBuilder, :type => :model do
     @builder.to_meta[:publication_symbols].should == "note:#{@page.id},public"
   end
 
-  it "#to_metaのlink_urlは'http://example.com/skip-knowledge/notes/\#{@page.note.name}/pages/\#{@page.name}'であること" do
-    @builder.to_meta[:link_url].should == "http://example.com/skip-knowledge/notes/#{@page.note.name}/pages/#{@page.name}"
+  it "#to_metaのlink_urlは'http://example.com/skip-knowledge/notes/\#{@page.note.name}/pages/\#{@page.id}'であること" do
+    @builder.to_meta[:link_url].should == "http://example.com/skip-knowledge/notes/#{@page.note.name}/pages/#{@page.id}"
   end
 
   describe "#write_meta" do

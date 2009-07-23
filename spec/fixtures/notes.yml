@@ -15,3 +15,12 @@ my_note:
   publicity: 2
   category_id: 1
   description: "description for my_note"
+
+public_writable:
+  id: 103
+  name: public_writable
+  display_name: MyString
+  publicity: 1
+  category_id: 1
+  description: "description for my_note"
+

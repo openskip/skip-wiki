@@ -44,16 +44,16 @@ describe Note do
       Note.fulltext("Our").should have(1).items
     end
 
-    it "'description' should hit 2 notes" do
-      Note.fulltext("description").should have(2).items
+    it "'description' should hit 3 notes" do
+      Note.fulltext("description").should have(3).items
     end
 
     it "'--none--' should hit 0 notes" do
       Note.fulltext("--none--").should have(0).items
     end
 
-    it "(nil) should hit 2 notes" do
-      Note.fulltext(nil).should have(2).items
+    it "(nil) should hit 3 notes" do
+      Note.fulltext(nil).should have(3).items
     end
   end
 
@@ -65,8 +65,8 @@ describe Note do
           @user = User.first
           @user.stub_chain(:accessible_notes, :all).and_return([stub_model(Note, :id => 101)])
         end
-        it 'should hit 1 notes' do
-          Note.writable_or_accessible(@user).should have(1).items
+        it 'should hit 2 notes' do
+          Note.writable_or_accessible(@user).should have(2).items
         end
       end
       describe 'ユーザのアクセス可能なノートが取得できない場合' do
@@ -75,14 +75,14 @@ describe Note do
           @user.stub_chain(:accessible_notes, :all).and_return([])
         end
         it 'だれでも書けるノートのみ取得されること' do
-          Note.writable_or_accessible(@user).should have(0).items
+          Note.writable_or_accessible(@user).should have(1).items
         end
       end
     end
     describe 'ユーザの指定がない場合' do
       fixtures :notes
-      it "(nil) should hit 2 notes" do
-        Note.writable_or_accessible(nil).should have(2).items
+      it "(nil) should hit 3 notes" do
+        Note.writable_or_accessible(nil).should have(3).items
       end
     end
   end
@@ -107,8 +107,8 @@ describe Note do
     end
     describe 'グループの指定がない場合' do
       fixtures :notes
-      it "(nil) should hit 2 notes" do
-        Note.owned_group(nil).should have(2).items
+      it "(nil) should hit 3 notes" do
+        Note.owned_group(nil).should have(3).items
       end
     end
   end

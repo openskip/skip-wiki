@@ -162,10 +162,6 @@ SQL
                                    :revision => revision.succ)
   end
 
-  def to_param
-    name_changed? ? name_was : name
-  end
-
   def front_page?
     (name_was == FRONTPAGE_NAME || name == FRONTPAGE_NAME)
   end
