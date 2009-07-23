@@ -22,7 +22,7 @@ describe PagesController do
     fixtures  :pages
     before do
       @page = pages(:our_note_page_1)
-      get :show, :note_id=>@current_note.name, :id=>@page.name
+      get :show, :note_id => @current_note.name, :id => @page.id
     end
 
     it "statusは200であること" do
@@ -37,7 +37,7 @@ describe PagesController do
   describe "GET /notes/hoge/pages/not_exists" do
     fixtures  :pages
     it "responseは404であること" do
-      get :show, :note_id=>@current_note.name, :id=>"not_exist"
+      get :show, :note_id => @current_note.name, :id => "999999"
       response.code.should == "404"
     end
   end
@@ -129,20 +129,20 @@ describe PagesController do
     end
 
     it "responseは/notes/our_note/pages/page_01へのリダイレクトであること" do
-      put :update, :note_id => @current_note.name, :id =>@page.to_param,
+      put :update, :note_id => @current_note.name, :id => @page.id,
                    :page => {:label_index_id => @current_note.label_indices.last.id}
 
       response.should redirect_to(note_page_path(@current_note, assigns(:page)))
     end
 
     it "コンテンツを指定しても無視されること" do
-      put :update, :note_id => @current_note.name, :id =>@page.to_param, :page => {:name => "page_01", :content => "new"}
+      put :update, :note_id => @current_note.name, :id =>@page.id, :page => {:name => "page_01", :content => "new"}
       assigns(:page).content.should == "<p>foobar</p>"
     end
 
     describe "via XHR" do
       before do
-        xhr :put, :update, :note_id => @current_note.name, :id =>@page.to_param, :page => {:display_name => "page_01", :content => "new"}
+        xhr :put, :update, :note_id => @current_note.name, :id => @page.id, :page => {:display_name => "page_01", :content => "new"}
       end
       it "ページ名が更新されること" do
         assigns(:page).display_name.should == "page_01"
@@ -154,15 +154,15 @@ describe PagesController do
     end
   end
 
-  describe "DELETE /notes/hoge/pages/page_1 [FAILURE]" do
+  describe "DELETE /notes/hoge/pages/99 [FAILURE]" do
     fixtures :notes
     before do
       controller.should_receive(:explicit_user_required).and_return true
 
-      Page.should_receive(:find_by_name).with("page_1").and_return(@page = mock_model(Page))
+      controller.stub_chain(:accessible_pages, :find).with("99").and_return(@page = mock_model(Page))
       @page.should_receive(:logical_destroy).and_return(false)
 
-      delete :destroy, :note_id => "our_note", :id => "page_1"
+      delete :destroy, :note_id => "our_note", :id => "99"
     end
     it{ response.should redirect_to( edit_note_page_url("our_note", @page) ) }
     it{ flash[:warn].should_not be_blank }
@@ -172,16 +172,29 @@ describe PagesController do
     before do
       controller.should_receive(:explicit_user_required).and_return true
     end
-    it "作成されるページのは公開に設定されていること" do
+    it "作成されるページは公開に設定されていること" do
       get :new
       assigns(:page).should_not be_published
     end
   end
 
+  describe "POST /notes/hoge/pages/99/recovery" do
+    fixtures :notes
+    before do
+      controller.should_receive(:explicit_user_required).and_return true
+      controller.stub_chain(:accessible_pages, :find).with("99").and_return(@page = mock_model(Page))
+      @page.should_receive(:recover).and_return(true)
+      @user.stub(:accessible?).and_return(true)
+
+      post :recovery, :note_id => @current_note.name, :id => "99"
+    end
+    it { flash[:notice].should_not be_blank }
+    it { response.should redirect_to( note_pages_path(@current_note) ) }
+  end
+
   def page_param
     {:name => "page_1", :display_name => "page_1", :format_type => "html", :content => "<p>foobar</p>", :file_attach_user= => nil}.with_indifferent_access
   end
-
 end
 
 describe PagesController, 'GET /' do

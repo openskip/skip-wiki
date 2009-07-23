@@ -34,8 +34,8 @@ class PagesController < ApplicationController
 
   def show
     @note = current_note
-    @page = accessible_pages.find_by_name(params[:id], :include=>:note)
-    @page || render_not_found
+    @page = accessible_pages.find(params[:id], :include => :note)
+    respond_to(:html)
   end
 
   def new
@@ -78,7 +78,7 @@ class PagesController < ApplicationController
 
   def edit
     @note = current_note
-    @page = accessible_pages(true).find_by_name(params[:id])
+    @page = accessible_pages(true).find(params[:id])
     respond_to(:html)
   end
 
@@ -86,7 +86,7 @@ class PagesController < ApplicationController
     @note = current_note
     begin
       ActiveRecord::Base.transaction do
-        @page = accessible_pages.find_by_name(params[:id])
+        @page = accessible_pages.find(params[:id])
         @page.attributes = params[:page].except(:content)
         @page.save!
       end
@@ -105,7 +105,7 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    @page = accessible_pages.find_by_name(params[:id])
+    @page = accessible_pages.find(params[:id])
     if @page.logical_destroy
       flash[:notice] = _("Page was deleted successfully")
       redirect_to(note_pages_path(current_note))
@@ -116,8 +116,7 @@ class PagesController < ApplicationController
   end
 
   def recovery
-    @page = accessible_pages(true).find_by_name(params[:id])
-
+    @page = accessible_pages(true).find(params[:id])
     if @page.recover
       flash[:notice] = _("Page was recovered successfully")
       redirect_to(note_pages_path(current_note))
