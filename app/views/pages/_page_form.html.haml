@@ -17,7 +17,7 @@
     %br
     %span.operation&= _("edit labels")
   %td
-    %ul.label-indices
+    .label-indices
       = form.select("label_index_id", label_navi_for_new_page(current_note))
       %br
         = text_field_tag 'label[display_name]'

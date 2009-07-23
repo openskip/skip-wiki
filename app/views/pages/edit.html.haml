@@ -24,15 +24,3 @@
         %h2&= _("Delete %{entity}") % {:entity => _("page")}
         -form_tag(note_page_path(current_note, @page), :method => "delete") do
           = submit_tag _("Delete %{entity}") % {:entity => _("page")}, :confirm => _("Really delete?")
-
-:javascript
-  jQuery(function(){
-    var label_form = $("div.labels-form");
-    label_form.manageLabel();
-    $("table.input th .operation").click(function(){ label_form.show() });
-    $("div.labels-form .operation").click(function(){
-      label_form.hide();
-      $("ul.label-indices").reloadLabelRadios(#{{:url=>note_label_indices_path(current_note)}.to_json});
-    });
-  });
-

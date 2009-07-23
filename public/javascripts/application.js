@@ -221,21 +221,17 @@
     return jQuery(this);
   };
 
-  jQuery.fn.reloadLabelRadios = function(config){
-    var self = jQuery(this);
-    var proto = self.find("li:first").clone().find("input").attr("checked", null).end();
+  jQuery.fn.reloadLabelSelect = function(config){
+    var select = jQuery(this).find("select");
+    var proto = $('<option></option>');
     jQuery.getJSON(config["url"], function(data, status){
       if(status != "success"){ return ; }
-      self.empty();
+      select.empty();
       jQuery.each(data, function(num, l){
         var label = l["label_index"];
-        var li = proto.clone()
-        var ident = "page_label_index_id_" + label.id;
-        li.find("input[type=radio]").attr("id", ident).attr("value", label.id).end().
-           find("label").attr("for", ident).
-             find("span").attr("style", "border-color:"+label.color).
-             text(label.display_name);
-        self.append(li);
+        var option = proto.clone();
+        option.attr("value", label.id).text(label.display_name);
+        select.append(option);
       });
     });
   };
@@ -249,8 +245,8 @@
       return false;
     }
 
-    jQuery.each(table.find("td.inplace-edit"), function(){jQuery(this).aresInplaceEditor({callback:update}) });
-  }
+    jQuery.each(table.find("td.inplace-edit"), function(){jQuery(this).aresInplaceEditor({callback:update}); });
+  };
 
   jQuery.fn.manageLabel = function(config){
     var table = jQuery(this).find("table");
