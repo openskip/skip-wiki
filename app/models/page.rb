@@ -16,14 +16,11 @@ class Page < ActiveRecord::Base
   has_one  :label_index, :through => :label_indexing
   has_many :attachments, :as => :attachable
 
-  validates_named_id_of  :name
-  validates_uniqueness_of :name, :scope => :note_id
   validates_associated :new_history, :if => :new_history, :on => :create
   validates_presence_of :content, :on => :create
 
   validates_inclusion_of :format_type, :in => %w[hiki html]
 
-  validate_on_update :cant_rename
   before_destroy :frontpage_cant_destroy
 
   named_scope :recent, proc{|*args|
@@ -178,13 +175,6 @@ SQL
   def update_label_index
     if(new_record? && label_index_id) || @label_index_id
       self.label_index = note.label_indices.find(label_index_id)
-    end
-  end
-
-  def cant_rename
-    if name_changed?
-      errors.add :name, _("can't be change, create new one.")
-      return false
     end
   end
 

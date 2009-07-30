@@ -2,14 +2,14 @@ class Admin::HistoriesController < Admin::ApplicationController
 
   def new
     @note = requested_note
-    @page = Page.find_by_name(params[:page_id])
+    @page = Page.find(params[:page_id])
     @topics = [[_("note pages"), admin_pages_path],
                ["#{@page.display_name}", admin_note_page_path(@note, @page)],
                 _("Edit")]
   end
 
   def create
-    @page = Page.find_by_name(params[:page_id])
+    @page = Page.find(params[:page_id])
     @history = @page.edit(params[:history][:content], current_user)
     if @history.save
       respond_to do |format|

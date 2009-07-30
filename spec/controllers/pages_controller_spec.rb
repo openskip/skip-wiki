@@ -35,7 +35,7 @@ describe PagesController do
   end
 
   describe "GET /notes/hoge/pages/not_exists" do
-    fixtures  :pages
+    fixtures :pages
     it "responseは404であること" do
       get :show, :note_id => @current_note.name, :id => "999999"
       response.code.should == "404"
@@ -120,7 +120,7 @@ describe PagesController do
     before do
       controller.should_receive(:explicit_user_required).and_return true
 
-      page_param = {:published => "1", :name => "page_1", :display_name => "page_1", :format_type => "html", :content_html => "<p>foobar</p>"}.with_indifferent_access
+      page_param = {:published => "1", :display_name => "page_1", :format_type => "html", :content_html => "<p>foobar</p>"}.with_indifferent_access
       @current_note.label_indices << LabelIndex::first_label
 
       @page = @current_note.pages.add(page_param, @user)
@@ -136,7 +136,7 @@ describe PagesController do
     end
 
     it "コンテンツを指定しても無視されること" do
-      put :update, :note_id => @current_note.name, :id =>@page.id, :page => {:name => "page_01", :content => "new"}
+      put :update, :note_id => @current_note.name, :id =>@page.id, :page => {:content => "new"}
       assigns(:page).content.should == "<p>foobar</p>"
     end
 
@@ -216,7 +216,7 @@ describe PagesController, 'GET /' do
     describe 'ページがある場合' do
       before do
         @pages.stub(:size).and_return(1)
-        @pages.stub(:find_by_name).and_return(stub_model(Page))
+        @pages.stub(:first).and_return(stub_model(Page))
         @wikipedia.stub(:pages).and_return(@pages)
       end
       it 'FrontPageへ遷移すること' do
@@ -227,7 +227,7 @@ describe PagesController, 'GET /' do
     describe 'ページがない場合' do
       before do
         @pages.stub(:size).and_return(0)
-        @pages.stub(:find_by_name).and_return(nil)
+        @pages.stub(:first).and_return(nil)
         @wikipedia.stub(:pages).and_return(@pages)
       end
       describe '管理者の場合' do

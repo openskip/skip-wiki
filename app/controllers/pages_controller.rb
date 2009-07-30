@@ -36,6 +36,8 @@ class PagesController < ApplicationController
     @note = current_note
     @page = accessible_pages.find(params[:id], :include => :note)
     respond_to(:html)
+  rescue ActiveRecord::RecordNotFound
+    render_not_found
   end
 
   def new
@@ -126,7 +128,8 @@ class PagesController < ApplicationController
 
   def root
     @note = current_note
-    @page = @note.pages.find_by_name(Page::FRONTPAGE_NAME)
+    # FIXME firstではダメな気がするので後でちゃんと直す
+    @page = @note.pages.first
     @page ? render(:action => :show) : render_not_found
   end
 

@@ -27,7 +27,7 @@ describe Admin::HistoriesController do
   describe "GET 'new'" do
     before do
       controller.stub!(:requested_note).and_return(mock_note)
-      Page.should_receive(:find_by_name).with('our_note_page_1').and_return(mock_page)
+      Page.should_receive(:find).with('our_note_page_1').and_return(mock_page)
       mock_page.should_receive(:display_name).and_return("hoge")
       get :new, :note_id => "our_note", :page_id => 'our_note_page_1'
     end
@@ -44,7 +44,7 @@ describe Admin::HistoriesController do
 
   describe "POST 'create'" do
     before do
-      Page.stub(:find_by_name).with("page_id").and_return(mock_page)
+      Page.stub(:find).with("page_id").and_return(mock_page)
       controller.stub(:current_user).and_return(mock_user)
     end
     describe "Historyの編集が成功する場合" do

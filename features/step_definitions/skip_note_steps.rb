@@ -11,7 +11,6 @@ valid_attributes = {
     :group_backend_id => ""
   }.freeze,
   :page => {
-    :name => "value for name",
     :display_name => "value for display_name",
     :published => true,
     :format_type => "html",
@@ -21,10 +20,6 @@ valid_attributes = {
       :color => "#ff0000",
   }.freeze
 }
-
-def name_options(key)
-  {:name => key.to_s, :display_name => key.to_s.humanize }
-end
 
 def prepare_default_category
   Category.transaction do
@@ -61,13 +56,13 @@ Before do
 end
 
 Given(/^ノート"(.*)"が作成済みである/) do |note_name|
-  builder = NoteBuilder.new(@user, valid_attributes[:note].merge(name_options(note_name)))
+  builder = NoteBuilder.new(@user, valid_attributes[:note].merge({ :name => note_name, :display_name => note_name }))
   builder.note.save!
   @note = builder.note
 end
 
 Given( /^そのノートにはページ"(.*)"が作成済みである$/)  do |page_name|
-  attrs = valid_attributes[:page].merge(name_options(page_name))
+  attrs = valid_attributes[:page].merge({ :display_name => page_name })
   attrs[:content_html] = "Content for the page `#{page_name}'"
   @page = @note.pages.add(attrs, @user)
   @page.save!
@@ -94,7 +89,7 @@ end
 
 Given( /^ノート"(.*)"のページ"(.*)"を表示している$/) do |note_name, page_name|
   note = Note.find_by_name(note_name)
-  page = note.pages.find_by_name(page_name)
+  page = note.pages.find_by_display_name(page_name)
   visit note_page_path(note_name, page.id)
 end
 

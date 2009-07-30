@@ -11,34 +11,12 @@ describe Page do
     @valid_attributes = {
       :note_id => "1",
       :last_modied_user_id => "1",
-      :name => "value_for_name",
       :display_name => "value for display_name",
       :format_type => "hiki",
       :published => true,
       :deleted_at => Time.now,
       :lock_version => "1"
     }
-  end
-
-  describe "validation" do
-    %w[new edit].each do |name|
-      context "#{name}という識別子はつけられない" do
-        subject{ Page.new(@valid_attributes) }
-        before{ subject.name = "new" }
-        it{ should_not be_valid }
-        it{ should have(1).errors_on(:name) }
-      end
-    end
-
-    describe "uniqueness" do
-      subject do
-        page = Page.new(@valid_attributes)
-        page.edit("content", mock_model(User))
-        page.save!
-        Page.new(@valid_attributes)
-      end
-      it{ should have(1).errors_on(:name) }
-    end
   end
 
   describe "#label_index_id = an_label.id" do
@@ -79,24 +57,10 @@ describe Page do
         l.page_order.should == 1
       end
 
-      describe "公開済みページの編集" do
-        before do
-          @page = Page.find(@page)
-          @page.published?
-        end
-
-        it "識別子は変更できないこと" do
-          @page.name = "foobar"
-          @page.should_not be_valid
-          @page.should have(1).errors_on(:name)
-        end
-      end
-
       describe "別のページを追加した場合" do
         before do
           @another = Page.new(@page.attributes) do |page|
             page.note = @note
-            page.name = "another"
             page.label_index_id = @label.id
           end
           @another.edit("content", mock_model(User))
@@ -247,21 +211,6 @@ describe Page do
     end
   end
 
-  describe "は削除や識別子の変更ができないこと" do
-    fixtures :notes
-    before do
-      @page = Page.new(@valid_attributes)
-      @page.edit("content", mock_model(User))
-      @page.note = notes(:our_note)
-      @page.save!
-    end
-
-    it "識別子(name)を変更するとupdateできないこと" do
-      @page.name = "name_changed"
-      @page.should_not be_valid
-    end
-  end
-
   describe ".authored(*authors)" do
     fixtures :users
     before do
@@ -270,7 +219,6 @@ describe Page do
       @page.save!
 
       another = Page.new(@valid_attributes)
-      another.name = "page-2"
       another.edit("foobar", users(:aaron))
       another.save!
     end

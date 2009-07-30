@@ -4,8 +4,7 @@ our_note_page_1:
   id: 101
   note_id: 101
   last_modied_user_id: 1
-  name: our_note_page_1
-  display_name: MyString
+  display_name: our_note_page_1
   format_type: html
   published: true
   deleted_at:
@@ -15,8 +14,7 @@ our_note_page_2:
   id: 102
   note_id: 101
   last_modied_user_id: 1
-  name: our_note_page_2
-  display_name: MyString
+  display_name: our_note_page_2
   format_type: html
   published: true
   deleted_at:

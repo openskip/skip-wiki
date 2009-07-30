@@ -43,6 +43,7 @@ jQuery(function(){
     [inclusion, javascript_tag(date_picker_scripts)].join("\n")
   end
 
+  # TODO #807で影響あるかもしれないので調査する
   def back_link_to(page_name, url, options ={})
     options[:class] = options[:class].nil? ? "back" :  ["back", options[:class]].flatten.uniq
     link_to(_("Back to %{page}") % {:page => page_name}, url, options)

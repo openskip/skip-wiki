@@ -119,7 +119,6 @@ describe Note do
       @note = NoteBuilder.new(@user, @valid_attributes).note
       @note.save!
       @initialize_attrs = {
-        :name=>"FrontPage",
         :display_name => "トップページ",
         :content_hiki => "hogehogehoge",
         :content_html => "<p>hogehogehoge</p>",

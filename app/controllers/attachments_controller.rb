@@ -7,7 +7,7 @@ class AttachmentsController < ApplicationController
 
   def index
     if params[:page_id]
-      page = current_user.accessible_pages.find_by_name(params[:page_id])
+      page = current_user.accessible_pages.find(params[:page_id])
       @attachments = page.attachments.
         find(:all, :order =>"#{Attachment.quoted_table_name}.updated_at DESC")
     else
@@ -25,7 +25,7 @@ class AttachmentsController < ApplicationController
   end
 
   def show
-    page = current_user.accessible_pages.find_by_name(params[:page_id])
+    page = current_user.accessible_pages.find(params[:page_id])
     if page
       @attachment = page.attachments.find_by_id(params[:id])
       return render_not_found unless @attachment
