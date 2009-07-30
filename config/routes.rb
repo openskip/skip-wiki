@@ -28,7 +28,7 @@ ActionController::Routing::Routes.draw do |map|
       page.resources :histories, :collection=>{:diff=>:get}
       page.resources :attachments
     end
-    note.resources :attachments
+    note.resources :attachments, :collection=>{:list=>:get}
   end
   map.resources :pages
   map.resources :attachments

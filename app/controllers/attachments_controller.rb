@@ -65,6 +65,11 @@ class AttachmentsController < ApplicationController
     redirect_to(note_page_path(@attachment.attachable.note, @attachment.attachable))
   end
 
+  def list
+    note_pages = current_user.accessible_pages.select {|p| p.id if p.note == current_note }
+    @attachments = Attachment.find(:all, :conditions => ["attachable_id IN (?)", note_pages], :order => :attachable_id)
+  end
+
   private
   def attachment_to_json(atmt)
     returning(atmt.attributes.slice("content_type", "filename", "display_name")) do |json|

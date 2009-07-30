@@ -31,11 +31,13 @@
       :font-size 24px
 
   select
-    :border 1px solid silver
+
 
 div#content_top
-  :border-bottom 1px solid #ccc
-  ul
+  :border-bottom 1px solid silver
+
+div#note-menu
+  ul.float
     :float right
     :margin-top auto
     :margin-bottom auto
@@ -928,6 +930,8 @@ table.label-indices
   :border-collapse collapse
   :margin 5px auto
   tr
+    th, td
+      :padding 0 5px
     th
       :font-weight bold
       :font-size   = !small_font_size
