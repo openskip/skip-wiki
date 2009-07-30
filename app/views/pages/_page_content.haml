@@ -64,8 +64,8 @@
   .page-attachments
     - @page.attachments.each do |at|
       %span.attachment
-        = link_to("#{icon_tag('disk')}#{at.display_name}", note_page_attachment_path(current_note, @page, at))
-        = link_to(_("Attachment|Delete"), note_page_attachment_path(current_note, @page, at), :method => :delete)
+        = link_to("#{icon_tag('disk')}#{at.display_name}", attachment_path(at))
+        = link_to(_("Attachment|Delete"), attachment_path(at), :method => :delete)
 
 .clear
 

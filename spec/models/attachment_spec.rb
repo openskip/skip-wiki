@@ -2,6 +2,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Attachment do
   fixtures :notes
+  fixtures :pages
+
   before(:each) do
     @uploaded_data = StringIO.new(File.read("spec/fixtures/data/at_small.png"))
     def @uploaded_data.original_filename; "at_small.png" end
@@ -78,6 +80,32 @@ describe Attachment do
     end
 
     it{ should have(1).errors_on(:size) }
+  end
+
+  describe 'accessble?' do
+    before do
+      @attachment = Attachment.new
+      @notes = [notes(:our_note)]
+      @pages = [pages(:our_note_page_1)]
+    end
+
+    it 'accessbile note' do
+      @attachment.attachable = notes(:our_note)
+      @attachment.accessible?(@notes, @pages).should == true
+    end
+    it 'unaccessbile note' do
+      @attachment.attachable = notes(:my_note)
+      @attachment.accessible?(@notes, @pages).should == false
+    end
+
+    it 'accessbile page' do
+      @attachment.attachable = pages(:our_note_page_1)
+      @attachment.accessible?(@notes, @pages).should == true
+    end
+    it 'unaccessbile page' do
+      @attachment.attachable = pages(:our_note_page_2)
+      @attachment.accessible?(@notes, @pages).should == false
+    end
   end
 
 end

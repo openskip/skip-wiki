@@ -2,8 +2,9 @@ class AttachmentsController < ApplicationController
   include IframeUploader
   include ActionView::Helpers::NumberHelper # to format file size on JSON
 
-  before_filter :writable_user_required, :only => %w[new create destroy]
+  before_filter :writable_user_required, :only => %w[new create]
   before_filter :only_if_list_attachments_or_group_member, :only => %w[index]
+  before_filter :get_attachment, :only => %w[show destroy]
 
   def index
     if params[:page_id]
@@ -25,18 +26,11 @@ class AttachmentsController < ApplicationController
   end
 
   def show
-    page = current_user.accessible_pages.find(params[:page_id])
-    if page
-      @attachment = page.attachments.find_by_id(params[:id])
-      return render_not_found unless @attachment
-      opts = {:filename => @attachment.display_name, :type => @attachment.content_type }
-      opts[:filename] = URI.encode(@attachment.display_name) if msie?
-      opts[:disposition] = "inline" if params[:position] == "inline"
+    opts = {:filename => @attachment.display_name, :type => @attachment.content_type }
+    opts[:filename] = URI.encode(@attachment.display_name) if msie?
+    opts[:disposition] = "inline" if params[:position] == "inline"
 
-      send_file(@attachment.full_filename, opts)
-    else
-      render_not_found
-    end
+    send_file(@attachment.full_filename, opts)
   end
 
   def new
@@ -64,20 +58,18 @@ class AttachmentsController < ApplicationController
   end
 
   def destroy
-    @attachment = current_note.attachments.find(params[:id])
     @attachment.destroy
-
     flash[:notice]= _("Deleted %{name}") %
           {:name => "#{_("Attachment")} #{@attachment.display_name}"}
 
-    redirect_to(note_attachments_path(current_note))
+    redirect_to(note_page_path(@attachment.attachable.note, @attachment.attachable))
   end
 
   private
   def attachment_to_json(atmt)
     returning(atmt.attributes.slice("content_type", "filename", "display_name")) do |json|
-      json[:path] = note_attachment_path(current_note, atmt)
-      json[:inline] = note_attachment_path(current_note, atmt, :position=>"inline") if atmt.image?
+      json[:path] = attachment_path(atmt)
+      json[:inline] = attachment_path(atmt, :position=>"inline") if atmt.image?
       # TODO I18n::MissingTranslationData (translation missing: ja, number, human, storage_units, format):
 #      json[:size] = number_to_human_size(atmt.size)
       json[:size] = atmt.size
@@ -100,6 +92,13 @@ class AttachmentsController < ApplicationController
 
   def writable_user_required
     unless current_user.page_editable?(current_note)
+      head(:forbidden)
+    end
+  end
+
+  def get_attachment
+    @attachment = Attachment.find_by_id(params[:id])
+    if @attachment.nil? or !@attachment.accessible?(current_user.free_or_accessible_notes, current_user.accessible_pages)
       head(:forbidden)
     end
   end

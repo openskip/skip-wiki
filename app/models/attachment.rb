@@ -47,6 +47,14 @@ class Attachment < ActiveRecord::Base
     File.join(base, *partitioned_path(thumbnail_name_for(thumbnail)))
   end
 
+  def accessible?(notes,pages)
+    if self.attachable_type == Note.to_s
+      notes.map{ |n| n.id }.include? self.attachable_id
+    else
+      pages.map{ |p| p.id }.include? self.attachable_id
+    end
+  end
+
   private
   def validate_on_create
     adapter = ValidationsFileAdapter.new(self)
@@ -74,4 +82,5 @@ class Attachment < ActiveRecord::Base
   def normalized_ext
     File.extname(filename).downcase.sub(/\A^\./, "")
   end
+
 end
