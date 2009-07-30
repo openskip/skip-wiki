@@ -12,7 +12,7 @@
   #palette-pages.palette-pane
     - form_tag note_pages_path(current_note), :method => "GET" do
       = text_field_tag :keyword, :class => "search"
-      = submit_tag h(_"Filter"), :class => "submit"
+      = submit_tag h(_("Filter")), :class => "submit"
       %span.operation&= _("Show all")
     .indicator{:style=>"display:none"}= image_tag("ibox_indicator.gif")
 
