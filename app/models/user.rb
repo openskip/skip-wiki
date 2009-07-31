@@ -143,5 +143,13 @@ class User < ActiveRecord::Base
         {:writable_or_accessible_note_ids => writable_or_accessible_note_ids, :readable_note_ids => readable_note_ids, :published => true}]
     })
   end
+
+  def accessible_attachment?(attachment)
+    if attachment.attachable_type == Note.to_s
+      self.free_or_accessbile_notes.map{ |n| n.id }.include? attachment.attachable_id
+    else
+      self.accessible_pages.map{ |p| p.id }.include? attachment.attachable_id
+    end
+  end
 end
 

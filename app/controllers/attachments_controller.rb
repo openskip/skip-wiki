@@ -3,7 +3,7 @@ class AttachmentsController < ApplicationController
   include ActionView::Helpers::NumberHelper # to format file size on JSON
 
   before_filter :writable_user_required, :only => %w[new create]
-  before_filter :only_if_list_attachments_or_group_member, :only => %w[index]
+  before_filter :only_if_list_attachments_or_group_member, :only => %w[index list]
   before_filter :get_attachment, :only => %w[show destroy]
 
   def index
@@ -66,8 +66,7 @@ class AttachmentsController < ApplicationController
   end
 
   def list
-    note_pages = current_user.accessible_pages.select {|p| p.id if p.note == current_note }
-    @attachments = Attachment.find(:all, :conditions => ["attachable_id IN (?)", note_pages], :order => :attachable_id)
+    @attachments = current_note.attached_file(current_user)
   end
 
   private
@@ -102,8 +101,8 @@ class AttachmentsController < ApplicationController
   end
 
   def get_attachment
-    @attachment = Attachment.find_by_id(params[:id])
-    if @attachment.nil? or !@attachment.accessible?(current_user.free_or_accessible_notes, current_user.accessible_pages)
+    @attachment = Attachment.find(params[:id])
+    unless current_user.accessible_attachment?(@attachment)
       head(:forbidden)
     end
   end

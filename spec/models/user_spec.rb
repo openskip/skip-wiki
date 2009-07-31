@@ -345,4 +345,34 @@ describe User do
       end
     end
   end
+
+  # TODO 作り直す
+  describe 'accessble_attachment?' do
+    before do
+      @attachment = Attachment.new
+    end
+
+    it 'accessbile note' do
+      pending
+      @attachment.attachable = notes(:our_note)
+      @attachment.accessible?(@notes, @pages).should be_true
+    end
+    it 'unaccessbile note' do
+      pending
+      @attachment.attachable = notes(:my_note)
+      @attachment.accessible?(@notes, @pages).should be_false
+    end
+
+    it 'accessbile page' do
+      pending
+      @attachment.attachable = pages(:our_note_page_1)
+      @attachment.accessible?(@notes, @pages).should be_true
+    end
+    it 'unaccessbile page' do
+      pending
+      @attachment.attachable = pages(:our_note_page_2)
+      @attachment.accessible?(@notes, @pages).should be_false
+    end
+  end
+
 end

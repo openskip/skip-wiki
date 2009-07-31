@@ -26,12 +26,12 @@ ActionController::Routing::Routes.draw do |map|
     note.resources :label_indices
     note.resources :pages, :member => {:recovery => :post}, :new => {:preview => :post} do |page|
       page.resources :histories, :collection=>{:diff=>:get}
-      page.resources :attachments
+      page.resources :attachments, :except => [:show, :destroy]
     end
-    note.resources :attachments, :collection=>{:list=>:get}
+    note.resources :attachments, :collection=>{:list=>:get}, :except => [:show, :destroy]
   end
   map.resources :pages
-  map.resources :attachments
+  map.resources :attachments, :only => [:show, :destroy]
 
   map.open_id_complete 'session', :controller => "sessions", :action => "create", :conditions => {:method => :get },
                                                                                   :requirements=>{:open_id_complete=>/\d+/}
