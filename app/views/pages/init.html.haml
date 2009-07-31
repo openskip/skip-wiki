@@ -13,7 +13,6 @@
   = error_messages_for :page
 
   - form_for(:page, :url=>note_pages_path(current_note)) do |f|
-    = f.hidden_field :name
     = f.label(:display_name, _('%sのトップページのタイトルを決めましょう。') % @note.display_name)
     = f.text_field(:display_name)
     %h2

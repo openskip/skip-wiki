@@ -93,7 +93,7 @@ module PagesHelper
       :uploader => {:target => IframeUploader::UPLOAD_KEY,
                     :trigger => "submit",
         :src => {:form =>   new_note_attachment_path(current_note, form_src_query),
-                 :target => note_attachments_path(IframeUploader.palette_opt) },
+                 :target => note_attachments_path(current_note, IframeUploader.palette_opt) },
                     :callback => nil }
     }
   end
