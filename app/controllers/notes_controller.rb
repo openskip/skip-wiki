@@ -31,7 +31,7 @@ class NotesController < ApplicationController
     @note = current_note
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { redirect_to :controller=>"pages", :action=>"root", :note_id=>@note}
       format.xml  { render :xml => @note }
     end
   end
@@ -78,8 +78,8 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
-        flash[:notice] = 'Note was successfully updated.'
-        format.html { redirect_to(@note) }
+        flash[:notice] = _('Note was successfully updated.')
+        format.html { redirect_to(:action=>"edit") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

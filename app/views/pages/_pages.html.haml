@@ -11,9 +11,9 @@
   %tbody
     - each_with_histories(pages) do |page, history|
       %tr
-        %td.label= labelize(page.label_index)
+        %td.label{:style=>"background-color:%s" % page.label_index.color}= page.label_index.display_name
         %td.name= link_to_unless page.deleted, h(page.display_name), note_page_url(current_note, page)
-        %td&= history.user.name
+        %td.user&= history.user.name
         - if current_user.accessible?(current_note)
           %td.publication
             - if page.deleted

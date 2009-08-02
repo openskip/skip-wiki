@@ -1,5 +1,5 @@
 #current-note
-  %div.note_title= link_to(current_note.display_name, note_path(current_note), :title => h(current_note.display_name))
+  %div.note_title= link_to(current_note.display_name, {:controller=>"pages", :action=>"root", :note_id=>current_note}, :title => h(current_note.display_name))
   %div&= current_note.description
 
 #note-menu
@@ -12,7 +12,7 @@
       - if current_user.page_editable?(current_note)
         %li= link_to(_("New Page"), new_note_page_path(current_note))
       - if current_user.note_editable?(current_note)
-        %li= link_to(_("Property"), note_path(current_note))
+        %li= link_to(_("Property"), edit_note_path(current_note))
     .clear
 .clear_left
 

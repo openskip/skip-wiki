@@ -1,24 +1,24 @@
-- div_for(current_note, :class=>"app-layout") do
-  %h2&= _("note attachments")
-
-  .attachments
-    - if @attachments.empty?
-      ファイルはまだアップロードされていません。
-    - else
-      %table.skipwiki
-        %tr
-          %th&= _("Page|Display name")
-          %th&= _("Attachment|Content type")
-          %th&= _("Attachment|Filename")
-          %th&= _("Attachment|Created at")
-          %th
-          %th
-        - @attachments.each do |at|
+.list-layout
+  .current-title&= _("note attachments")
+  - div_for(current_note, :class=>"app-layout") do
+    .attachments
+      - if @attachments.empty?
+        ファイルはまだアップロードされていません。
+      - else
+        %table.skipwiki
           %tr
-            %td.page_name&= at.attachable.display_name
-            %td.content_type&= at.content_type
-            %td.display_name&= at.display_name
-            <!-- %td.size&= number_to_human_size(at.size) -->
-            %td.timestamp.updated_at&= at.updated_at.strftime("%Y/%m/%d %H:%M")
-            %td.operation= link_to content_tag("span", _("Download"), :class=>"operation"), attachment_path(at)
-            %td.operation= link_to content_tag("span", _("Delete"), :class=>"operation"), attachment_path(at), :method => :delete
+            %th&= _("Page|Display name")
+            %th&= _("Attachment|Content type")
+            %th&= _("Attachment|Filename")
+            %th&= _("Attachment|Created at")
+            %th
+            %th
+          - @attachments.each do |at|
+            %tr
+              %td.page_name&= at.attachable.display_name
+              %td.content_type&= at.content_type
+              %td.display_name&= at.display_name
+              <!-- %td.size&= number_to_human_size(at.size) -->
+              %td.timestamp.updated_at&= at.updated_at.strftime("%Y/%m/%d %H:%M")
+              %td.operation= link_to content_tag("span", _("Download"), :class=>"operation"), attachment_path(at)
+              %td.operation= link_to content_tag("span", _("Delete"), :class=>"operation"), attachment_path(at), :method => :delete

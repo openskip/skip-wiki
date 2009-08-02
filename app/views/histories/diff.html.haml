@@ -1,8 +1,6 @@
-- div_for(@page, "diff") do
+- div_for(@page, "list-layout") do
   - treat_as_current = note_page_histories_path(current_note, @page)
-  %h1&= _("diff from rev.%{from} to rev.%{to}.") % {:from=>params[:from], :to=>params[:to]}
-
-  %p= link_to h(_("Back to histories")), treat_as_current
+  .current-title&= _("diff from rev.%{from} to rev.%{to}.") % {:from=>params[:from], :to=>params[:to]}
 
   - if @page.format_type == "html"
     .controll
@@ -12,8 +10,9 @@
       =radio_button_tag("history_display", "diff", :checked=>true)
       =label_tag("history_display_diff", _("Show History Diffs"))
 
+      %span=link_to h(_("Back to histories")), treat_as_current
+
     .history-contents{:style=>"display:none"}
-      %h3&= _("History|Content")
       .from~ render_page_content(@page, params[:from])
       .to~ render_page_content(@page, params[:to])
       .clear
@@ -32,8 +31,6 @@
 
   .diff{:style=>"overflow:auto"}
     %table.skipwiki.diff
-      %caption
-        %h3&= _("History|Diff")
       %tr
         %th.symbol
         %th.num&= "r#{params[:from]}"

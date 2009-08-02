@@ -1,12 +1,11 @@
 .history.app-layout
-  %h1&= _("page histories")
+  .current-title&= _("page histories")
 
   // FIXME
   %table.skipwiki.histories
     %thead
       %tr
         %th.revision&= ""
-        %th.description&= _("History|Description")
         %th.user&= _("User|Name")
         %th.updated_at&= _("History|Updated at")
         %th.diff&= _("diff to next")
@@ -15,7 +14,6 @@
       - @histories.each do |history|
         %tr{:class=>cycle("odd", "even")}
           %td.revision= link_to(h(_("show r%{rev}") % {:rev=>history.revision}), note_page_history_path(current_note, @page, history))
-          %td&= history.description
           %td&= history.user.name
           %td.timestamp&= history.updated_at.strftime("%Y-%m-%d %H:%M")
           %td= link_to_next_diff(@histories, history)

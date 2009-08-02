@@ -1,24 +1,14 @@
+- content_for :floating do
+  .labels-form
+    = render :partial => 'label_indices/new'
+    %span.operation&= _("close")
+
 .app-layout
   - div_for(@note) do
-    %h2&= _("edit note properties")
+    .current-title&= _("edit note properties")
     - form_for(@note) do |f|
       =f.error_messages
       %table.skipwiki.input
-        %tr
-          %th&= _("Note|GroupBackendType")
-          %td
-            %ul.radios
-              %li
-                =f.radio_button(:group_backend_type, "BuiltinGroup", :disabled=>!@note.new_record?)
-                =f.label :group_backend_type, h(_"BuiltinGroup note"), :for=>"note_group_backend_type_builtingroup"
-              %li
-                =f.radio_button(:group_backend_type, "SkipGroup", :disabled=>!@note.new_record?)
-                =f.label :group_backend_type, h(_"SkipGroup note"), :for=>"note_group_backend_type_skipgroup"
-
-        %tr
-          %th= f.label :name, h(_("Note|Name"))
-          %td= f.text_field :name
-
         %tr
           %th= f.label :display_name, h(_("Note|Display name"))
           %td= f.text_field :display_name
@@ -26,22 +16,6 @@
         %tr
           %th= f.label :description, h(_("Note|Description"))
           %td= f.text_field :description, :size=>"60"
-
-        %tr
-          %th&= _("Note|Publicity")
-          %td
-            %ul.radios
-              %li
-                =f.radio_button(:publicity, Note::PUBLICITY_MEMBER_ONLY)
-                =f.label "publicity_#{Note::PUBLICITY_MEMBER_ONLY}", h(publicity_label(Note::PUBLICITY_MEMBER_ONLY))
-
-              %li
-                =f.radio_button(:publicity, Note::PUBLICITY_READABLE)
-                =f.label "publicity_#{Note::PUBLICITY_READABLE}", h(_(publicity_label(Note::PUBLICITY_READABLE)))
-
-              %li
-                =f.radio_button(:publicity, Note::PUBLICITY_WRITABLE)
-                =f.label "publicity_#{Note::PUBLICITY_WRITABLE}", h(publicity_label(Note::PUBLICITY_WRITABLE))
 
         %tr
           %th&= _("Note|LabelNavigationStyle")
@@ -60,7 +34,20 @@
                   =f.radio_button(:list_attachments, val)
                   =f.label "list_attachments_#{val}", h(list_attachments_label(val))
 
-      %div
-        = back_link_to(_("Note Properties"), note_path(current_note))
-        = f.submit _("Update")
+        %tr
+          %th&= _("Page|Label indices")
+          %td
+            %span.operation&= _("edit labels")
 
+      = f.submit _("Update")
+
+:javascript
+  $(document).ready(function(){
+    var label_form = $("div.labels-form");
+    label_form.manageLabel();
+    $("table.input td .operation").click(function(){ label_form.show() });
+    $("div.labels-form > span.operation").click(function(){
+      label_form.hide();
+      $(".label-indices").reloadLabelSelect(#{{:url=>note_label_indices_path(current_note)}.to_json});
+    });
+  });

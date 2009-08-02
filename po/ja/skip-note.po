@@ -236,7 +236,7 @@ msgid "Insert Link"
 msgstr "リンクを挿入"
 
 msgid "Show all"
-msgstr "すべて表示"
+msgstr "検索結果をクリアする"
 
 msgid "Filter"
 msgstr "絞り込み"
@@ -874,7 +874,7 @@ msgid "Apply filter.."
 msgstr "ページ一覧を絞り込み..."
 
 msgid "LabelIndices"
-msgstr "分類識別子"
+msgstr "分類"
 
 msgid "close"
 msgstr "閉じる"
@@ -892,7 +892,7 @@ msgid "Create %{entity}"
 msgstr "%{entity}を作成"
 
 msgid "Page|Label indices"
-msgstr "分類識別子"
+msgstr "分類"
 
 msgid "edit labels"
 msgstr "分類名を編集"
@@ -919,7 +919,7 @@ msgid "No Labels"
 msgstr "分類なし"
 
 msgid "Keyword in a page"
-msgstr "ページ内のキーワード"
+msgstr "キーワード"
 
 msgid "Authors"
 msgstr "最終更新者"
@@ -1016,7 +1016,7 @@ msgid "diff from rev.%{from} to rev.%{to}."
 msgstr "rev.%{from}からrev.%{to}への変更点"
 
 msgid "Back to histories"
-msgstr "履歴一覧に戻る"
+msgstr "【履歴一覧に戻る】"
 
 msgid "Show History Contents"
 msgstr "内容を表示"

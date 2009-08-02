@@ -32,9 +32,9 @@
 
   select
 
-
 div#content_top
   :border-bottom 1px solid silver
+  :margin-left 5px
 
 div#note-menu
   ul.float
@@ -50,6 +50,14 @@ div.init_note
   p
     :margin 10px 0 5px 0
     :font-size 14px
+
+.current-title
+  :border-left 10px solid #33BEED
+  :color #33BEED
+  :font-size 22px
+  :font-weight bold
+  :margin 5px 0 5px
+  :padding-left 5px
 
 #current-note .note-navi, .page-header .page-navi
   :position absolute
@@ -188,14 +196,13 @@ div.init_note
         :font-size = !modern_page_font_size
 
   #new_page
-    :width 100%
     :clear both
 
   .page-content
+    :padding 2px 10px 5px 10px
     :border-left 1px solid silver
     :border-right 1px solid silver
     :border-bottom 1px solid silver
-    :padding 2px 2px 5px 10px
     ul
       :margin 0 0 0 25px
       :padding 0
@@ -271,6 +278,7 @@ div.init_note
   .from, .to
     :border 1px solid gray
     :overflow auto
+    :padding 1px
   .from
     :width 49%
   .to
@@ -333,13 +341,18 @@ div.init_note
       :font-size 12px
 
 #content table.histories
+  :width 90%
   tr
-    th.description
-      :width 350px
+    th.updated_at
+      :width 200px
     td.revision
       :width 10em
       :font-size = !small_font_size
 
+.controll
+  :margin 15px 0 7px 0
+  span
+    :margin-left 5px
 
 span.label_badge
   :border-width 10px 5px 5px 25px
@@ -373,20 +386,12 @@ ul.label-indices
       span.label_badge
         :width 15em
 
-#hiki_content
+.content
   textarea
     :width 90%
 
-.preview
-  ul
-    :margin-top 5px
-  li.hide,li.show
-    :margin-left -40px
-    :font-size= !small_font_size
-  div.rendered
-    :border 1px solid silver
-    :margin-bottom 5px
-    :padding 5px
+.list-layout
+  :padding 2px 10px 5px 10px
 
 div.app-layout
   :font-size 18px
@@ -401,16 +406,9 @@ div.app-layout
       :list-style none
       :padding-left 10px
 
-    input[type=text], input[type=submit], textarea, input.input_submit, input.input_text
-      :font-size = !modern_page_font_size
-      :margin 5px 10px
-
     input[type=text], input.input_text, textarea
       :border 1px solid gray
       :padding 1px
-
-    input[type=submit], input.input_submit
-      :font-weight bold
 
 div.note
   :position relative
@@ -438,31 +436,23 @@ div.note
 
 .index
   .query
-    :border 1px dotted silver
-    :margin 1em auto
+    :border 2px dotted silver
     :padding 5px
-    :width  70%
-    :background #eeeeee
-    :_margin-left 20%
+    :width 90%
+    :margin-bottom 5px
 
   .query a.op
     :margin-bottom 14px
     :font-size = !small_font_size
 
-  .query form
-    :clear right
-    dt, input[type=text], input.input_text
-      :font-size 13px
-
-    div.commit
-      :float right
-
 span.help, span.operation
   :font-size = !small_font_size
-  :color = !link_color
   :font-weight normal
 span.operation
+  :color = !link_color
   :cursor pointer
+span.help
+  :color green
 
 #content div.page, div.history
   :position relative
@@ -480,7 +470,7 @@ span.operation
     :padding-bottom 1em
 
     table.input
-      :width 90%
+      :width 100%
 
     div.content
       :width 97%
@@ -494,8 +484,8 @@ span.operation
       :width 80%
 
     .submit
-      :float right
-      :margin-right 10%
+      :float left
+      :margin-top 5px
 
     .parrent_url
       :font-size= !small_font_size
@@ -664,27 +654,27 @@ div.caption
 
 table.notes-index, table.pages-index
   :width 90%
+  tr
+    :border-bottom 1px dotted silver
 
   td.history
     :font-size = !small_font_size
     :text-align center
-
-  td.label
-    :width 60px
-    :background #ccc
-
-    span
-      :background #eee
-      :font-size = !small_font_size
-
-  th.published
-    :width 12em
-  td.published, td.notyet
-
   td.publication
     :text-align center
-    span
-      :font-size = !small_font_size
+
+  th.label
+    :width 10%
+  th.display_name
+    :width 25%
+  th.user
+    :width 10%
+  th.publication
+    :width 10%
+  th.timestamp
+    :width 25%
+  th.clippy
+    :width 10%
 
 #wiki_action
   :clear left
@@ -902,7 +892,7 @@ table.label-indices
       input
         :margin 0
       input[type=text]
-        :font-size 16px
+        :font-size 12px
         :padding-left 0.2em
       input[type=submit]
         :font-size = !small_font_size
@@ -928,18 +918,18 @@ table.label-indices
 
 #content_for_layout table.skipwiki
   :border-collapse collapse
-  :margin 5px auto
+  :margin 5px 0
   tr
     th, td
-      :padding 0 5px
+      :padding 5px 10px
+      :font-size = !small_font_size
     th
       :font-weight bold
-      :font-size   = !small_font_size
-      :background  #cccccc
+      :background-color #DDEEFF
+      :border-top 3px solid white
       :text-align  center
+      :color gray
     td
-      :font-size = !modern_page_font_size
-      :border-bottom 1px solid #ddddff
       :height 1.8em
 
     th.timestamp, td.timestamp
@@ -953,7 +943,7 @@ table.label-indices
         :margin 0
 
 table.input
-  :margin 1em auto
+  :margin 1em 0
   :border-collapse separate
   tr
     :margin-bottom 1px
@@ -966,7 +956,8 @@ table.input
     .fieldWithErrors
       :display inline
     input[type=text], select, input.input_text
-      :font-size = !modern_page_font_size
+      :font-size 12px
+      :padding 2px
 
 input[type=text].datepicker
   :text-align right
@@ -1006,6 +997,16 @@ p.history-info
     :color brack
   span.val
     :color #00cccc
+
+.preview
+  ul
+    :margin 5px 0
+  li.hide,li.show
+    :font-size= !small_font_size
+  div.rendered
+    :border 1px solid silver
+    :margin-bottom 5px
+    :padding 5px
 
 div#header
   :border-bottom 1px dashed #ccc
