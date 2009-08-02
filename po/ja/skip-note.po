@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: skip-note 1.0.0\n"
-"POT-Creation-Date: 2009-07-30 17:45+0900\n"
+"POT-Creation-Date: 2009-08-02 15:41+0900\n"
 "PO-Revision-Date: 2008-11-04 16:29+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -310,9 +310,6 @@ msgstr ""
 msgid "Page|Last modied user"
 msgstr ""
 
-msgid "Page|Name"
-msgstr "ページ識別子"
-
 msgid "Page|Display name"
 msgstr "ページ名"
 
@@ -333,9 +330,6 @@ msgstr "更新日時"
 
 msgid "Page|Published"
 msgstr "公開する"
-
-msgid "can't be change, create new one."
-msgstr ""
 
 #, fuzzy
 msgid "LabelIndex|Display name"
@@ -456,6 +450,10 @@ msgstr "更新日時"
 
 msgid "Note|Description"
 msgstr "ノートの説明"
+
+#, fuzzy
+msgid "Note|Front page"
+msgstr "表紙"
 
 #, fuzzy
 msgid "membership"
@@ -710,14 +708,6 @@ msgstr "ファイルを添付"
 msgid "note attachments"
 msgstr "ファイル一覧"
 
-#, fuzzy
-msgid "Attachment|content type"
-msgstr "[削除]"
-
-#, fuzzy
-msgid "Attachment|name"
-msgstr "ファイル"
-
 msgid "Download"
 msgstr "ダウンロード"
 
@@ -774,7 +764,7 @@ msgid "Page|Content"
 msgstr "内容"
 
 msgid "Link Palette"
-msgstr "画像やリンクを挿入"
+msgstr "[画像やリンクを挿入]"
 
 msgid "Hide preview"
 msgstr "プレビューを隠す"
@@ -877,7 +867,7 @@ msgid "LabelIndices"
 msgstr "分類"
 
 msgid "close"
-msgstr "閉じる"
+msgstr "[閉じる]"
 
 msgid "New Page"
 msgstr "新しいページを作る"
@@ -895,7 +885,13 @@ msgid "Page|Label indices"
 msgstr "分類"
 
 msgid "edit labels"
-msgstr "分類名を編集"
+msgstr "[分類名を編集]"
+
+msgid "Edit Label|Name Desc"
+msgstr "選択項目にない分類を作る場合には、ここに名前を入力して下さい。"
+
+msgid "Edit Label|Color Desc"
+msgstr "ここには色を16進数形式で入力して下さい。Ex)#7FFF00"
 
 msgid "Recover %{entity}"
 msgstr "%{entity}を復旧する"
@@ -1015,17 +1011,14 @@ msgstr ""
 msgid "diff from rev.%{from} to rev.%{to}."
 msgstr "rev.%{from}からrev.%{to}への変更点"
 
-msgid "Back to histories"
-msgstr "【履歴一覧に戻る】"
-
 msgid "Show History Contents"
 msgstr "内容を表示"
 
 msgid "Show History Diffs"
 msgstr "差分を表示"
 
-msgid "History|Diff"
-msgstr "履歴"
+msgid "Back to histories"
+msgstr "[履歴一覧に戻る]"
 
 msgid "Contents of r%{rev}"
 msgstr "リビジョン%{rev}の内容"
@@ -1124,12 +1117,6 @@ msgstr "分類バー表示"
 msgid "edit note properties"
 msgstr "ノートのプロパティを編集"
 
-msgid "BuiltinGroup note"
-msgstr "ふつうのノート"
-
-msgid "SkipGroup note"
-msgstr "SKIPグループ"
-
 msgid "Updated"
 msgstr "更新されたページ"
 
@@ -1145,21 +1132,38 @@ msgstr "更新されたページ"
 msgid "No page exists"
 msgstr "ページが存在しません"
 
-msgid "Users and Groups"
-msgstr "ユーザとグループ"
+#~ msgid "Page|Name"
+#~ msgstr "ページ識別子"
 
-msgid "edit users permission"
-msgstr "ユーザの権限変更"
+#, fuzzy
+#~ msgid "Attachment|content type"
+#~ msgstr "[削除]"
 
-msgid "add groups"
-msgstr "グループを追加"
+#, fuzzy
+#~ msgid "Attachment|name"
+#~ msgstr "ファイル"
+
+#~ msgid "History|Diff"
+#~ msgstr "履歴"
+
+#~ msgid "BuiltinGroup note"
+#~ msgstr "ふつうのノート"
+
+#~ msgid "SkipGroup note"
+#~ msgstr "SKIPグループ"
+
+#~ msgid "Users and Groups"
+#~ msgstr "ユーザとグループ"
+
+#~ msgid "edit users permission"
+#~ msgstr "ユーザの権限変更"
+
+#~ msgid "add groups"
+#~ msgstr "グループを追加"
 
 #, fuzzy
 #~ msgid "Note|Deleted on"
 #~ msgstr "削除"
-
-#~ msgid "FrontPage"
-#~ msgstr "表紙"
 
 #~ msgid "Attached files"
 #~ msgstr "添付ファイル一覧"
@@ -1238,9 +1242,6 @@ msgstr "グループを追加"
 
 #~ msgid "Account|Edit"
 #~ msgstr "編集"
-
-#~ msgid "Edit page name|Description"
-#~ msgstr "ページ名の編集は、この上にあるページ名をクリックしてください"
 
 #~ msgid "Label navigation"
 #~ msgstr "分類ツールバー"

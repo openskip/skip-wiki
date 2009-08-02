@@ -1,4 +1,4 @@
-- div_for(@page, "list-layout") do
+- div_for(@page, "diff") do
   - treat_as_current = note_page_histories_path(current_note, @page)
   .current-title&= _("diff from rev.%{from} to rev.%{to}.") % {:from=>params[:from], :to=>params[:to]}
 

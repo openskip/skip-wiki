@@ -14,7 +14,8 @@
     #main
       #content_for_layout
         #content
-          = yield
+          .contents-layout
+            = yield
 
     #footer
       = render :partial => 'shared/common_body_footer'
