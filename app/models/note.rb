@@ -134,6 +134,6 @@ class Note < ActiveRecord::Base
   end
 
   def build_front_page
-    pages.build(:name => Page::FRONTPAGE_NAME, :label_index_id => label_indices.first.id)
+    pages.build(:label_index_id => label_indices.first.id)
   end
 end
