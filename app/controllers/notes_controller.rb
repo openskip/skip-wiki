@@ -78,6 +78,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
+        #TODO メッセージの修正
         flash[:notice] = _('Note was successfully updated.')
         format.html { redirect_to(:action=>"edit") }
         format.xml  { head :ok }

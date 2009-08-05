@@ -137,8 +137,9 @@ class Note < ActiveRecord::Base
     pages.build(:label_index_id => label_indices.first.id)
   end
 
+  #TODO 回帰テストを書く
   def attached_file(user)
-    note_pages = user.accessible_pages.select {|p| p.id if p.note == self }
-    Attachment.find(:all, :conditions => ["attachable_id IN (?)", note_pages], :order => :attachable_id)
+    note_page_ids = user.accessible_pages.select {|p| p.id if p.note == self }
+    Attachment.all(:conditions => ["attachable_id IN (?)", note_page_ids], :order => :attachable_id)
   end
 end

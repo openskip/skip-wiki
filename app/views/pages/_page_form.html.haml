@@ -15,9 +15,11 @@
       = form.select("label_index_id", label_navi_for_new_page(current_note))
       %p.input-label
         = text_field_tag 'label[display_name]'
-        %span.help&=_("Edit Label|Name Desc")
+        %label{:for => "label_display_name"}
+          %span.help&=_("Edit Label|Name Desc")
       %p.input-label
         = text_field_tag 'label[color]'
-        %span.help&=_("Edit Label|Color Desc")
+        %label{:for => "label_color"}
+          %span.help&=_("Edit Label|Color Desc")
     .clear
 

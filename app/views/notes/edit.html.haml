@@ -5,7 +5,7 @@
 
 .app-layout
   - div_for(@note) do
-    .current-title&= _("edit note properties")
+    %h2.current-title&= _("edit note properties")
     - form_for(@note) do |f|
       =f.error_messages
       %table.skipwiki.input

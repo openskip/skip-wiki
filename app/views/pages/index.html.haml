@@ -1,5 +1,5 @@
 .index.app-layout.contents-layout
-  .current-title&= _("%{name}'s accessible pages.") % {:name => current_user.name}
+  %h2.current-title&= _("%{name}'s accessible pages.") % {:name => current_user.name}
   .query
     =link_to_function _("Apply filter.."), "$(this).next('form').toggle(); return false", :class=>"op"
     - form_tag pages_path, query_form_options do
@@ -29,7 +29,7 @@
               %td.name
                 = link_to h(page.display_name), note_page_path(note, page)
                 %span.note&= "on #{note.display_name}"
-              %td&= history.user.name
+              %td.user&= history.user.name
               %td.timestamp&= page.updated_at.strftime("%Y-%m-%d %H:%M")
               %td.clippy= clippy(note_page_url(note, page))
 

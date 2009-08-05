@@ -7,7 +7,7 @@
     = render :partial => 'label_indices/new'
     %span.operation&= _("close")
 
-.current-title&= _("New Page")
+%h2.current-title&= _("New Page")
 - div_for(@page, :class => "page-body") do
   #linkPalette{:style=>"display:none"}= render :partial => 'histories/link_palette'
   = error_messages_for :page
@@ -20,7 +20,8 @@
         %td= f.text_field(:display_name)
       = render :partial => 'page_form', :locals =>{:form =>f }
       %tr
-        %th&= _("Page|Content")
+        %th
+          %label{:for=>"page_content_html"}=_("Page|Content")
         %td
           = f.radio_button(:format_type, "html")
           %label{:for => "page_format_type_html"}&= _("Rich text")
