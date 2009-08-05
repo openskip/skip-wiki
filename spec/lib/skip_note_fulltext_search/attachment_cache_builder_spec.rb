@@ -38,7 +38,7 @@ describe SkipNoteFulltextSearch::AttachmentCacheBuilder, :type => :model do
     end
 
     it {
-      @builder.to_meta[:link_url].should == "http://example.com/skip-knowledge/notes/our_note/attachments/#{@attachment.id}"
+      @builder.to_meta[:link_url].should == "http://example.com/skip-knowledge/attachments/#{@attachment.id}?note_id=our_note"
     }
   end
 

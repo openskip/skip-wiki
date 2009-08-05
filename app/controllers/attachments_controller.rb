@@ -4,7 +4,7 @@ class AttachmentsController < ApplicationController
 
   before_filter :writable_user_required, :only => %w[new create]
   before_filter :only_if_list_attachments_or_group_member, :only => %w[index list]
-  before_filter :get_attachment, :only => %w[show destroy]
+  before_filter :accessible_attachment, :only => %w[show destroy]
 
   def index
     if params[:page_id]
@@ -100,11 +100,13 @@ class AttachmentsController < ApplicationController
     end
   end
 
-  def get_attachment
-    @attachment = Attachment.find(params[:id])
-    unless current_user.accessible_attachment?(@attachment)
+  def accessible_attachment
+    unless current_user.accessible_attachment?(attachment)
       head(:forbidden)
     end
   end
 
+  def attachment
+    @attachment ||= Attachment.find(params[:id])
+  end
 end

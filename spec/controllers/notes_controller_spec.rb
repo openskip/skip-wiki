@@ -173,9 +173,9 @@ describe NotesController do
       end
 
       it "should redirect to the note" do
-        Note.stub!(:find_by_name).and_return(mock_note(:update_attributes => true))
-        put :update, :id => "1"
-        response.should redirect_to(note_url(mock_note))
+        Note.stub!(:find).and_return(mock_note(:update_attributes => true))
+        put :update, :id => mock_note.id
+        response.should redirect_to(edit_note_path(mock_note))
       end
 
     end
@@ -264,7 +264,7 @@ describe NotesController, "初期作成されていないNoteへのアクセス�
     end
     it "note/showを描画すること" do
       get :show, :id => "user_quentin"
-      response.should render_template("notes/show")
+      response.should redirect_to(root_path(:note_id => mock_note.id))
     end
   end
 

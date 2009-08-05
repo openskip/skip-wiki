@@ -25,6 +25,7 @@ class NotesController < ApplicationController
     end
   end
 
+  # FIXME なくす
   # GET /notes/1
   # GET /notes/1.xml
   def show
