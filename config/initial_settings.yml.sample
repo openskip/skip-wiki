@@ -9,7 +9,9 @@ production:
     secret_key: "---FIXME----BEFORE---DEPLOYMENT---"
     skip_url: "http://product.skip.local"
   <<: *label_defaults
-  asset_path: "tmp/skip-wiki-assets/production"
+  quota:
+    <<: *quota
+   asset_path: "tmp/skip-wiki-assets/production"
 
 development:
   skip_collaboration:
