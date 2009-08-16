@@ -2,9 +2,9 @@ class AttachmentsController < ApplicationController
   include IframeUploader
   include ActionView::Helpers::NumberHelper # to format file size on JSON
 
-  before_filter :writable_user_required, :only => %w[new create]
+  before_filter :writable_user_required, :only => %w[new create destroy]
   before_filter :only_if_list_attachments_or_group_member, :only => %w[index list]
-  before_filter :accessible_attachment, :only => %w[show destroy]
+  before_filter :accessible_attachment, :only => %w[show]
 
   def index
     if params[:page_id]
@@ -95,7 +95,7 @@ class AttachmentsController < ApplicationController
   end
 
   def writable_user_required
-    unless current_user.page_editable?(current_note)
+    unless current_user.page_editable?(current_note||attachment.note)
       head(:forbidden)
     end
   end

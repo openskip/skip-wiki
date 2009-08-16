@@ -55,6 +55,10 @@ class Attachment < ActiveRecord::Base
     end
   end
 
+  def note
+    self.attachable_type == Note.to_s ? self.attachable : self.attachable.note
+  end
+
   private
   def validate_on_create
     adapter = ValidationsFileAdapter.new(self)
@@ -82,5 +86,4 @@ class Attachment < ActiveRecord::Base
   def normalized_ext
     File.extname(filename).downcase.sub(/\A^\./, "")
   end
-
 end
