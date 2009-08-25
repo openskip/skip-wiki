@@ -12,10 +12,12 @@
         %li
           -form_tag(note_page_path(current_note, @page), :method => "delete") do
             = submit_tag _("Page|Deleted") % {:entity => _("page")}, :confirm => _("Really delete?")
-      %li
-        - form_for([current_note, @page]) do |f|
-          = hidden_field :page, :published, :value=>(@page.published? ? 0 : 1)
-          = submit_tag((@page.published? ? _("Page|Unpublished") : _("Page|Published")))
+
+      - unless current_note.wikipedia?
+        %li
+          - form_for([current_note, @page]) do |f|
+            = hidden_field :page, :published, :value=>(@page.published? ? 0 : 1)
+            = submit_tag((@page.published? ? _("Page|Unpublished") : _("Page|Published")))
       %li
         = select_tag("label_change", label_navi(current_note))
         - form_for([current_note, @page], :html=>{:id=>"page_update"}) do |f|

@@ -1,9 +1,10 @@
 - content_for :header do
   =stylesheet_link_tag "jquery/ui.datepicker.css"
 
-%tr
-  %th= form.label(:published, h(_("Page|Published")))
-  %td= form.check_box(:published)
+- unless current_note.wikipedia?
+  %tr
+    %th= form.label(:published, h(_("Page|Published")))
+    %td= form.check_box(:published)
 
 %tr
   %th
