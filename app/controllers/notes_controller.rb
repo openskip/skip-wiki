@@ -105,7 +105,7 @@ class NotesController < ApplicationController
   private
   def note_to_json(note)
     { :display_name=>note.display_name,
-      :link_url=>note_path(note),
+      :link_url=>note_page_path(note, note.front_page),
       :publication_symbols => "note:#{note.id}" }
   end
 
