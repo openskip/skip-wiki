@@ -8,9 +8,10 @@
       %li.link= link_to_unless_current(_("Edit"), new_note_page_history_path(current_note, @page))
       %li.link= link_to_unless_current(_("History"), note_page_histories_path(current_note, @page))
 
-      %li
-        -form_tag(note_page_path(current_note, @page), :method => "delete") do
-          = submit_tag _("Page|Deleted") % {:entity => _("page")}, :confirm => _("Really delete?")
+      - unless @page.front_page?
+        %li
+          -form_tag(note_page_path(current_note, @page), :method => "delete") do
+            = submit_tag _("Page|Deleted") % {:entity => _("page")}, :confirm => _("Really delete?")
       %li
         - form_for([current_note, @page]) do |f|
           = hidden_field :page, :published, :value=>(@page.published? ? 0 : 1)
