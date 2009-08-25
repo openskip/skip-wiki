@@ -3,9 +3,12 @@
 
 - unless current_note.wikipedia?
   %tr
-    %th= form.label(:published, h(_("Page|Published")))
-    %td= form.check_box(:published)
-
+    %th= form.label(:published, h(_("Page|PublishRange")))
+    %td
+      %span.all_public= form.radio_button(:published, true)
+      %span= _("Public all")
+      %span.closed= form.radio_button(:published, false)
+      %span= _("Public only this wiki's member")
 %tr
   %th
     = form.label(:label_index_id, h(_("Page|Label indices")))
