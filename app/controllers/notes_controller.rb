@@ -1,29 +1,11 @@
 require 'skip_embedded/web_service_util/server'
 
 class NotesController < ApplicationController
-  skip_before_filter :authenticate, :only => %w[index]
-  before_filter :authenticate_with_api_or_login_required, :only => %w[index]
-  before_filter :is_wiki_initialized?, :except => %w[index new create]
-  before_filter :explicit_user_required, :except => %w[index new create]
+  before_filter :is_wiki_initialized?, :except => %w[new create]
+  before_filter :explicit_user_required, :except => %w[new create]
   include SkipEmbedded::WebServiceUtil::Server
 
   layout :select_layout
-
-  # GET /notes
-  # GET /notes.xml
-  def index
-    @notes = accessible.fulltext(params[:fulltext])
-
-    respond_to do |format|
-      format.html { @notes = @notes.paginate(paginate_option) }
-      format.xml { render :xml => @notes }
-      format.js { render :json => @notes.map{|n| note_to_json(n) } }
-      format.rss do
-        @notes.paginate(paginate_option.merge(:per_page=>20))
-        render :layout => false
-      end
-    end
-  end
 
   # FIXME なくす
   # GET /notes/1
