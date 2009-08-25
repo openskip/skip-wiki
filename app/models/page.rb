@@ -18,6 +18,7 @@ class Page < ActiveRecord::Base
 
   validates_associated :new_history, :if => :new_history, :on => :create
   validates_presence_of :content, :on => :create
+  validates_presence_of :display_name
 
   validates_inclusion_of :format_type, :in => %w[hiki html]
 
