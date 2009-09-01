@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: skip-note 1.0.0\n"
-"POT-Creation-Date: 2009-08-25 17:22+0900\n"
+"POT-Creation-Date: 2009-09-01 11:07+0900\n"
 "PO-Revision-Date: 2009-05-23 17:53+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -489,16 +489,10 @@ msgstr ""
 msgid "Note|Updated at"
 msgstr ""
 
-msgid "Note|Description"
-msgstr ""
-
 msgid "Note|Front page"
 msgstr ""
 
 msgid "Select group"
-msgstr ""
-
-msgid "Select category"
 msgstr ""
 
 msgid "Select publicity"
@@ -508,9 +502,6 @@ msgid "Select label navigation style"
 msgstr ""
 
 msgid "Input name"
-msgstr ""
-
-msgid "Input description"
 msgstr ""
 
 msgid "Select list attachments"
@@ -708,9 +699,6 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-msgid "Note|Discription"
-msgstr ""
-
 msgid "Page|Auther"
 msgstr ""
 
@@ -853,18 +841,6 @@ msgid "Page|Label indices"
 msgstr ""
 
 msgid "edit labels"
-msgstr ""
-
-msgid "Updated notes"
-msgstr ""
-
-msgid "The query find no notes."
-msgstr ""
-
-msgid "Updated page"
-msgstr ""
-
-msgid "No page exists"
 msgstr ""
 
 msgid "個人用ノート"
@@ -1066,9 +1042,6 @@ msgid "Login"
 msgstr ""
 
 msgid "Set up"
-msgstr ""
-
-msgid "Edit profile"
 msgstr ""
 
 msgid "Logout"

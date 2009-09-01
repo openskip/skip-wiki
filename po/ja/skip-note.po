@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: skip-note 1.0.0\n"
-"POT-Creation-Date: 2009-08-25 17:22+0900\n"
+"POT-Creation-Date: 2009-09-01 11:07+0900\n"
 "PO-Revision-Date: 2008-11-04 16:29+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgid "Search Note"
 msgstr "ノートを検索"
 
 msgid "Note was successfully updated."
-msgstr "ノート「%{note}」を作成しました。"
+msgstr "ノート「%{note}」の内容を更新しました。"
 
 msgid "validation error"
 msgstr "バリデーションエラーが発生しました。"
@@ -517,18 +517,12 @@ msgstr "更新日時"
 msgid "Note|Updated at"
 msgstr "更新日時"
 
-msgid "Note|Description"
-msgstr "ノートの説明"
-
 #, fuzzy
 msgid "Note|Front page"
 msgstr "表紙"
 
 msgid "Select group"
 msgstr "グループを選択"
-
-msgid "Select category"
-msgstr "カテゴリーを選択"
 
 msgid "Select publicity"
 msgstr "公開範囲を選択"
@@ -538,9 +532,6 @@ msgstr "分類バーの表示方法を選択"
 
 msgid "Input name"
 msgstr "名前を入力"
-
-msgid "Input description"
-msgstr "ノートの説明を入力"
 
 msgid "Select list attachments"
 msgstr "添付ファイル一覧へのアクセス"
@@ -745,9 +736,6 @@ msgstr "分類を追加"
 msgid "Create"
 msgstr "作成"
 
-msgid "Note|Discription"
-msgstr "ノートの説明"
-
 msgid "Page|Auther"
 msgstr "編集者"
 
@@ -892,18 +880,6 @@ msgstr "分類"
 
 msgid "edit labels"
 msgstr "[分類名を編集]"
-
-msgid "Updated notes"
-msgstr "更新されたノート"
-
-msgid "The query find no notes."
-msgstr "検索条件にヒットするページがありません。"
-
-msgid "Updated page"
-msgstr "更新されたページ"
-
-msgid "No page exists"
-msgstr "ページが存在しません"
 
 msgid "個人用ノート"
 msgstr ""
@@ -1111,9 +1087,6 @@ msgstr "ログイン"
 msgid "Set up"
 msgstr "システムの設定"
 
-msgid "Edit profile"
-msgstr "自分の管理"
-
 msgid "Logout"
 msgstr "ログアウト"
 
@@ -1149,6 +1122,33 @@ msgstr "ユーザ登録をしてください"
 
 msgid "Sign up"
 msgstr "登録する"
+
+#~ msgid "Note|Description"
+#~ msgstr "ノートの説明"
+
+#~ msgid "Select category"
+#~ msgstr "カテゴリーを選択"
+
+#~ msgid "Input description"
+#~ msgstr "ノートの説明を入力"
+
+#~ msgid "Note|Discription"
+#~ msgstr "ノートの説明"
+
+#~ msgid "Updated notes"
+#~ msgstr "更新されたノート"
+
+#~ msgid "The query find no notes."
+#~ msgstr "検索条件にヒットするページがありません。"
+
+#~ msgid "Updated page"
+#~ msgstr "更新されたページ"
+
+#~ msgid "No page exists"
+#~ msgstr "ページが存在しません"
+
+#~ msgid "Edit profile"
+#~ msgstr "自分の管理"
 
 #~ msgid "Page|Name"
 #~ msgstr "ページ識別子"
