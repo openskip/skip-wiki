@@ -5,7 +5,6 @@
       - if logged_in?
         %b&= current_user.name
         = "|" + link_to(_("Set up"), admin_root_path) if current_user.admin?
-        = "|" + link_to(_("Edit profile"), user_path(current_user))
         = "|" + link_to(_("Logout"), logout_path)
       - else
         = link_to _("Login"), login_path
