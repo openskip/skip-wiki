@@ -4,9 +4,8 @@ class Attachment < ActiveRecord::Base
 
   quota_each = QuotaValidation.lookup_setting(self,:each)
 
-  has_attachment :storage => :file_system,
+  has_attachment :storage => :db_file,
                  :size => 1..QuotaValidation.lookup_setting(self, :each),
-                 :path_prefix => "assets/uploaded_data/#{::Rails.env}",
                  :processor => :none
   attachment_options.delete(:size) # エラーメッセージカスタマイズのため、自分でバリデーションをかける
 
@@ -39,12 +38,6 @@ class Attachment < ActiveRecord::Base
   def filename=(new_name)
     super
     self.display_name = new_name
-  end
-
-  def full_filename(thumbnail=nil)
-    base = SkipEmbedded::InitialSettings["asset_path"] ||
-           File.expand_path("assets/uploaded_data/#{::Rails.env}", ::Rails.root)
-    File.join(base, *partitioned_path(thumbnail_name_for(thumbnail)))
   end
 
   def accessible?(notes,pages)

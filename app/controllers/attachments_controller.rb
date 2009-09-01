@@ -30,7 +30,7 @@ class AttachmentsController < ApplicationController
     opts[:filename] = URI.encode(@attachment.display_name) if msie?
     opts[:disposition] = "inline" if params[:position] == "inline"
 
-    send_file(@attachment.full_filename, opts)
+    send_data(@attachment.send(:current_data), opts)
   end
 
   def new
