@@ -12,7 +12,7 @@
       %span.operation&= _("[Click to hide]")
   - labels_and_pages.each do |label, pages|
     %div.label{:style=>"background:#{h(label.color)}"}
-      %h3= link_to h(label.display_name), note_pages_path(current_note, :label_index_id => label)
+      %h3= link_to h(label.display_name + "(#{pages.size})"), note_pages_path(current_note, :label_index_id => label)
       %div
         %ul.pages
           - pages.each do |p|
