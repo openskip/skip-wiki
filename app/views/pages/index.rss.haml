@@ -3,7 +3,6 @@
   %channel
     %title&= _("%{name}'s accessible pages.") % {:name => current_user.name}
     %link&= pages_path
-    %description&== aioue
     %dc:creator&= current_user.name
     - @pages.each do |page|
       %item

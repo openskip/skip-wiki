@@ -69,7 +69,7 @@
     -render_wizard(2, :select_label_navigation_style) do
       .wizard_content
         .topic
-          次のステップではページ表示時のラベルナビゲーションの表示方方を設定します。<br/>
+          次のステップではページ表示時のラベルナビゲーションの表示方法を設定します。<br/>
 
         %table.skipwiki
           - LabelIndex.navigation_styles.each do |style|
@@ -130,26 +130,7 @@
           %div{:style=>"margin:5px 0 0 10px;color:green"}
             = note_url("sonic_note")
 
-    -render_wizard(4, :input_description) do
-      .wizard_content
-        .topic
-          次のステップでは
-          %strong= _("Note|Description")
-          を入力してください。
-
-        %table.skipwiki
-          %tr
-            %td= f.label :description, _("Note|Description")
-            %td= f.text_field :description, :size=>"60"
-
-        .example
-          .h4 説明
-          ノートの内容を簡単に説明してください
-          %ul
-            - current_user.free_or_accessible_notes.recent.each do |note|
-              %li= note.description
-
-    -render_wizard(5, :select_list_attachments) do
+    -render_wizard(4, :select_list_attachments) do
       .wizard_content
         .topic
           次のステップでは
@@ -178,7 +159,7 @@
                 %li&= "そのノートの編集権限のないユーザも、添付ファイルの一覧にアクセスできます。"
                 %li&= "情報共有用のノートなど、全員で添付ファイルを共有する場合に選びます。"
 
-    - render_wizard(6, :confirm) do
+    - render_wizard(5, :confirm) do
       .wizard_content
         .topic
           この内容でよろしいですか?
@@ -202,9 +183,6 @@
             %td&= ""
           %tr.name
             %th&= _("Note|Name")
-            %td&= ""
-          %tr.description
-            %th&= _("Note|Description")
             %td&= ""
           %tr.list_attachments
             %th&= _("Note|List attachments")

@@ -1,6 +1,5 @@
 #current-note
   %div.note_title= current_note.front_page.is_a?(Page) ? link_to(current_note.display_name, note_page_path(current_note, current_note.front_page), :title => h(current_note.display_name)) : link_to(current_note.display_name, note_path(current_note), :title => h(current_note.display_name))
-  %div&= current_note.description
 
 #note-menu
   - if logged_in?

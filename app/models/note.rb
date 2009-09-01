@@ -7,13 +7,13 @@ class Note < ActiveRecord::Base
   PUBLIC_CONDITION = ["#{table_name}.publicity IN (:publicity)",
                       {:publicity => [PUBLICITY_READABLE, PUBLICITY_WRITABLE]} ].freeze
 
-  WIZARD_STEPS = [ N_("Select group"), N_("Select category"), N_("Select publicity"),
-                   N_("Select label navigation style"), N_("Input name"), N_("Input description"),
-                   N_("Select list attachments"), N_("Confirm") ].freeze
+  # TODO Wiki作成時のステップを保持する必要あるのか??
+  WIZARD_STEPS = [ N_("Select group"), N_("Select publicity"),
+                   N_("Select label navigation style"), N_("Input name"), N_("Select list attachments"), N_("Confirm") ].freeze
 
   validates_named_id_of :name
   validates_uniqueness_of :name
-  validates_presence_of :owner_group, :name, :display_name, :description
+  validates_presence_of :owner_group, :name, :display_name
   validates_inclusion_of :publicity, :in => (PUBLICITY_READABLE..PUBLICITY_MEMBER_ONLY)
 
   belongs_to :owner_group, :class_name => "Group"
@@ -67,7 +67,7 @@ class Note < ActiveRecord::Base
     return {} if word.blank?
     t = quoted_table_name
     w = "%#{word}%"
-    {:conditions => ["#{t}.display_name LIKE ? OR #{t}.description LIKE ?", w, w]}
+    {:conditions => ["#{t}.display_name LIKE ?", w]}
   }
 
   attr_writer :group_backend_type
@@ -115,7 +115,6 @@ class Note < ActiveRecord::Base
       attr = {
         :name => "wikipedia",
         :display_name => "wikipedia",
-        :description => "wikipedia",
         :publicity => Note::PUBLICITY_WRITABLE,
         :group_backend_type => "BuiltinGroup",
         # TODO カテゴリどうするのか検討

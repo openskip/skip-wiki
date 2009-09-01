@@ -25,7 +25,6 @@ class NoteBuilder
     attr = {
       :name => note_owner_str,
       :display_name => "#{name}'s wiki",
-      :description => "#{name}'s wiki",
       :publicity => Note::PUBLICITY_READABLE,
       # TODO カテゴリどうするのか検討
       :category_id => "1"
@@ -39,7 +38,6 @@ class NoteBuilder
     elsif type == "wikipedia"
       return nil unless user.admin?
       attr.merge!( :display_name => "wikipedia",
-                   :description => "wikipedia",
                    :publicity => Note::PUBLICITY_WRITABLE,
                    :group_backend_type => "BuiltinGroup" )
     else

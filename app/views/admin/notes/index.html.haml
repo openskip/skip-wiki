@@ -3,7 +3,6 @@
     %table.skipwiki.notes-index
       %tr
         %th.updated_title&= _('Note|Display name')
-        %th.description&= _('Note|Discription')
         %th.label&= _('label index')
         %th.page&= _('page')
         %th.attachment&= _('attachment')
@@ -11,17 +10,6 @@
       - for note in @notes
         %tr{:class => cycle('even', 'odd')}
           %td.updated_title&= note.display_name
-          %td.inplace-edit
-            - form_opt = {:url=>admin_note_path(note.name)}
-            .show
-              %span.note_description= note.description
-              %span.op.ipe-trigger&= _("Click to edit")
-            .edit{:style=>"display:none"}
-              - form_for :note, note, form_opt.merge(:html=>{:method=>"PUT",:style=>"display:visible"}) do |f|
-                = f.text_field :description, :size=>36, :id=>"#{note.id}_description"
-                = f.submit _("Update")
-                %span.indicator{:style=>"display:none"}= image_tag("skip/indicator.gif")
-                %span.op.ipe-cancel&= _("Cancel")
           %td.labels= link_to _('label index'), admin_note_label_indices_path(note)
           %td.page= link_to _('page'), admin_note_pages_path(note)
           %td.attachment= link_to _('attachment'), admin_note_attachments_path(note)

@@ -56,7 +56,6 @@ class SkipGroup < ActiveRecord::Base
     attr = {
       :name => "group_#{name}",
       :display_name => _("%s's wiki") % display_name,
-      :description => _("%s's wiki") % display_name,
       :publicity => Note::PUBLICITY_READABLE,
       :category_id => "1",
       :group_backend_type => "SkipGroup",
