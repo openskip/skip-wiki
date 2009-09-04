@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: skip-note 1.0.0\n"
-"POT-Creation-Date: 2009-09-04 16:22+0900\n"
+"POT-Creation-Date: 2009-09-04 17:16+0900\n"
 "PO-Revision-Date: 2008-11-04 16:29+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,6 +75,9 @@ msgstr "ユーザ検索"
 
 msgid "User was successfully updated."
 msgstr "ログインしました。"
+
+msgid "Let's make top page first."
+msgstr "最初にトップページを作成しましょう"
 
 msgid "Login required."
 msgstr ""

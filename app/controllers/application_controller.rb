@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
     if @note = current_note and @note.pages.size == 0 and current_user.note_editable?(@note)
       @note = current_note
       @page = @note.build_front_page
-      flash[:notice] = "最初にトップページを作成しましょう"
+      flash.now[:notice] = _("Let's make top page first.")
       render :template => "pages/init", :layout => "notes"
     end
   end
