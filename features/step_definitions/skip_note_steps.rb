@@ -55,20 +55,20 @@ Before do
   disable_sso
 end
 
-Given(/^ノート"(.*)"が作成済みである/) do |note_name|
+Given(/^Wiki"(.*)"が作成済みである/) do |note_name|
   builder = NoteBuilder.new(@user, valid_attributes[:note].merge({ :name => note_name, :display_name => note_name }))
   builder.note.save!
   @note = builder.note
 end
 
-Given( /^そのノートにはページ"(.*)"が作成済みである$/)  do |page_name|
+Given( /^そのWikiにはページ"(.*)"が作成済みである$/)  do |page_name|
   attrs = valid_attributes[:page].merge({ :display_name => page_name })
   attrs[:content_html] = "Content for the page `#{page_name}'"
   @page = @note.pages.add(attrs, @user)
   @page.save!
 end
 
-Given(/^そのノートにはラベル"(.*?)"が作成済みである$/)  do |label|
+Given(/^そのWikiにはラベル"(.*?)"が作成済みである$/)  do |label|
   @label = @note.label_indices.create!(valid_attributes[:label].merge(:display_name => label))
 end
 
@@ -83,17 +83,17 @@ Given( /^そのページの更新日時を"(\d+)"分進める$/ ) do |min|
   Page.update_all("updated_at = '#{t.to_s(:db)}'", ["id = ?", @page.id])
 end
 
-Given( /^ノート"(.*)"の情報を表示している$/) do |note|
+Given( /^Wiki"(.*)"の情報を表示している$/) do |note|
   visit note_path(note)
 end
 
-Given( /^ノート"(.*)"のページ"(.*)"を表示している$/) do |note_name, page_name|
+Given( /^Wiki"(.*)"のページ"(.*)"を表示している$/) do |note_name, page_name|
   note = Note.find_by_name(note_name)
   page = note.pages.find_by_display_name(page_name)
   visit note_page_path(note_name, page.id)
 end
 
-Given( /^ノート"(.*)"のページ"(.*)"を表示すると"(.*)"エラーが発生すること$/) do |note, page, e|
+Given( /^Wiki"(.*)"のページ"(.*)"を表示すると"(.*)"エラーが発生すること$/) do |note, page, e|
   begin
     visit note_page_path(note, page)
     flunk("No error raised.")
@@ -120,23 +120,23 @@ Given(/ペンディング:\s*(\w.+)$/) do |reason|
   pending(reason)
 end
 
-Given(/((?:ノート)|(?:ページ))メニューの"(\w+)"リンクをクリックする/) do |type, label|
+Given(/((?:Wiki)|(?:ページ))メニューの"(\w+)"リンクをクリックする/) do |type, label|
   container = {
-    "ノート" => "div#note-menu",
+    "Wiki" => "div#note-menu",
     "ページ" => "div#page-menu",
   }[type]
   Given %Q["#{container}"中の"#{label}"リンクをクリックする]
 end
 
-Given(/ノート"(\w+)"の公開範囲を「全員が読める。メンバーのみが書き込める。」に設定する/) do |note|
+Given(/Wiki"(\w+)"の公開範囲を「全員が読める。メンバーのみが書き込める。」に設定する/) do |note|
   Note.find_by_name(note).update_attributes!(:publicity => Note::PUBLICITY_READABLE)
 end
 
-Given(/ノート"(\w+)"の公開範囲を「メンバーのみが読み書きできる」に設定する/) do |note|
+Given(/Wiki"(\w+)"の公開範囲を「メンバーのみが読み書きできる」に設定する/) do |note|
   Note.find_by_name(note).update_attributes!(:publicity => Note::PUBLICITY_MEMBER_ONLY)
 end
 
-Given(/ノート"(\w+)"の公開範囲を「全員が読み書きできる」に設定する/) do |note|
+Given(/Wiki"(\w+)"の公開範囲を「全員が読み書きできる」に設定する/) do |note|
   Note.find_by_name(note).update_attributes!(:publicity => Note::PUBLICITY_WRITABLE)
 end
 

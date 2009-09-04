@@ -849,7 +849,7 @@ msgstr ""
 msgid "edit labels"
 msgstr ""
 
-msgid "個人用ノート"
+msgid "個人用Wiki"
 msgstr ""
 
 msgid "SKIPグループ"
@@ -868,7 +868,7 @@ msgid "全員が閲覧/書込できる"
 msgstr ""
 
 msgid ""
-"Wikipediaのようにみんなでコンテンツを作っていくノートにしたい場合に選びます。"
+"Wikipediaのようにみんなでコンテンツを作っていくWikiにしたい場合に選びます。"
 msgstr ""
 
 msgid "Note|GroupBackendType"

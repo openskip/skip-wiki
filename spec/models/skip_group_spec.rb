@@ -78,7 +78,7 @@ describe SkipGroup do
     describe "created SkipGroup" do
       subject{ SkipGroup.first }
       it{ subject.group.should have(3).users }
-      it "新規のノートが作成されていること" do
+      it "新規のWikiが作成されていること" do
         Note.find_by_name("group_#{subject.name}").should_not be_nil
       end
     end

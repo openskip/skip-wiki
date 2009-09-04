@@ -5,14 +5,14 @@
   背景:
     前提  固定OPの設定をする
     かつ  言語は"ja-JP"
-    かつ  ノート"test-note"が作成済みである
+    かつ  Wiki"test-note"が作成済みである
 
   シナリオ 未ログイン時は自動的に固定OPのログイン画面に遷移する
-    もし   ノート"test-note"のページ"FrontPage"を表示している
+    もし   Wiki"test-note"のページ"FrontPage"を表示している
     ならば SKIP固定OPのログイン画面が表示されていること
 
   シナリオ 固定OPでの認証後、サインアップ画面に遷移する
-    もし   ノート"test-note"のページ"FrontPage"を表示している
+    もし   Wiki"test-note"のページ"FrontPage"を表示している
     ならば SKIP固定OPのログイン画面が表示されていること
 
     もし   固定OPで識別子"fixedop-user"、名前"固定OPユーザ"としてログインする

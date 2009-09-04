@@ -36,7 +36,7 @@ describe Admin::PagesController do
       mock_scope.should_receive(:paginate).with('hoge').and_return([mock_page])
     end
 
-    it "ノートとキーワードでScopeされたページ一覧が取得できていること" do
+    it "WikiとキーワードでScopeされたページ一覧が取得できていること" do
       get :index, :note_id=>@current_note.name, :keyword => "keyword"
       assigns(:pages).should == [mock_page]
     end
@@ -73,7 +73,7 @@ describe Admin::PagesController do
       assigns(:page).should == @page
     end
 
-    it "our_note_page_1のノートが取得できていること" do
+    it "our_note_page_1のWikiが取得できていること" do
       assigns(:note).should == mock_note
     end
   end

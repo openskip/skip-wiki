@@ -29,22 +29,22 @@ msgid "Edit"
 msgstr "編集"
 
 msgid "note"
-msgstr "ノート"
+msgstr "Wiki"
 
 msgid "label index"
 msgstr "分類"
 
 msgid "Search Note"
-msgstr "ノートを検索"
+msgstr "Wikiを検索"
 
 msgid "Note was successfully updated."
-msgstr "ノート「%{note}」の内容を更新しました。"
+msgstr "Wiki「%{note}」の内容を更新しました。"
 
 msgid "validation error"
 msgstr "バリデーションエラーが発生しました。"
 
 msgid "Note was deleted successfully"
-msgstr "ノート「%{note}」を作成しました。"
+msgstr "Wiki「%{note}」を作成しました。"
 
 msgid "Note can't deleted."
 msgstr "添付ファイルの作成に失敗しました。"
@@ -59,7 +59,7 @@ msgid "edit property"
 msgstr "プロパティを編集"
 
 msgid "Page was successfully updated."
-msgstr "ノート「%{note}」を作成しました。"
+msgstr "Wiki「%{note}」を作成しました。"
 
 msgid "Page was deleted successfully"
 msgstr "ページを削除しました。"
@@ -89,7 +89,7 @@ msgid "Successfully update membership."
 msgstr "グループメンバーを追加しました。"
 
 msgid "Note `%{note}' was successfully created."
-msgstr "ノート「%{note}」を作成しました。"
+msgstr "Wiki「%{note}」を作成しました。"
 
 msgid "The page %{page} is successfully created"
 msgstr "「%{page}」を作成しました。"
@@ -137,7 +137,7 @@ msgid "Account|Index"
 msgstr "アカウント一覧"
 
 msgid "Jump to Note"
-msgstr "ノートに移動"
+msgstr "Wikiに移動"
 
 msgid "Hour"
 msgstr "時"
@@ -149,7 +149,7 @@ msgid "Back to %{page}"
 msgstr "%{page}に戻る"
 
 msgid "manage notes"
-msgstr "ノート管理"
+msgstr "Wiki管理"
 
 msgid "manage common files"
 msgstr "共通ファイル管理"
@@ -164,7 +164,7 @@ msgid "Showing revision %{rev}, edited by %{user} on %{date}."
 msgstr "リビジョン%{rev}を表示しています(%{user}が%{date}に更新)。"
 
 msgid "Note|Name"
-msgstr "ノート識別子"
+msgstr "Wiki識別子"
 
 msgid "Note|Publicity"
 msgstr "公開範囲"
@@ -174,7 +174,7 @@ msgid ""
 "This note's %{name_key} is '%{name_val}' and %{publicity_key} is '%"
 "{publicity_val}'."
 msgstr ""
-"このノートの%{name_key}は%{name_val}、%{publicity_key}は%{publicity_val}で"
+"このWikiの%{name_key}は%{name_val}、%{publicity_key}は%{publicity_val}で"
 "す。%{category_key}は%{category_val}です。"
 
 msgid "Note|Label navigation style"
@@ -203,10 +203,10 @@ msgid " and "
 msgstr "と"
 
 msgid "%{user_str} are accessible to the note"
-msgstr "%{user_str}がこのノートにアクセスできます。"
+msgstr "%{user_str}がこのWikiにアクセスできます。"
 
 msgid "%{group_str}'s members are accessible to the note"
-msgstr "%{group_str}グループのメンバーがこのノートにアクセスできます。"
+msgstr "%{group_str}グループのメンバーがこのWikiにアクセスできます。"
 
 msgid "Access by member only"
 msgstr "メンバーのみが読み書きできる"
@@ -230,7 +230,7 @@ msgid "new page"
 msgstr "ページを追加"
 
 msgid "show note"
-msgstr "ノート情報"
+msgstr "Wiki情報"
 
 msgid "Sending..."
 msgstr "送信中..."
@@ -270,7 +270,7 @@ msgstr "アクセス権"
 
 #, fuzzy
 msgid "Accessibility|Note"
-msgstr "編集可能なノート"
+msgstr "編集可能なWiki"
 
 #, fuzzy
 msgid "Accessibility|Group"
@@ -509,7 +509,7 @@ msgid "Membership|Updated at"
 msgstr "更新日時"
 
 msgid "Note|Display name"
-msgstr "ノート名"
+msgstr "Wiki名"
 
 msgid "Note|Category"
 msgstr "カテゴリ"
@@ -799,13 +799,13 @@ msgid "Group|Users"
 msgstr "グループのユーザ一覧"
 
 msgid "Users who can access to this note."
-msgstr "このノートのにアクセスできるユーザです。"
+msgstr "このWikiのにアクセスできるユーザです。"
 
 msgid "Users who belongs to this note."
 msgstr "このグループのユーザ一覧です。"
 
 msgid "Note Properties"
-msgstr "ノートのプロパティ"
+msgstr "Wikiのプロパティ"
 
 msgid "close"
 msgstr "[閉じる]"
@@ -856,10 +856,10 @@ msgid "Dashboard"
 msgstr "マイページ"
 
 msgid "new note"
-msgstr "ノートを作る"
+msgstr "Wikiを作る"
 
 msgid "Menu|Editable Notes"
-msgstr "編集可能なノート"
+msgstr "編集可能なWiki"
 
 msgid "Menu|Recent Pages"
 msgstr "新着ページ"
@@ -877,7 +877,7 @@ msgid "Next"
 msgstr "進む"
 
 msgid "edit note properties"
-msgstr "ノートのプロパティを編集"
+msgstr "Wikiのプロパティを編集"
 
 msgid "Note|LabelNavigationStyle"
 msgstr "分類バー表示"
@@ -888,7 +888,7 @@ msgstr "分類"
 msgid "edit labels"
 msgstr "[分類名を編集]"
 
-msgid "個人用ノート"
+msgid "個人用Wiki"
 msgstr ""
 
 msgid "SKIPグループ"
@@ -907,7 +907,7 @@ msgid "全員が閲覧/書込できる"
 msgstr ""
 
 msgid ""
-"Wikipediaのようにみんなでコンテンツを作っていくノートにしたい場合に選びます。"
+"Wikipediaのようにみんなでコンテンツを作っていくWikiにしたい場合に選びます。"
 msgstr ""
 
 msgid "Note|GroupBackendType"
@@ -1104,7 +1104,7 @@ msgid "Admin menu"
 msgstr "管理者メニュー"
 
 msgid "Search from Note"
-msgstr "ノートから検索"
+msgstr "Wikiから検索"
 
 msgid "404 Not Found"
 msgstr ""
@@ -1119,7 +1119,7 @@ msgid "User|Memberships"
 msgstr "所属グループ"
 
 msgid "User|Notes"
-msgstr "ノート一覧"
+msgstr "Wiki一覧"
 
 msgid "Edit user information"
 msgstr "ユーザ情報を修正"
@@ -1131,19 +1131,19 @@ msgid "Sign up"
 msgstr "登録する"
 
 #~ msgid "Note|Description"
-#~ msgstr "ノートの説明"
+#~ msgstr "Wikiの説明"
 
 #~ msgid "Select category"
 #~ msgstr "カテゴリーを選択"
 
 #~ msgid "Input description"
-#~ msgstr "ノートの説明を入力"
+#~ msgstr "Wikiの説明を入力"
 
 #~ msgid "Note|Discription"
-#~ msgstr "ノートの説明"
+#~ msgstr "Wikiの説明"
 
 #~ msgid "Updated notes"
-#~ msgstr "更新されたノート"
+#~ msgstr "更新されたWiki"
 
 #~ msgid "The query find no notes."
 #~ msgstr "検索条件にヒットするページがありません。"
@@ -1172,7 +1172,7 @@ msgstr "登録する"
 #~ msgstr "履歴"
 
 #~ msgid "BuiltinGroup note"
-#~ msgstr "ふつうのノート"
+#~ msgstr "ふつうのWiki"
 
 #~ msgid "SkipGroup note"
 #~ msgstr "SKIPグループ"
@@ -1266,7 +1266,7 @@ msgstr "登録する"
 #~ msgstr ">"
 
 #~ msgid "Note|Index"
-#~ msgstr "ノート一覧"
+#~ msgstr "Wiki一覧"
 
 #~ msgid "Page|Index"
 #~ msgstr "ページ一覧"
@@ -1363,7 +1363,7 @@ msgstr "登録する"
 #~ msgstr "【注意】宛先を修正して送信してください"
 
 #~ msgid "URL for \"%{note}\"'s \"%{page}\"."
-#~ msgstr "ノート「%{note}」のページ「%{page}」のURLを送ります。"
+#~ msgstr "Wiki「%{note}」のページ「%{page}」のURLを送ります。"
 
 #~ msgid "send mail"
 #~ msgstr "知らせる"

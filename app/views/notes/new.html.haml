@@ -14,15 +14,15 @@
     - render_wizard(0, :select_group) do
       .wizard_content
         .topic
-          新しくノートを作成しましょう！！！
+          新しくWikiを作成しましょう！！！
           <br/>
-          まずはノートを作成する対象を選択してください。
+          まずはWikiを作成する対象を選択してください。
 
         %table.skipwiki
           %tr
             %td
               =f.radio_button(:group_backend_type, "BuiltinGroup")
-              =f.label :group_backend_type, h(_"個人用ノート"), :for=>"note_group_backend_type_builtingroup"
+              =f.label :group_backend_type, h(_"個人用Wiki"), :for=>"note_group_backend_type_builtingroup"
             %td &nbsp;
           %tr
             %td
@@ -34,7 +34,7 @@
     -render_wizard(1, :select_publicity) do
       .wizard_content
         .topic
-          次のステップではノートの公開範囲を設定します。<br/>
+          次のステップではWikiの公開範囲を設定します。<br/>
 
         %table.skipwiki
           - [Note::PUBLICITY_MEMBER_ONLY, Note::PUBLICITY_READABLE, Note::PUBLICITY_WRITABLE].each do |pub|
@@ -49,22 +49,22 @@
             %li
               =h _"グループメンバーのみ閲覧/書込できる"
               %ul.sub
-                %li&= "そのノートにアクセス可能なグループのメンバーのみが読み書きできます。"
-                %li&= "プロジェクト内や特定のユーザのみで利用するノートにしたい場合に選びます。"
+                %li&= "そのWikiにアクセス可能なグループのメンバーのみが読み書きできます。"
+                %li&= "プロジェクト内や特定のユーザのみで利用するWikiにしたい場合に選びます。"
             %li
               =h _"全員が閲覧できる"
               %ul.sub
                 %li
                   グループメンバーが読み書きできるのに加え、<strong>グループに所属していないユーザ</strong>
-                  もノートの内容を閲覧することができます。
+                  もWikiの内容を閲覧することができます。
                 %li&= _"そのグループからグループ外に情報を発信したい場合に選びます。"
             %li
               =h _"全員が閲覧/書込できる"
               %ul.sub
                 %li
                   グループに所属していないユーザを含む、<strong>あらゆるユーザ</strong>
-                  が編集できるノートになります。
-                %li&= _"Wikipediaのようにみんなでコンテンツを作っていくノートにしたい場合に選びます。"
+                  が編集できるWikiになります。
+                %li&= _"Wikipediaのようにみんなでコンテンツを作っていくWikiにしたい場合に選びます。"
 
     -render_wizard(2, :select_label_navigation_style) do
       .wizard_content
@@ -97,7 +97,7 @@
               =h navi_style_label(LabelIndex::NAVIGATION_STYLE_ALWAYS)
               %ul.sub
                 %li&= "ラベルツールバーを常に表示します。"
-                %li&= "グループ内のノートなど、ナビゲーションが簡単に出きるようにしたい場合に選びます"
+                %li&= "グループ内のWikiなど、ナビゲーションが簡単に出きるようにしたい場合に選びます"
 
     -render_wizard(3, :select_input_name) do
       .wizard_content
@@ -118,7 +118,7 @@
 
         .example
           .h4 名称の例
-          最近作成されたノートの名称です。
+          最近作成されたWikiの名称です。
           %ul
             - current_user.free_or_accessible_notes.recent.each do |note|
               %li= note.display_name
@@ -126,7 +126,7 @@
         .example
           .h4 識別名の例
           // FIXME
-          例えば、グループのノートで識別名を<b><u>sonic_note</u></b>と入力すると、次のURLでアクセスできます。
+          例えば、グループのWikiで識別名を<b><u>sonic_note</u></b>と入力すると、次のURLでアクセスできます。
           %div{:style=>"margin:5px 0 0 10px;color:green"}
             = note_url("sonic_note")
 
@@ -146,18 +146,18 @@
 
         .example
           %h4 説明
-          ノートを呼んでいる一般ユーザに、添付ファイル一覧を表示するかどうかを設定します。
+          Wikiを呼んでいる一般ユーザに、添付ファイル一覧を表示するかどうかを設定します。
           %ul
             %li
               =h _("NOT list attachment for download.")
               %ul.sub
-                %li&= "そのノートの編集権限のないユーザは、添付ファイルの一覧にアクセスできません。"
+                %li&= "そのWikiの編集権限のないユーザは、添付ファイルの一覧にアクセスできません。"
                 %li&= "ページに埋め込まれたリンクからはダウンロードできます。"
             %li
               =h _("List attachment for download.")
               %ul.sub
-                %li&= "そのノートの編集権限のないユーザも、添付ファイルの一覧にアクセスできます。"
-                %li&= "情報共有用のノートなど、全員で添付ファイルを共有する場合に選びます。"
+                %li&= "そのWikiの編集権限のないユーザも、添付ファイルの一覧にアクセスできます。"
+                %li&= "情報共有用のWikiなど、全員で添付ファイルを共有する場合に選びます。"
 
     - render_wizard(5, :confirm) do
       .wizard_content

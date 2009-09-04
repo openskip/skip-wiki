@@ -53,7 +53,7 @@ describe Admin::ApplicationController, "#require_admin" do
       end
     end
 
-    describe "note_idにノートの名前が設定されている場合" do
+    describe "note_idにWikiの名前が設定されている場合" do
       before do
         controller.stub!(:authenticate).and_return(true)
         controller.stub!(:params).and_return({:note_id => 'hoge'})

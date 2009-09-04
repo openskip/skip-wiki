@@ -57,7 +57,7 @@ When /^"([^\"]*)"をチェックし、アクセストークンを発行する\Z/
   @access_token = OAuth::AccessToken.from_hash(consumer, access_token_params)
 end
 
-When /^OAuth経由でノートのRSSを取得する\Z/ do
+When /^OAuth経由でWikiのRSSを取得する\Z/ do
   assign_authorization_header(get_consumer){ create_signed_request(:get, "/notes.rss", @access_token) }
 
   visit "/notes.rss"

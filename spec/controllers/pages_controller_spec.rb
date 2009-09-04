@@ -84,7 +84,7 @@ describe PagesController do
       end
     end
 
-    describe "ノートに紐づくアップロード中のファイルがあった場合" do
+    describe "Wikiに紐づくアップロード中のファイルがあった場合" do
       it "file_attach_user=にloginしているユーザが設定されること" do
         controller.should_receive(:explicit_user_required).and_return true
 
@@ -207,7 +207,7 @@ describe PagesController, 'GET /' do
     @pages = mock('pages')
     @pages.stub(:build)
   end
-  describe '誰でも読み書きできるノートがある場合' do
+  describe '誰でも読み書きできるWikiがある場合' do
     before do
       @wikipedia = stub_model(Note)
       @wikipedia.stub_chain(:label_indices, :first).and_return(stub_model(LabelIndex, :id => 99))
@@ -250,7 +250,7 @@ describe PagesController, 'GET /' do
       end
     end
   end
-  describe '誰でも読み書きできるノートがない場合' do
+  describe '誰でも読み書きできるWikiがない場合' do
     before do
       Note.should_receive(:wikipedia).and_return(nil)
     end

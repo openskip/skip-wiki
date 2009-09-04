@@ -1,7 +1,7 @@
 require 'features/step_definitions/cuke_backend'
 
 RESOURCE_TO_PATH = {
-  "ノートのRSS" => "/notes.rss"
+  "WikiのRSS" => "/notes.rss"
 }.freeze
 
 def id_url(name)

@@ -295,21 +295,21 @@ describe Page do
 
   describe '#after_create' do
     fixtures :notes, :groups
-    describe '所属するノートの最初のページの場合' do
+    describe '所属するWikiの最初のページの場合' do
       before do
         @note = notes(:our_note)
         @note.pages.clear
         @front_page = Page.new(@valid_attributes)
         @front_page.edit('content', mock_model(User))
       end
-      it '所属するノートのfront_pageが設定されること' do
+      it '所属するWikiのfront_pageが設定されること' do
         lambda do
           @note.pages << @front_page
           @note.reload
         end.should change(@note, :front_page).from(nil).to(@front_page)
       end
     end
-    describe '所属するノートの最初のページ以外の場合' do
+    describe '所属するWikiの最初のページ以外の場合' do
     end
   end
 
