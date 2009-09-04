@@ -4,7 +4,6 @@
 - if !@page.deleted && current_user.page_editable?(current_note)
   #page-menu
     %ul.float
-      %li.link= link_to_unless_current(_("View"), [current_note, @page])
       %li.link= link_to_unless_current(_("Edit"), new_note_page_history_path(current_note, @page))
       %li.link= link_to_unless_current(_("History"), note_page_histories_path(current_note, @page))
 
@@ -18,6 +17,7 @@
           - form_for([current_note, @page]) do |f|
             = hidden_field :page, :published, :value=>(@page.published? ? 0 : 1)
             = submit_tag((@page.published? ? _("Page|Unpublished") : _("Page|Published")))
+
       %li
         = select_tag("label_change", label_navi(current_note))
         - form_for([current_note, @page], :html=>{:id=>"page_update"}) do |f|
