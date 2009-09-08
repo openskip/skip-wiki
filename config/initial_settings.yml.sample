@@ -1,3 +1,5 @@
+# eachに1MB以上指定する場合はMySQLの設定ファイルの"max_allowed_packet"がeachに指定した値より
+# 大きいことを確認してください
 quota: &quota
   attachment:
     system: 21474836480 #  20GB

@@ -145,7 +145,7 @@ class User < ActiveRecord::Base
 
   def accessible_attachment?(attachment)
     if attachment.attachable_type == Note.to_s
-      self.free_or_accessbile_notes.map{ |n| n.id }.include? attachment.attachable_id
+      self.free_or_accessible_notes.map{ |n| n.id }.include? attachment.attachable_id
     else
       self.accessible_pages.map{ |p| p.id }.include? attachment.attachable_id
     end
