@@ -46,7 +46,7 @@
 
     jQuery("<div>").addClass("form").append(
       jQuery("<iframe>").attr("src", config["src"]["form"]).load(attachUploader)
-    ).appendTo(root);
+    ).append("<div style='margin-left:80px; color: gray;'>" + config["message"] + "</div>").appendTo(root);
 
     var targetIFrame = jQuery("<iframe>").attr("src", config["src"]["target"]).attr("name", config["target"]).
       one("load", function(){ jQuery(this).load(afterLoadCallback); });

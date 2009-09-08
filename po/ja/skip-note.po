@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: skip-note 1.0.0\n"
-"POT-Creation-Date: 2009-09-04 17:16+0900\n"
+"POT-Creation-Date: 2009-09-08 17:41+0900\n"
 "PO-Revision-Date: 2008-11-04 16:29+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -174,8 +174,8 @@ msgid ""
 "This note's %{name_key} is '%{name_val}' and %{publicity_key} is '%"
 "{publicity_val}'."
 msgstr ""
-"このWikiの%{name_key}は%{name_val}、%{publicity_key}は%{publicity_val}で"
-"す。%{category_key}は%{category_val}です。"
+"このWikiの%{name_key}は%{name_val}、%{publicity_key}は%{publicity_val}です。%"
+"{category_key}は%{category_val}です。"
 
 msgid "Note|Label navigation style"
 msgstr "分類バーの表示方法"
@@ -246,6 +246,9 @@ msgstr "絞り込み"
 
 msgid "Input keyword to search"
 msgstr "検索したいキーワードを入れてください"
+
+msgid "Upload file should be up to  %s M"
+msgstr "※アップロードできるファイルのサイズは %s Mまでです"
 
 msgid "show page"
 msgstr "ページを表示"
@@ -1003,9 +1006,6 @@ msgstr "分類"
 msgid "No Labels"
 msgstr "分類なし"
 
-msgid "View"
-msgstr "表示"
-
 msgid "History"
 msgstr "履歴"
 
@@ -1129,6 +1129,9 @@ msgstr "ユーザ登録をしてください"
 
 msgid "Sign up"
 msgstr "登録する"
+
+#~ msgid "View"
+#~ msgstr "表示"
 
 #~ msgid "Note|Description"
 #~ msgstr "Wikiの説明"

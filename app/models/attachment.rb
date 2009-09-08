@@ -2,15 +2,15 @@ class Attachment < ActiveRecord::Base
   include ::QuotaValidation
   include ::SkipEmbedded::ValidationsFile
 
-  quota_each = QuotaValidation.lookup_setting(self,:each)
+  QUOTA_EACH = QuotaValidation.lookup_setting(self,:each)
 
   has_attachment :storage => :db_file,
                  :size => 1..QuotaValidation.lookup_setting(self, :each),
                  :processor => :none
   attachment_options.delete(:size) # エラーメッセージカスタマイズのため、自分でバリデーションをかける
 
-  validates_inclusion_of :size, :in => 1..quota_each, :message =>
-    "#{quota_each.to_i/1.megabyte}Mバイト以上のファイルはアップロードできません。"
+  validates_inclusion_of :size, :in => 1..QUOTA_EACH, :message =>
+    "#{QUOTA_EACH.to_i/1.megabyte}Mバイト以上のファイルはアップロードできません。"
   validates_quota_of :size, :system, :message =>
     "のシステム全体における保存領域の利用容量が最大値を越えてしまうためアップロードできません。"
   validates_quota_of :size, :per_note, :scope => :attachable_id, :message =>

@@ -179,7 +179,7 @@
       root.find("h3 span").click(hidePalette);
       root.find('#palette-tab').tabs({selected: 0});
       initPageSearchField(root.find("#palette-pages"));
-      activate()
+      activate();
     }
 
     root.find("#upload-attachment").iframeUploader(jQuery.extend(config["uploader"], {callback: uploaderCallback}));

@@ -1,5 +1,3 @@
-
-
 module PagesHelper
   def fullscreen_action?(note = current_note)
     return true if note.label_navigation_style == LabelIndex::NAVIGATION_STYLE_NONE
@@ -77,6 +75,7 @@ module PagesHelper
   def palette_opt(page)
     form_src_query = IframeUploader.palette_opt
     form_src_query.merge!(:page_id => page.id) if page.id
+    file_max_size = Attachment::QUOTA_EACH.to_i/1.megabyte
     attachments_url = page.new_record? ? note_attachments_url(current_note) : note_page_attachments_url(current_note, page)
     {
       :editor => "history_content",
@@ -88,12 +87,13 @@ module PagesHelper
                  :navi_next => _("NEXT")},
         :page_search => {:show_all => _("Show all"),
                          :filter   => _("Filter"),
-                         :keyword  => _("Input keyword to search")}
+                         :keyword  => _("Input keyword to search")},
       },
       :uploader => {:target => IframeUploader::UPLOAD_KEY,
                     :trigger => "submit",
         :src => {:form =>   new_note_attachment_path(current_note, form_src_query),
                  :target => note_attachments_path(current_note, IframeUploader.palette_opt) },
+        :message => _("Upload file should be up to  %s M") % file_max_size,
                     :callback => nil }
     }
   end
