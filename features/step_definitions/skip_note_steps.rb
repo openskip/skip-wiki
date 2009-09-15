@@ -4,7 +4,6 @@ valid_attributes = {
   :note => {
     :name => "value for name",
     :display_name => "value for display_name",
-    :description => "value for note description",
     :publicity => 0,
     :category_id => "1",
     :group_backend_type => "BuiltinGroup",
@@ -92,6 +91,17 @@ Given( /^Wiki"(.*)"のページ"(.*)"を表示している$/) do |note_name, pag
   page = note.pages.find_by_display_name(page_name)
   visit note_page_path(note_name, page.id)
 end
+
+Given( /^Wiki"(.*)"のトップページ"(.*)"を作成する$/) do |note_name, page_name|
+  note = Note.find_by_name(note_name)
+  attrs = valid_attributes[:page].merge({ :display_name => page_name })
+  page = note.build_front_page
+  page.attributes = attrs
+  content = "#{note_name} のトップページへようこそ!"
+  page.edit(content, @user)
+  page.save
+end
+
 
 Given( /^Wiki"(.*)"のページ"(.*)"を表示すると"(.*)"エラーが発生すること$/) do |note, page, e|
   begin

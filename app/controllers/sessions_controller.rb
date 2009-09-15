@@ -11,6 +11,12 @@ class SessionsController < ApplicationController
   use_attribute_exchange(["http://axschema.org", "http://schema.openid.net"],
                          :display_name => "/namePerson", :name => "/namePerson/friendly" )
 
+  # SKIPと連携するため基本は必要ない
+  def new
+    super
+    @wiki_nosearchable = true
+  end
+
   def destroy
     super
     flash[:notice] = _("You have been logged out.")

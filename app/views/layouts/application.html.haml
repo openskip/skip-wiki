@@ -7,28 +7,29 @@
 
     = render :partial=>"shared/flash_message"
 
-    #right_menu
-      .box_space
-        .box_space_title
-          = _("Menu|Editable Notes")
-        .box_space_body
-          %div= select_tag("notes", notes_navi_on_header(current_user))
+    - unless @wiki_nosearchable
+      #right_menu
+        .box_space
+          .box_space_title
+            = _("Menu|Editable Notes")
+            .box_space_body
+              %div= select_tag("notes", notes_navi_on_header(current_user))
 
-      .box_space
-        .box_space_title
-          = _("Menu|Recent Pages")
-        .box_space_body
-          - recent_pages(current_user).each do |page|
-            %p.page_title= link_to h(page.display_name), note_page_path(page.note, page)
-            %p.note_title&= "#{page.note.display_name}"
+              .box_space
+                .box_space_title
+                  = _("Menu|Recent Pages")
+                  .box_space_body
+                    - recent_pages(current_user).each do |page|
+                      %p.page_title= link_to h(page.display_name), note_page_path(page.note, page)
+                      %p.note_title&= "#{page.note.display_name}"
 
-          %span.operation= link_to(_("more..."), pages_path)
+                      %span.operation= link_to(_("more..."), pages_path)
 
 
-      :javascript
-        jQuery(document).ready(function(){
-          $("#right_menu select").dropdownNavigation();
-        });
+        :javascript
+          jQuery(document).ready(function(){
+            $("#right_menu select").dropdownNavigation();
+          });
 
 
     #left_contents
