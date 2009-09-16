@@ -1,34 +1,25 @@
 フィーチャ: セッション管理
   利用者として
-  ユーザ登録とログインをしたい
-
-  シナリオ: サインアップ
-    前提 I log in with OpenId "http://localhost:3200/user/moro"
-
-    もし I fill in "User|Name" with "moro"
-    かつ I fill in "User|Display Name" with "A User Human Name"
-    かつ I press "Sign up"
-
-    ならば I should see "Thanks for signing up!"
-    かつ   "Login ID: moro"と表示されていること
+  ログインをしたい
 
   シナリオ: ログインとログアウト
     前提   言語は"ja-JP"
-    かつ   ユーザ"alice"を登録する
-    かつ   ユーザのIdentity URLを"http://localhost:3200/user/alice"として登録する
-    もし   OpenId "http://localhost:3200/user/alice"でログインする
-    ならば I should not see "Thanks for signing up!"
+    かつ   Wikiを利用するための準備が完了している
 
-    ならば  "ログインID: alice"と表示されていること
+    もし   OpenId "http://localhost:3200/user/alice"でログインする
+    ならば "Thanks for signing up!"と表示されていないこと
+    ならば  "alice"と表示されていること
 
     もし   "ログアウト"リンクをクリックする
     ならば "OpenIDでログインできます"と表示されていること
-    かつ   "ログインID: alice"と表示されていないこと
+    かつ   "alice"と表示されていないこと
 
   シナリオ: ログイン失敗
+    pending
     前提   言語は"ja-JP"
+    ならば ペンディング:ログイン失敗時の仕様を決めていないため
     もし   OpenId "http://localhost:3200/user/alice"でログイン失敗する
 
     ならば "OpenIDでログインできます"と表示されていること
-    かつ   "ログインID: alice"と表示されていないこと
+    かつ   "alice"と表示されていないこと
 

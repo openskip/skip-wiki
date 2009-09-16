@@ -1,3 +1,11 @@
+When /Wikiを利用するための準備が完了している/ do
+  When 'ユーザ"alice"を管理者として登録し、ログインする'
+  When 'Wiki"a_note"が作成済みである'
+  When 'Wiki"a_note"の公開範囲を「全員が読み書きできる」に設定する'
+  When 'Wiki"a_note"のトップページ"FrontPage"を作成する'
+  When '"ログアウト"リンクをクリックする'
+end
+
 When /Wikiのラベルバー設定を"([^\"]*)"にする/ do |val|
   When 'Wikiメニューの"プロパティ"リンクをクリックする'
   When '"Wikiのプロパティを編集"リンクをクリックする'

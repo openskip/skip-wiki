@@ -7,7 +7,7 @@
 
     = render :partial=>"shared/flash_message"
 
-    - unless @wiki_nosearchable
+    - if !@wiki_nosearchable and current_user
       #right_menu
         .box_space
           .box_space_title
