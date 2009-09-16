@@ -161,3 +161,14 @@ end
 Then /^flashメッセージに"([^\"]*)"と表示されていること$/ do |message|
   response.body.should =~ /#{Regexp.escape(message.to_json)}/m
 end
+
+Given /^ページ"([^\"]*)"にファイル"([^\"]*)"をContent-Type"([^\"]*)"として添付する$/ do |page_name, file_name, file_type|
+  attachment = Page.new.attachments.build(:attachable_id => Page.find_by_display_name(page_name).id)
+  # FIXME attributesで引数を渡してもうまくいかない
+  attachment.content_type = file_type
+  attachment.user_id = @user.id
+  attachment.filename = file_name
+  attachment.size = 1.kilobytes
+  attachment.display_name = file_name.split("/").last
+  attachment.save!
+end

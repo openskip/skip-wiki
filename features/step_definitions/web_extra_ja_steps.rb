@@ -2,10 +2,6 @@ Given /^言語は"([^\"]*)"$/ do |lang|
   header("ACCEPT_LANGUAGE", lang)
 end
 
-When /^"([^\"]*)"としてファイル"([^\"]*)"をContent\-Type"([^\"]*)"として添付する$/ do |field, path, content_type|
-  attach_file(field, path, content_type)
-end
-
 When /"([^\"]*)"中の"([^\"]*)"リンクをクリックする$/ do |element, label|
   click_link_within(element, label)
 end
