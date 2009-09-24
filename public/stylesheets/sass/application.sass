@@ -34,7 +34,7 @@
 
 div#content_top
   :border-bottom 1px solid silver
-  :margin-left 5px
+  :padding 10px 0 10px 20px
 
 div#note-menu
   ul.float
@@ -105,6 +105,7 @@ div.init_note
   :border-left 1px solid silver
   :padding-top 2px
   :padding-right 2px
+  :padding-left 5px
   :width 150px
   :float right
   :padding 1px
@@ -119,8 +120,9 @@ div.init_note
     :color gray
     :border-bottom 1px dotted silver
 
+// IE懸念のため
 #left_contents
-  :margin-right 160px
+  :margin-right 155px
 
 #select_my_note
   :position relative
@@ -180,10 +182,9 @@ div.init_note
     :margin-left = !content_margin
 
   .page-header
-    :padding 5px 0
+    :padding 5px 0 0 10px
     :border-left 1px solid silver
     :border-right 1px solid silver
-    :border-bottom 1px solid silver
 
     .page-name
       :height 35px
@@ -539,7 +540,7 @@ div.label-navigation
     h3
       :margin 0
       :width 95%
-      :border-bottm 1px solid silver
+      :border-bottom 1px solid silver
       :background none
       :border 0
 

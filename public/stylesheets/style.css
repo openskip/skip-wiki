@@ -16,7 +16,6 @@ div#main {
 div#content_for_layout {
   position: relative;
   background-color: white;
-  padding-bottom:3px;
   overflow-y: visible;
   overflow: hidden;
   _width: 100%;
