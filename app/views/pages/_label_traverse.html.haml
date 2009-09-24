@@ -16,6 +16,8 @@
       %div
         %ul.pages
           - pages.each do |p|
+            // TODO リファクタ　横線引くためだけにつけている
+            %p
             %li= link_to(h(p.display_name), note_page_path(current_note, p))
 
 :javascript
