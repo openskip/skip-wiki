@@ -3,6 +3,10 @@ module NotesHelper
     !!arr[num]
   end
 
+  def wiki_display_name_ipe_option(base={})
+    {:messages => {:sending => _("Sending...")}}.merge(base)
+  end
+
   def explain_note(note = current_note)
     opts = {
       :name_key => content_tag("span", _("Note|Name") , :class=>"key"),

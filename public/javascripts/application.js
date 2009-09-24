@@ -343,13 +343,33 @@ application.post = function(form, parameters) {
 
 application.callbacks = {
   pageDisplaynameEditor : function(root, req, stat){
+    var location = req.getResponseHeader("location");
+
     if(stat == "success"){
       var data = jQuery.httpData( req, "json")["page"];
-      root.find("span.title").text(data["display_name"]).effect("highlight", {}, 2*1000);
+      root.find("span.title").html(
+        "<a href='" + location + "'>" +  data["display_name"] + "</a>").effect("highlight", {}, 2*1000);
       root.find("form input[type=text]").val(data["display_name"]);
     } else if(stat == "parsererror" && req.responseText.match(/\s*/)){
-      root.find("span.title").text(
-        root.find("form input[type=text]").val()
+      root.find("span.title").html(
+        "<a href='" + location + "'>" + root.find("form input[type=text]").val() + "</a>"
+      ).effect("highlight", {}, 2*1000);
+    } else if(stat == "error" && req.status == "422"){
+      alert(req.responseText);
+    }
+  },
+
+  wikiDisplaynameEditor : function(root, req, stat){
+    var location = req.getResponseHeader("location");
+
+    if(stat == "success"){
+      var data = jQuery.httpData( req, "json")["wiki"];
+      root.find("span.note_title").html(
+        "<a href='" + location + "'>" +  data["display_name"] + "</a>").effect("highlight", {}, 2*1000);
+      root.find("form input[type=text]").val(data["display_name"]);
+    } else if(stat == "parsererror" && req.responseText.match(/\s*/)){
+      root.find("span.note_title").html(
+        "<a href='" + location + "'>" + root.find("form input[type=text]").val() + "</a>"
       ).effect("highlight", {}, 2*1000);
     } else if(stat == "error" && req.status == "422"){
       alert(req.responseText);

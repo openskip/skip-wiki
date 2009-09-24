@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: skip-note 1.0.0\n"
-"POT-Creation-Date: 2009-09-15 15:24+0900\n"
+"POT-Creation-Date: 2009-09-24 17:43+0900\n"
 "PO-Revision-Date: 2008-11-04 16:29+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -798,18 +798,6 @@ msgstr "ファイル一覧"
 msgid "Attach file(s)"
 msgstr "ファイルを添付"
 
-msgid "Group|Users"
-msgstr "グループのユーザ一覧"
-
-msgid "Users who can access to this note."
-msgstr "このWikiのにアクセスできるユーザです。"
-
-msgid "Users who belongs to this note."
-msgstr "このグループのユーザ一覧です。"
-
-msgid "Note Properties"
-msgstr "Wikiのプロパティ"
-
 msgid "close"
 msgstr "[閉じる]"
 
@@ -848,10 +836,6 @@ msgstr "変更を表示"
 
 msgid "Back to Hisotries"
 msgstr "履歴一覧に戻る"
-
-#, fuzzy
-msgid "label"
-msgstr "分類を追加"
 
 msgid "Label index for %{note}"
 msgstr "「%{note}」の分類一覧"
@@ -919,6 +903,9 @@ msgstr ""
 
 msgid "Note|GroupBackendType"
 msgstr "管理対象の種別"
+
+msgid "Note Properties"
+msgstr "Wikiのプロパティ"
 
 msgid "Users and Groups"
 msgstr "ユーザとグループ"
@@ -1101,8 +1088,11 @@ msgstr "システムの設定"
 msgid "Logout"
 msgstr "ログアウト"
 
-msgid "Property"
-msgstr "プロパティ"
+msgid "Wiki Name|Edit"
+msgstr "[Wiki名を編集]"
+
+msgid "Wiki|Display name"
+msgstr "Wiki名"
 
 msgid "Admin menu"
 msgstr "管理者メニュー"
@@ -1133,6 +1123,22 @@ msgstr "ユーザ登録をしてください"
 
 msgid "Sign up"
 msgstr "登録する"
+
+#~ msgid "Group|Users"
+#~ msgstr "グループのユーザ一覧"
+
+#~ msgid "Users who can access to this note."
+#~ msgstr "このWikiのにアクセスできるユーザです。"
+
+#~ msgid "Users who belongs to this note."
+#~ msgstr "このグループのユーザ一覧です。"
+
+#, fuzzy
+#~ msgid "label"
+#~ msgstr "分類を追加"
+
+#~ msgid "Property"
+#~ msgstr "プロパティ"
 
 #~ msgid "View"
 #~ msgstr "表示"

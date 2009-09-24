@@ -58,16 +58,22 @@ class NotesController < ApplicationController
   # PUT /notes/1.xml
   def update
     @note = current_note
+    l=Logger.new("#{RAILS_ROOT}/log/development.log")
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
-        #TODO メッセージの修正
-        flash[:notice] = _('Note was successfully updated.') % {:note => @note.display_name }
-        format.html { redirect_to(:action=>"edit") }
+        format.html do
+          #TODO メッセージの修正
+          flash[:notice] = _('Note was successfully updated.') % {:note => @note.display_name }
+          redirect_to(:action=>"edit")
+        end
         format.xml  { head :ok }
+        # TODO Wiki名変更後はリンクにする
+        format.js { head(:ok, :location => note_path(current_note)) }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @note.errors, :status => :unprocessable_entity }
+        format.js  { render :xml => @note.errors, :status => :unprocessable_entity }
       end
     end
   end

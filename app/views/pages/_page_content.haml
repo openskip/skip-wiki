@@ -40,7 +40,7 @@
 
   .page-name
     .show
-      %span.title&= @page.display_name
+      %span.title= link_to(@page.display_name, note_page_path(current_note, @page))
       - if !@page.deleted && current_user.page_editable?(current_note)
         %span.ipe-trigger.operation=_("Page Name|Edit")
     - if !@page.deleted && current_user.page_editable?(current_note)

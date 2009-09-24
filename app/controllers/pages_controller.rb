@@ -99,7 +99,7 @@ class PagesController < ApplicationController
           flash[:notice] = _("The page %{page} is successfully updated") % {:page=>@page.display_name}
           redirect_to note_page_path(@note, @page)
         }
-        format.js{ head :ok }
+        format.js{ head(:ok, :location => note_page_path(@note, @page)) }
       end
     rescue ActiveRecord::RecordInvalid
       respond_to do |format|
