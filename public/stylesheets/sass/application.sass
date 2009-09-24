@@ -550,6 +550,9 @@ div.label-navigation
       ul.pages li
         :margin 5px auto
         :margin-left 30px
+      ul.pages li a
+        :color = !link_color
+        :font-size 12px
 
 .user-bar
   ul.float
@@ -795,7 +798,7 @@ table.attachment-list
       :font-size = !modern_page_font_size
 
 #linkPalette.enabled
-  :z-index 1
+  :z-index 3
   :position absolute
   :background #ffffff
   :width 500px
