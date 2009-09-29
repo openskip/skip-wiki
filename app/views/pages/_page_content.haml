@@ -5,12 +5,6 @@
   #page-menu
     %ul.float
       %li.link= link_to_unless_current(_("Edit"), new_note_page_history_path(current_note, @page))
-      %li.link= link_to_unless_current(_("History"), note_page_histories_path(current_note, @page))
-
-      - unless @page.front_page?
-        %li
-          -form_tag(note_page_path(current_note, @page), :method => "delete") do
-            = submit_tag _("Page|Deleted") % {:entity => _("page")}, :confirm => _("Really delete?")
 
       - unless current_note.wikipedia?
         %li
@@ -18,10 +12,6 @@
             = hidden_field :page, :published, :value=>(@page.published? ? 0 : 1)
             = submit_tag((@page.published? ? _("Page|Unpublished") : _("Page|Published")))
 
-      %li
-        = select_tag("label_change", label_navi(current_note))
-        - form_for([current_note, @page], :html=>{:id=>"page_update"}) do |f|
-          = hidden_field :page, :label_index_id
     .clear
     .status
       = @page.published? ? _("Published") : _("Not yet")

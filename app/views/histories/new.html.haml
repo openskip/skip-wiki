@@ -14,7 +14,16 @@
           %ul.float
             %li.hide= link_to(_("Hide preview"), '#', :class => "operation")
             %li.show= link_to(_("Show preview"), '#', :class => "operation")
-          %span.operation.trigger= _("Link Palette")
+            %li.link= link_to_unless_current(_("History"), note_page_histories_path(current_note, @page))
+            %li.operation.trigger= _("Link Palette")
+            %li
+              = select_tag("label_change", label_navi(current_note))
+              - form_for([current_note, @page], :html=>{:id=>"page_update"}) do |f|
+                = hidden_field :page, :label_index_id
+            - unless @page.front_page?
+              %li
+                -form_tag(note_page_path(current_note, @page), :method => "delete") do
+                  = submit_tag _("Page|Deleted") % {:entity => _("page")}, :confirm => _("Really delete?")
           .rendered.rich_style
       = text_area_tag("history[content]", @page.content, :id=>"history_content", :size=>"100x20")
 
