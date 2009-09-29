@@ -33,6 +33,11 @@
       %span.title= link_to(@page.display_name, note_page_path(current_note, @page))
       - if !@page.deleted && current_user.page_editable?(current_note)
         %span.ipe-trigger.operation=_("Page Name|Edit")
+      %span
+        = select_tag("label_change", label_navi(current_note))
+        - form_for([current_note, @page], :html=>{:id=>"page_update"}) do |f|
+          = hidden_field :page, :label_index_id
+
     - if !@page.deleted && current_user.page_editable?(current_note)
       .edit{:style=>"display:none"}
         - form_for([current_note, @page]) do |f|

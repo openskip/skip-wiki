@@ -729,10 +729,10 @@ msgid "Link Palette"
 msgstr "[画像やリンクを挿入]"
 
 msgid "Hide preview"
-msgstr "プレビューを隠す"
+msgstr "[プレビューを隠す]"
 
 msgid "Show preview"
-msgstr "プレビューを表示"
+msgstr "[プレビューを表示]"
 
 msgid "Modified, need to save."
 msgstr "未保存の編集があります。更新ボタンをおして保存してください。"

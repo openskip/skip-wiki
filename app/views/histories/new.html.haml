@@ -7,23 +7,17 @@
   #linkPalette{:style=>"display:none"}= render :partial => 'histories/link_palette'
   - form_for(:history, @history, :url=>note_page_histories_path(current_note, @page)) do |f|
     // TODO IEで表示するとtext_area_tagが表示されなくなる
-    %table.input.skipwiki
     %div.content
-      - if @page.format_type == "hiki"
-        .preview
+      .preview
+        %ul.float{:style=>"float:right; margin-right: 85px;"}
+          %li.link= link_to_unless_current(_("History"), note_page_histories_path(current_note, @page))
+          - unless @page.front_page?
+            %li= link_to _("Page|Deleted") % {:entity => _("page")}, note_page_path(current_note, @page), :confirm => _("Really delete?"), :method => :delete
+        - if @page.format_type == "hiki"
           %ul.float
-            %li.hide= link_to(_("Hide preview"), '#', :class => "operation")
-            %li.show= link_to(_("Show preview"), '#', :class => "operation")
-            %li.link= link_to_unless_current(_("History"), note_page_histories_path(current_note, @page))
-            %li.operation.trigger= _("Link Palette")
-            %li
-              = select_tag("label_change", label_navi(current_note))
-              - form_for([current_note, @page], :html=>{:id=>"page_update"}) do |f|
-                = hidden_field :page, :label_index_id
-            - unless @page.front_page?
-              %li
-                -form_tag(note_page_path(current_note, @page), :method => "delete") do
-                  = submit_tag _("Page|Deleted") % {:entity => _("page")}, :confirm => _("Really delete?")
+            %li.hide{:style=>"font-size: 12px;"}= link_to(_("Hide preview"), '#', :class => "operation")
+            %li.show{:style=>"font-size: 12px;"}= link_to(_("Show preview"), '#', :class => "operation")
+            %span.operation.trigger{:style=>"font-size: 12px;"}= _("Link Palette")
           .rendered.rich_style
       = text_area_tag("history[content]", @page.content, :id=>"history_content", :size=>"100x20")
 
