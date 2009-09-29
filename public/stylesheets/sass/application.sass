@@ -103,12 +103,9 @@ div.init_note
 
 #right_menu
   :border-left 1px solid silver
-  :padding-top 2px
-  :padding-right 2px
-  :padding-left 5px
   :width 150px
   :float right
-  :padding 1px
+  :padding 1px 0 0 5px
 
   select
     :width 140px
@@ -123,6 +120,7 @@ div.init_note
 // IE懸念のため
 #left_contents
   :margin-right 155px
+  :border-right 1px solid silver
 
 #select_my_note
   :position relative
@@ -942,6 +940,7 @@ table.label-indices
 #content_for_layout
   #content
     .page-header, .page-name
+      :border-right none
       :width auto
       :height auto
       :min-height 35px
