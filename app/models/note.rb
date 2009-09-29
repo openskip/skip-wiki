@@ -113,8 +113,8 @@ class Note < ActiveRecord::Base
     end
     unless wikipedia
       attr = {
-        :name => "wikipedia",
-        :display_name => "wikipedia",
+        :name => "free_wiki",
+        :display_name => "誰でも読み書きできるWiki",
         :publicity => Note::PUBLICITY_WRITABLE,
         :group_backend_type => "BuiltinGroup",
         # TODO カテゴリどうするのか検討

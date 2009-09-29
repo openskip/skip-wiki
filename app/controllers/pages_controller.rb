@@ -129,7 +129,6 @@ class PagesController < ApplicationController
 
   def root
     @note = current_note
-    # FIXME firstではダメな気がするので後でちゃんと直す
     @page = @note.front_page
     @page ? render(:action => :show) : render_not_found
   end
