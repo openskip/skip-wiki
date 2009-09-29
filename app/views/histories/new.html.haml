@@ -8,18 +8,13 @@
   - form_for(:history, @history, :url=>note_page_histories_path(current_note, @page)) do |f|
     // TODO IEで表示するとtext_area_tagが表示されなくなる
     %table.input.skipwiki
-      %tr
-        %th
-          %label{:for=>"history_content"}&= _("Page|Content")
-        %td
-          %span.operation.trigger= _("Link Palette")
     %div.content
       - if @page.format_type == "hiki"
         .preview
           %ul.float
             %li.hide= link_to(_("Hide preview"), '#', :class => "operation")
             %li.show= link_to(_("Show preview"), '#', :class => "operation")
-          .clear
+          %span.operation.trigger= _("Link Palette")
           .rendered.rich_style
       = text_area_tag("history[content]", @page.content, :id=>"history_content", :size=>"100x20")
 
