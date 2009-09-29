@@ -1,14 +1,14 @@
 - content_for :floating do
   .labels-form
     = render :partial => 'label_indices/new'
-    %span.operation&= _("close")
+    %span.label-operation&= _("close")
 
 #current-note
   .show
     %span.note_title= current_note.front_page.is_a?(Page) ? link_to(current_note.display_name, note_page_path(current_note, current_note.front_page), :title => h(current_note.display_name)) : link_to(current_note.display_name, note_path(current_note), :title => h(current_note.display_name))
     - if current_note and current_user.note_editable?(current_note)
       %span.ipe-trigger.operation=_("Wiki Name|Edit")
-      %span.operation&= _("edit labels")
+      %span.label-operation&= _("edit labels")
   - if current_user.note_editable?(current_note)
     .edit{:style=>"display:none"}
       - form_for(current_note) do |f|
@@ -46,8 +46,8 @@
   $(document).ready(function(){
     var label_form = $("div.labels-form");
     label_form.manageLabel();
-    $("span.operation").click(function(){ label_form.show() });
-    $("div.labels-form > span.operation").click(function(){
+    $("span.label-operation").click(function(){ label_form.show() });
+    $("div.labels-form > span.label-operation").click(function(){
       label_form.hide();
       $(".label-indices").reloadLabelSelect(#{{:url=>note_label_indices_path(current_note)}.to_json});
     });
