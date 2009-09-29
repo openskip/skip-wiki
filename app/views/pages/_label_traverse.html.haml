@@ -2,9 +2,9 @@
   labels_and_pages = pages_indexed_by_label(current_note.label_indices,
                                             current_user.page_editable?(current_note))
 
-  order, = labels_and_pages.enum_with_index.detect{|(l,ps),n| ps.include?(@page) }
+  selected_num = labels_and_pages.enum_with_index.detect{|(l,ps),n| ps.include?(@page) }.last
 
-  acordion_opt = { :header => "h3", :autoHeight => false, :active => order || 0 }
+  acordion_opt = { :header => "h3", :autoHeight => false, :active => selected_num || 0 }
 .label-navigation
 
   - if current_note.label_navigation_style == LabelIndex::NAVIGATION_STYLE_TOGGLE
