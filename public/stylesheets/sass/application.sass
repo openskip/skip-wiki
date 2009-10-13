@@ -208,6 +208,19 @@ div.init_note
       :padding 10px 0 5px 0
       li
         :padding-right 5px
+    .page-menu
+      :margin-bottom 15px
+      span.operation.trigger
+        :margin-top 5px
+      ul.float
+        :float right
+        :margin-right 30px
+        li
+          :margin auto 1px
+          a
+            :color = !link_color
+            :font-size 14px
+            :font-weight normal
 
   .page-attachments
     :border-left 1px solid silver
@@ -221,17 +234,6 @@ div.init_note
   .two_pain
     :margin-left= !navigation_width+1
     :_margin-left= !navigation_width
-
-  .current-title
-    ul.float
-      :float right
-      :margin -8px 0 0 10px
-      li
-        :margin auto 1px
-        a
-          :color = !link_color
-          :font-size 14px
-          :font-weight normal
 
 .contents-layout
   :padding 2px 10px 5px 10px
