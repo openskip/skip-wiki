@@ -1,18 +1,19 @@
 - content_for(:header) do
-  =javascript_include_tag("fckeditor/fckeditor.js")
   =javascript_include_tag("linkPalette")
+  =javascript_include_tag("skip_embedded/ckeditor/ckeditor.js")
 
-%h2.current-title&= _("edit content")
+%div.current-title
+  %span&= _("edit content")
+  %ul.float
+    %li= link_to_unless_current(_("History"), note_page_histories_path(current_note, @page))
+    - unless @page.front_page?
+      %li= link_to _("Page|Deleted") % {:entity => _("page")}, note_page_path(current_note, @page), :confirm => _("Really delete?"), :method => :delete
 - div_for(@page) do
   #linkPalette{:style=>"display:none"}= render :partial => 'histories/link_palette'
   - form_for(:history, @history, :url=>note_page_histories_path(current_note, @page)) do |f|
     // TODO IEで表示するとtext_area_tagが表示されなくなる
     %div.content
       .preview
-        %ul.float{:style=>"float:right; margin-right: 85px;"}
-          %li.link= link_to_unless_current(_("History"), note_page_histories_path(current_note, @page))
-          - unless @page.front_page?
-            %li= link_to _("Page|Deleted") % {:entity => _("page")}, note_page_path(current_note, @page), :confirm => _("Really delete?"), :method => :delete
         - if @page.format_type == "hiki"
           %ul.float
             %li.hide{:style=>"font-size: 12px;"}= link_to(_("Hide preview"), '#', :class => "operation")
@@ -32,19 +33,9 @@
   $(document).ready(function(){
     jQuery("div.content").skipEditor({
       "currentFormatType" : "#{@page.format_type}",
-      "richEditor": {"name": "history_content", "basePath": "#{ActionController::Base.relative_url_root}/javascripts/fckeditor/", "height":350},
+      "richEditor": {"name": "history_content", "basePath": "#{url_for(%q[/javascripts/skip_embedded/ckeditor_config.js])}", "height":350},
       "hikiEditor": {"selector" : "#history_content", "preview":{"selector":"div.preview", "url": "#{preview_new_note_page_path(current_note)}"} },
       "linkPalette" : jQuery.extend({"selector":"#linkPalette"}, #{palette_opt(@page).to_json})
     });
   });
-
-  function FCKeditor_OnComplete( editorInstance ){
-    editorInstance.Events.AttachEvent( 'OnSelectionChange', function (editorInstance){
-      if(editorInstance.IsDirty()){
-        jQuery(".page form").find("input[type=submit]").enable().end().find("span.notice").show();
-      }else{
-        jQuery(".page form").find("input[type=submit]").disable().end().find("span.notice").hide();
-      }
-    });
-  }
 

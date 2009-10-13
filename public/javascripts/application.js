@@ -67,7 +67,6 @@
   jQuery.fn.skipEditor = function(config){
     var root = this;
     var form = root.parents("form");
-
     function HikiEditor(){ this.initialize.apply(this, arguments); };
     HikiEditor.prototype = {
       initialize : function(textarea, preview){
@@ -112,16 +111,38 @@
     function RichEditor(){ this.initialize.apply(this, arguments); };
     RichEditor.prototype = {
       initialize : function(editorName, basePath, height){
-        var editor = new FCKeditor(editorName, "100%", height||"330", "Normal") ;
-        editor.BasePath = basePath;
-        editor.ReplaceTextarea() ;
+        var options = {
+          'customConfig': basePath,
+          'toolbar': 'Entry',
+        };
 
-        this.api = function(){ return FCKeditorAPI.GetInstance(editorName) };
+        var ckeditor = CKEDITOR.replace(editorName, options);
+        var flag = true
+
+        ckeditor.on('selectionChange', function (editorInstance){
+          if(editorInstance.editor.checkDirty() && flag){
+            jQuery(".page form").find("input[type=submit]").enable().end().find("span.notice").show();
+          }else if(editorInstance.editor.checkDirty()){
+            flag = true;
+          }else{
+            jQuery(".page form").find("input[type=submit]").disable().end().find("span.notice").hide();
+          }
+        });
+        ckeditor.on('reset', function (editorInstance){
+          jQuery(".page form").find("input[type=submit]").disable().end().find("span.notice").hide();
+        });
+
+        this.api = function(){ return ckeditor };
+        this.flag = function(){ return flag };
+        this.setFlag = function(boolean){ flag = boolean };
       },
-      setData : function(content){ this.api().SetData(content, true) },
-      getData : function(force){ return this.api().GetData(force) },
-      needToSave: function(){ return this.api().IsDirty() && (jQuery.trim( this.api().GetHTML(true) ).length > 0); },
-      insert : function(elem){ this.api().InsertHtml(elem.wrap('<span></span>').parent().html()); }
+      setData : function(content){
+        jQuery(".page form").find("input[type=submit]").disable().end().find("span.notice").hide();
+        this.setFlag(false);
+        this.api().setData(content, true) },
+      getData : function(force){ return this.api().getData(force) },
+      needToSave: function(){ return this.api().checkDirty() && (jQuery.trim( this.api().getData() ).length > 0) && this.flag(); },
+      insert : function(elem){ alert(elem); this.api().insertHtml(elem.wrap('<span></span>').parent().html()); }
     }
 
     function SwitchableEditor(){ this.initialize.apply(this, arguments) };
@@ -212,7 +233,7 @@
     if(config["submit_to_save"]){
       jQuery("input[type=radio][name='page[format_type]']").change(function(){ editorApi.editor() });
     } else {
-      addDynamicSave();
+          addDynamicSave();
     };
 
     jQuery(config["linkPalette"]["selector"] || "#linkPalette").linkPalette(
