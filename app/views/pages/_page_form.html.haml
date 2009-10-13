@@ -19,11 +19,126 @@
       = form.select("label_index_id", label_navi_for_new_page(current_note))
       %p.input-label
         = text_field_tag 'label[display_name]'
+        = hidden_field :label, :color
         %label{:for => "label_display_name"}
           %span.help&=_("Edit Label|Name Desc")
-      %p.input-label
-        = text_field_tag 'label[color]'
-        %label{:for => "label_color"}
-          %span.help&=_("Edit Label|Color Desc")
-    .clear
+      %ul.choice-color
+        %li
+          %a.color1{:style => "color: #b0e0e6"}= "■"
+        %li
+          %a.color2{:style => "color: #add8e6"}= "■"
+        %li
+          %a.color3{:style => "color: #87cefa"}= "■"
+        %li
+          %a.color4{:style => "color: #98fb98"}= "■"
+        %li
+          %a.color5{:style => "color: #adff2f"}= "■"
+        %li
+          %a.color6{:style => "color: #7fff00"}= "■"
+        %li
+          %a.color7{:style => "color: #ffc0cb"}= "■"
+        %li
+          %a.color8{:style => "color: #ffb6c1"}= "■"
+        %li
+          %a.color9{:style => "color: #ff99c4"}= "■"
+        %li
+          %a.color10{:style => "color: #f5f5f5"}= "■"
+      %div.confirm-label-color
+        %span= "分類作成イメージ"
+        %span.demo= "テスト"
+  .clear
+
+:javascript
+  $(document).ready(function(){
+    jQuery("a.color1").click(function(){
+      if(jQuery("#label_display_name").val()){
+        var title = jQuery("#label_display_name").val();
+      }else{
+        var title = "テスト";
+      };
+      jQuery("span.demo").css("background-color", "#b0e0e6").css("color", "black").html(title);
+      jQuery("#label_color").val("#b0e0e6");
+    });
+    jQuery("a.color2").click(function(){
+      if(jQuery("#label_display_name").val()){
+        var title = jQuery("#label_display_name").val();
+      }else{
+        var title = "テスト";
+      };
+      jQuery("span.demo").css("background-color", "#add8e6").css("color", "black").html(title);
+      jQuery("#label_color").val("#add8e6");
+    });
+    jQuery("a.color3").click(function(){
+      if(jQuery("#label_display_name").val()){
+        var title = jQuery("#label_display_name").val();
+      }else{
+        var title = "テスト";
+      };
+      jQuery("span.demo").css("background-color", "#87cefa").css("color", "black").html(title);
+      jQuery("#label_color").val("#87cefa");
+    });
+    jQuery("a.color4").click(function(){
+      if(jQuery("#label_display_name").val()){
+        var title = jQuery("#label_display_name").val();
+      }else{
+        var title = "テスト";
+      };
+      jQuery("span.demo").css("background-color", "#98fb98").css("color", "black").html(title);
+      jQuery("#label_color").val("#98fb98");
+    });
+    jQuery("a.color5").click(function(){
+      if(jQuery("#label_display_name").val()){
+        var title = jQuery("#label_display_name").val();
+      }else{
+        var title = "テスト";
+      };
+      jQuery("span.demo").css("background-color", "#adff2f").css("color", "black").html(title);
+      jQuery("#label_color").val("#adff2f");
+    });
+    jQuery("a.color6").click(function(){
+      if(jQuery("#label_display_name").val()){
+        var title = jQuery("#label_display_name").val();
+      }else{
+        var title = "テスト";
+      };
+      jQuery("span.demo").css("background-color", "#7fff00").css("color", "black").html(title);
+      jQuery("#label_color").val("#7fff00");
+    });
+    jQuery("a.color7").click(function(){
+      if(jQuery("#label_display_name").val()){
+        var title = jQuery("#label_display_name").val();
+      }else{
+        var title = "テスト";
+      };
+      jQuery("span.demo").css("background-color", "#ffc0cb").css("color", "black").html(title);
+      jQuery("#label_color").val("#ffc0cb");
+    });
+    jQuery("a.color8").click(function(){
+      if(jQuery("#label_display_name").val()){
+        var title = jQuery("#label_display_name").val();
+      }else{
+        var title = "テスト";
+      };
+      jQuery("span.demo").css("background-color", "#ffb6c1").css("color", "black").html(title);
+      jQuery("#label_color").val("#ffb6c1");
+    });
+    jQuery("a.color9").click(function(){
+      if(jQuery("#label_display_name").val()){
+        var title = jQuery("#label_display_name").val();
+      }else{
+        var title = "テスト";
+      };
+      jQuery("span.demo").css("background-color", "#ff99c4").css("color", "black").html(title);
+      jQuery("#label_color").val("#ff99c4");
+    });
+    jQuery("a.color10").click(function(){
+      if(jQuery("#label_display_name").val()){
+        var title = jQuery("#label_display_name").val();
+      }else{
+        var title = "テスト";
+      };
+      jQuery("span.demo").css("background-color", "#f5f5f5").css("color", "black").html(title);
+      jQuery("#label_color").val("#f5f5f5");
+    });
+  });
 
