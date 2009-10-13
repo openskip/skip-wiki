@@ -23,26 +23,9 @@
         %label{:for => "label_display_name"}
           %span.help&=_("Edit Label|Name Desc")
       %ul.choice-color
-        %li
-          %a.color1{:style => "color: #b0e0e6"}= "■"
-        %li
-          %a.color2{:style => "color: #add8e6"}= "■"
-        %li
-          %a.color3{:style => "color: #87cefa"}= "■"
-        %li
-          %a.color4{:style => "color: #98fb98"}= "■"
-        %li
-          %a.color5{:style => "color: #adff2f"}= "■"
-        %li
-          %a.color6{:style => "color: #7fff00"}= "■"
-        %li
-          %a.color7{:style => "color: #ffc0cb"}= "■"
-        %li
-          %a.color8{:style => "color: #ffb6c1"}= "■"
-        %li
-          %a.color9{:style => "color: #ff99c4"}= "■"
-        %li
-          %a.color10{:style => "color: #f5f5f5"}= "■"
+        - label_colors.each_with_index do |color, class_name_index|
+          %li
+            %a{:class => "color#{class_name_index+1}", :style => "color: #{color}"}= "■"
       %div.confirm-label-color
         %span= "分類作成イメージ"
         %span.demo= "テスト"
@@ -50,95 +33,25 @@
 
 :javascript
   $(document).ready(function(){
-    jQuery("a.color1").click(function(){
-      if(jQuery("#label_display_name").val()){
-        var title = jQuery("#label_display_name").val();
-      }else{
-        var title = "テスト";
-      };
-      jQuery("span.demo").css("background-color", "#b0e0e6").css("color", "black").html(title);
-      jQuery("#label_color").val("#b0e0e6");
-    });
-    jQuery("a.color2").click(function(){
-      if(jQuery("#label_display_name").val()){
-        var title = jQuery("#label_display_name").val();
-      }else{
-        var title = "テスト";
-      };
-      jQuery("span.demo").css("background-color", "#add8e6").css("color", "black").html(title);
-      jQuery("#label_color").val("#add8e6");
-    });
-    jQuery("a.color3").click(function(){
-      if(jQuery("#label_display_name").val()){
-        var title = jQuery("#label_display_name").val();
-      }else{
-        var title = "テスト";
-      };
-      jQuery("span.demo").css("background-color", "#87cefa").css("color", "black").html(title);
-      jQuery("#label_color").val("#87cefa");
-    });
-    jQuery("a.color4").click(function(){
-      if(jQuery("#label_display_name").val()){
-        var title = jQuery("#label_display_name").val();
-      }else{
-        var title = "テスト";
-      };
-      jQuery("span.demo").css("background-color", "#98fb98").css("color", "black").html(title);
-      jQuery("#label_color").val("#98fb98");
-    });
-    jQuery("a.color5").click(function(){
-      if(jQuery("#label_display_name").val()){
-        var title = jQuery("#label_display_name").val();
-      }else{
-        var title = "テスト";
-      };
-      jQuery("span.demo").css("background-color", "#adff2f").css("color", "black").html(title);
-      jQuery("#label_color").val("#adff2f");
-    });
-    jQuery("a.color6").click(function(){
-      if(jQuery("#label_display_name").val()){
-        var title = jQuery("#label_display_name").val();
-      }else{
-        var title = "テスト";
-      };
-      jQuery("span.demo").css("background-color", "#7fff00").css("color", "black").html(title);
-      jQuery("#label_color").val("#7fff00");
-    });
-    jQuery("a.color7").click(function(){
-      if(jQuery("#label_display_name").val()){
-        var title = jQuery("#label_display_name").val();
-      }else{
-        var title = "テスト";
-      };
-      jQuery("span.demo").css("background-color", "#ffc0cb").css("color", "black").html(title);
-      jQuery("#label_color").val("#ffc0cb");
-    });
-    jQuery("a.color8").click(function(){
-      if(jQuery("#label_display_name").val()){
-        var title = jQuery("#label_display_name").val();
-      }else{
-        var title = "テスト";
-      };
-      jQuery("span.demo").css("background-color", "#ffb6c1").css("color", "black").html(title);
-      jQuery("#label_color").val("#ffb6c1");
-    });
-    jQuery("a.color9").click(function(){
-      if(jQuery("#label_display_name").val()){
-        var title = jQuery("#label_display_name").val();
-      }else{
-        var title = "テスト";
-      };
-      jQuery("span.demo").css("background-color", "#ff99c4").css("color", "black").html(title);
-      jQuery("#label_color").val("#ff99c4");
-    });
-    jQuery("a.color10").click(function(){
-      if(jQuery("#label_display_name").val()){
-        var title = jQuery("#label_display_name").val();
-      }else{
-        var title = "テスト";
-      };
-      jQuery("span.demo").css("background-color", "#f5f5f5").css("color", "black").html(title);
-      jQuery("#label_color").val("#f5f5f5");
-    });
-  });
+    var colors = #{label_colors.to_json};
+    for(var i in colors){
+      var num = parseInt(i)+1;
+      var class = "a.color"+String(num);
 
+      jQuery(class).click(function(){
+        if(jQuery("#label_display_name").val()){
+          var title = jQuery("#label_display_name").val();
+        }else{
+          var title = "テスト";
+        };
+
+        var color = jQuery(this).css("color");
+        var rgb = jQuery(this).css("color").slice(jQuery(this).css("color").indexOf("(")+1, jQuery(this).css("color").indexOf(")")).split(",");
+        // RGB -> #FFFFFF変換
+        var color_code = ((1<<24)+(parseInt(rgb[0])<<16)+(parseInt(rgb[1])<<8)+parseInt(rgb[2])).toString(16).replace(/^1/,'#')
+        jQuery("span.demo").css("background-color", color_code).css("color", "black").html(title);
+        jQuery("#label_color").val(color_code);
+      });
+    }
+
+  });

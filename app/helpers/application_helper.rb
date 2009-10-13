@@ -75,6 +75,11 @@ jQuery(function(){
     user.accessible_pages.recent(menu_item_num)
   end
 
+  def label_colors
+    ["#b0e0e6", "#add8e6", "#87cefa", "#98fb98", "#adff2f",
+     "#7fff00", "#7fff00", "#ffb6c1", "#ff99c4", "#f5f5f5"]
+  end
+
   private
   def locale
     GetText.locale
