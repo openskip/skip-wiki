@@ -177,7 +177,7 @@
       root.css("left", ev.pageX + "px");
 
       root.find("h3 span").click(hidePalette);
-      root.find('#palette-tab').tabs({selected: 0});
+      root.find('#palette-tab').tabs({selected: 2});
       initPageSearchField(root.find("#palette-pages"));
       activate();
     }
