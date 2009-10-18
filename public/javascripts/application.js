@@ -142,7 +142,7 @@
         this.api().setData(content, true) },
       getData : function(force){ return this.api().getData(force) },
       needToSave: function(){ return this.api().checkDirty() && (jQuery.trim( this.api().getData() ).length > 0) && this.flag(); },
-      insert : function(elem){ alert(elem); this.api().insertHtml(elem.wrap('<span></span>').parent().html()); }
+      insert : function(elem){ this.api().insertHtml(elem.wrap('<span></span>').parent().html()); }
     }
 
     function SwitchableEditor(){ this.initialize.apply(this, arguments) };

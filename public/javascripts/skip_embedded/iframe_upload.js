@@ -11,6 +11,10 @@
     };
     function attachSubmitUploader(f){
       f.submit(function(){
+        f.find("input[type=submit]").attr("disabled", "disabled");
+        setTimeout(function(){
+          f.find("input[type=submit]").attr("disabled", false);
+        },3000);
         var indicator = f.find("td.indicator img").show();
         f.get(0).submit();
         indicator.hide();
