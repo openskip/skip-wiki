@@ -16,16 +16,18 @@
     %span.operation&= _("edit labels")
   %td
     .label-indices
+      %p.help&=_("Select Label")
       = form.select("label_index_id", label_navi_for_new_page(current_note))
       %p.input-label
+        %p.help&=_("Edit Label|Name Desc")
         = text_field_tag 'label[display_name]'
         = hidden_field :label, :color
         %label{:for => "label_display_name"}
-          %span.help&=_("Edit Label|Name Desc")
       %ul.choice-color
         - label_colors.each_with_index do |color, class_name_index|
           %li
             %a{:class => "color#{class_name_index+1}", :style => "color: #{color}"}= "■"
+      .clear
       %div.confirm-label-color
         %span= "分類作成イメージ"
         %span.demo= "テスト"

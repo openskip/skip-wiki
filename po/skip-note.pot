@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: skip-note 1.0.0\n"
-"POT-Creation-Date: 2009-09-24 17:43+0900\n"
+"POT-Creation-Date: 2009-10-18 15:18+0900\n"
 "PO-Revision-Date: 2009-05-23 17:53+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -161,6 +161,9 @@ msgstr ""
 msgid "Showing revision %{rev}, edited by %{user} on %{date}."
 msgstr ""
 
+msgid "Sending..."
+msgstr ""
+
 msgid "Note|Name"
 msgstr ""
 
@@ -223,9 +226,6 @@ msgid "new page"
 msgstr ""
 
 msgid "show note"
-msgstr ""
-
-msgid "Sending..."
 msgstr ""
 
 msgid "Insert Link"
@@ -795,6 +795,12 @@ msgstr ""
 msgid "Show diff"
 msgstr ""
 
+msgid "History"
+msgstr ""
+
+msgid "Really delete?"
+msgstr ""
+
 msgid "Back to Hisotries"
 msgstr ""
 
@@ -955,12 +961,6 @@ msgstr ""
 msgid "No Labels"
 msgstr ""
 
-msgid "History"
-msgstr ""
-
-msgid "Really delete?"
-msgstr ""
-
 msgid "Page|Unpublished"
 msgstr ""
 
@@ -979,10 +979,10 @@ msgstr ""
 msgid "Public only this wiki's member"
 msgstr ""
 
-msgid "Edit Label|Name Desc"
+msgid "Select Label"
 msgstr ""
 
-msgid "Edit Label|Color Desc"
+msgid "Edit Label|Name Desc"
 msgstr ""
 
 msgid "Recover %{entity}"

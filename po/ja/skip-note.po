@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: skip-note 1.0.0\n"
-"POT-Creation-Date: 2009-09-24 17:43+0900\n"
+"POT-Creation-Date: 2009-10-18 15:18+0900\n"
 "PO-Revision-Date: 2008-11-04 16:29+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -163,6 +163,9 @@ msgstr "前"
 msgid "Showing revision %{rev}, edited by %{user} on %{date}."
 msgstr "リビジョン%{rev}を表示しています(%{user}が%{date}に更新)。"
 
+msgid "Sending..."
+msgstr "送信中..."
+
 msgid "Note|Name"
 msgstr "Wiki識別子"
 
@@ -231,9 +234,6 @@ msgstr "ページを追加"
 
 msgid "show note"
 msgstr "Wiki情報"
-
-msgid "Sending..."
-msgstr "送信中..."
 
 msgid "Insert Link"
 msgstr "リンクを挿入"
@@ -834,6 +834,12 @@ msgstr "から"
 msgid "Show diff"
 msgstr "変更を表示"
 
+msgid "History"
+msgstr "履歴"
+
+msgid "Really delete?"
+msgstr "本当に削除しますか?"
+
 msgid "Back to Hisotries"
 msgstr "履歴一覧に戻る"
 
@@ -997,12 +1003,6 @@ msgstr "分類"
 msgid "No Labels"
 msgstr "分類なし"
 
-msgid "History"
-msgstr "履歴"
-
-msgid "Really delete?"
-msgstr "本当に削除しますか?"
-
 msgid "Page|Unpublished"
 msgstr "未公開にする"
 
@@ -1021,11 +1021,11 @@ msgstr "全体に公開"
 msgid "Public only this wiki's member"
 msgstr "このWikiの参加メンバーのみ公開"
 
-msgid "Edit Label|Name Desc"
-msgstr "選択項目にない分類を作る場合には、ここに名前を入力して下さい。"
+msgid "Select Label"
+msgstr "[既存の分類から選択する場合は、ここから選択してください。]"
 
-msgid "Edit Label|Color Desc"
-msgstr "ここには色を16進数形式で入力して下さい。Ex)#7FFF00"
+msgid "Edit Label|Name Desc"
+msgstr "[新規分類を作る場合には、以下に名前を入力し、好きな色を選択してください。]"
 
 msgid "Recover %{entity}"
 msgstr "%{entity}を復旧する"
@@ -1124,6 +1124,9 @@ msgstr "ユーザ登録をしてください"
 msgid "Sign up"
 msgstr "登録する"
 
+#~ msgid "Edit Label|Color Desc"
+#~ msgstr "ここには色を16進数形式で入力して下さい。Ex)#7FFF00"
+
 #~ msgid "Group|Users"
 #~ msgstr "グループのユーザ一覧"
 
@@ -1145,9 +1148,6 @@ msgstr "登録する"
 
 #~ msgid "Note|Description"
 #~ msgstr "Wikiの説明"
-
-#~ msgid "Select category"
-#~ msgstr "カテゴリーを選択"
 
 #~ msgid "Input description"
 #~ msgstr "Wikiの説明を入力"
